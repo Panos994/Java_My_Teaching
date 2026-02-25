@@ -1,0 +1,10 @@
+Star is Sun,0.0,1.41,0.0,25.38,false,false,false,false,Plasma
+Mercury,0.39,5.43,0.24,58.6,false,true,false,false,Thin
+Venus,0.72,5.24,0.62,243.0,false,true,false,false,CO2
+Earth,1.0,5.51,1.0,1.0,true,true,true,true,N2/O2,Moon:1737:28:true
+Mars,1.52,3.93,1.88,1.03,true,true,true,true,CO2,Phobos:11:1;Deimos:6:2
+Jupiter,5.20,1.33,11.86,0.41,true,true,true,true,H2/He,Io:1821:2;Europa:1560:4;Ganymede:2634:7;Callisto:2410:17;Leda:10:240
+Saturn,9.54,0.69,29.45,0.45,true,false,true,false,H2/He,Lysithea:1822:3;Niso:1780:1:true;Kalliroi:1899:2;Epimitheas:1999:6
+Uranus,19.22,1.27,84.01,0.72,true,false,true,false,H2/He/CH4:true
+Neptune,30.06,1.64,164.8,0.67,true,false,true,false,H2/He/CH4
+Pluto,39.48,1.85,248.0,6.39,false,true,false,true,N2/CH4/CO

@@ -1,0 +1,285 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Planets in our trip are:
+NAME                 | DISTANCE     | DENSITY      | YEARS OF ROTATION         | DAYS OF ROTATION          | RING         | LAND PLANET  | AIR PLANET   | MIDGET PLANET | ATMOSPHERE  
+Star is Sun          | 0.0          | 1.41         | 0.0                       | 25.38                     | false        | false        | false        | false        | Plasma      
+Mercury              | 0.39         | 5.43         | 0.24                      | 58.6                      | false        | true         | false        | false        | Thin        
+Venus                | 0.72         | 5.24         | 0.62                      | 243.0                     | false        | true         | false        | false        | CO2         
+Earth                | 1.0          | 5.51         | 1.0                       | 1.0                       | true         | true         | true         | true         | N2/O2       
+------
+ has these/this satellites >>>> Moon and radius is 1737 and days of a complete rotation is 28
+------
+Mars                 | 1.52         | 3.93         | 1.88                      | 1.03                      | true         | true         | true         | true         | CO2         
+------
+ has these/this satellites >>>> Phobos and radius is 11 and days of a complete rotation is 1
+------
+------
+ has these/this satellites >>>> Deimos and radius is 6 and days of a complete rotation is 2
+------
+Jupiter              | 5.2          | 1.33         | 11.86                     | 0.41                      | true         | true         | true         | true         | H2/He       
+------
+ has these/this satellites >>>> Io and radius is 1821 and days of a complete rotation is 2
+------
+------
+ has these/this satellites >>>> Europa and radius is 1560 and days of a complete rotation is 4
+------
+------
+ has these/this satellites >>>> Ganymede and radius is 2634 and days of a complete rotation is 7
+------
+------
+ has these/this satellites >>>> Callisto and radius is 2410 and days of a complete rotation is 17
+------
+------
+ has these/this satellites >>>> Leda and radius is 10 and days of a complete rotation is 240
+------
+Saturn               | 9.54         | 0.69         | 29.45                     | 0.45                      | true         | false        | true         | false        | H2/He       
+------
+ has these/this satellites >>>> Lysithea and radius is 1822 and days of a complete rotation is 3
+------
+------
+ has these/this satellites >>>> Niso and radius is 1780 and days of a complete rotation is 1
+------
+------
+ has these/this satellites >>>> Kalliroi and radius is 1899 and days of a complete rotation is 2
+------
+------
+ has these/this satellites >>>> Epimitheas and radius is 1999 and days of a complete rotation is 6
+------
+Uranus               | 19.22        | 1.27         | 84.01                     | 0.72                      | true         | false        | true         | false        | H2/He/CH4:true
+Neptune              | 30.06        | 1.64         | 164.8                     | 0.67                      | true         | false        | true         | false        | H2/He/CH4   
+Pluto                | 39.48        | 1.85         | 248.0                     | 6.39                      | false        | true         | false        | true         | N2/CH4/CO   
+And star of this solar system is Sun and its age is approximately 5.0E9 and density is 1.41 *10^27, and volume is 1.41E18
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Name of planet: Jupiter
+satellites name: Io
+satellites name: Europa
+satellites name: Ganymede
+satellites name: Callisto
+satellites name: Leda
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Name of planet: Saturn
+satellites name: Lysithea
+satellites name: Niso
+satellites name: Kalliroi
+satellites name: Epimitheas
+Solar system's total density is 2.02
+
+Trip distance for Star is Sun and Mercury is: 58343169.57 kilometers
+Finally we arrived at final target planet ===> Mercury
+Ready for next planet, and current location is: Mercury
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Trip distance for Mercury and Venus is: 49367297.33 kilometers
+Finally we arrived at final target planet ===> Venus
+Ready for next planet, and current location is: Venus
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Trip distance for Venus and Earth is: 41887403.80 kilometers
+Finally we arrived at final target planet ===> Earth
+Ready for next planet, and current location is: Earth
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Trip distance for Earth and Mars is: 77790892.76 kilometers
+Finally we arrived at final target planet ===> Mars
+Ready for next planet, and current location is: Mars
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Trip distance for Mars and Jupiter is: 550520164.18 kilometers
+Travelling at year number: 1 for target planet, so 1  years have passed
+Travelling at year number: 2 for target planet, so 2  years have passed
+Travelling at year number: 3 for target planet, so 3  years have passed
+Finally we arrived at final target planet ===> Jupiter
+Ready for next planet, and current location is: Jupiter
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Trip distance for Jupiter and Saturn is: 649254758.84 kilometers
+Travelling at year number: 1 for target planet, so 1  years have passed
+Travelling at year number: 2 for target planet, so 2  years have passed
+Travelling at year number: 3 for target planet, so 3  years have passed
+Travelling at year number: 4 for target planet, so 4  years have passed
+Finally we arrived at final target planet ===> Saturn
+Ready for next planet, and current location is: Saturn
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Trip distance for Saturn and Uranus is: 1448107388.38 kilometers
+Travelling at year number: 1 for target planet, so 1  years have passed
+Travelling at year number: 2 for target planet, so 2  years have passed
+Travelling at year number: 3 for target planet, so 3  years have passed
+Travelling at year number: 4 for target planet, so 4  years have passed
+Travelling at year number: 5 for target planet, so 5  years have passed
+Travelling at year number: 6 for target planet, so 6  years have passed
+Travelling at year number: 7 for target planet, so 7  years have passed
+Travelling at year number: 8 for target planet, so 8  years have passed
+Travelling at year number: 9 for target planet, so 9  years have passed
+Finally we arrived at final target planet ===> Uranus
+Ready for next planet, and current location is: Uranus
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Trip distance for Uranus and Neptune is: 1621640918.39 kilometers
+Travelling at year number: 1 for target planet, so 1  years have passed
+Travelling at year number: 2 for target planet, so 2  years have passed
+Travelling at year number: 3 for target planet, so 3  years have passed
+Travelling at year number: 4 for target planet, so 4  years have passed
+Travelling at year number: 5 for target planet, so 5  years have passed
+Travelling at year number: 6 for target planet, so 6  years have passed
+Travelling at year number: 7 for target planet, so 7  years have passed
+Travelling at year number: 8 for target planet, so 8  years have passed
+Travelling at year number: 9 for target planet, so 9  years have passed
+Travelling at year number: 10 for target planet, so 10  years have passed
+Finally we arrived at final target planet ===> Neptune
+Ready for next planet, and current location is: Neptune
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Trip distance for Neptune and Pluto is: 1409211941.99 kilometers
+Travelling at year number: 1 for target planet, so 1  years have passed
+Travelling at year number: 2 for target planet, so 2  years have passed
+Travelling at year number: 3 for target planet, so 3  years have passed
+Travelling at year number: 4 for target planet, so 4  years have passed
+Travelling at year number: 5 for target planet, so 5  years have passed
+Travelling at year number: 6 for target planet, so 6  years have passed
+Travelling at year number: 7 for target planet, so 7  years have passed
+Travelling at year number: 8 for target planet, so 8  years have passed
+Travelling at year number: 9 for target planet, so 9  years have passed
+Finally we arrived at final target planet ===> Pluto
+Ready for next planet, and current location is: Pluto
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Whole trip completed successfuly!
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Planet that are air planets, has a ring and has bigger radius than Polydeukus and Titania are: Mars
+satellite names are Phobos
+-------------------------------------------------
+Total planets with these characteristics are: 1
+Planet that are air planets, has a ring and has bigger radius than Polydeukus and Titania are: Mars
+satellite names are Deimos
+-------------------------------------------------
+Total planets with these characteristics are: 2
+Planet that are air planets, has a ring and has bigger radius than Polydeukus and Titania are: Jupiter
+satellite names are Leda
+-------------------------------------------------
+Total planets with these characteristics are: 1
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total satellites with rotation > 3: 4
+Satellite name: Europa | Rotation period 4
+Satellite name: Ganymede | Rotation period 7
+Satellite name: Callisto | Rotation period 17
+Satellite name: Leda | Rotation period 240
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Satellite name that has O2 or CH4, and radius is bigger than Ydra's satellite radius and has a opposite direction of Kerveros satellite is/ are: Moon | Radius: 1737
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Captain's age if it was in this planet Mercury would be 120.83
+Captain's age if it was in this planet Jupiter would be 2.45
+Captain's age if it was in this planet Uranus would be 0.35
+Captain's age if it was in this planet Neptune would be 0.18
+==========================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
+One day in the planet: Jupiter endures : 9.84 days 
+One day in the planet: Uranus endures : 17.28 days 
+One day in the planet: Neptune endures : 16.08 days 
+==========================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
+Satellite Europa has lunar Months : 0.14
+Satellite Callisto has lunar Months : 0.58
+Satellite Lysithea has lunar Months : 0.10
+Satellite Niso has lunar Months : 0.03
+Satellite Kalliroi has lunar Months : 0.07
+Satellite Epimitheas has lunar Months : 0.20
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Trip has started!
+Years needed from earth to land planets
+From Earth to Mercury we need 0.61 years
+From Earth to Venus we need 0.28 years
+From Earth to Mars we need 0.52 years
+From Earth to Jupiter we need 4.20 years
+From Earth to Pluto we need 38.48 years
+Furthest target planet is: Pluto
+
+Trip distance for Earth and Pluto is: 5756526064.54 kilometers
+Travelling at year number: 1 for target planet, so 1  years have passed
+Travelling at year number: 2 for target planet, so 2  years have passed
+Travelling at year number: 3 for target planet, so 3  years have passed
+Travelling at year number: 4 for target planet, so 4  years have passed
+Travelling at year number: 5 for target planet, so 5  years have passed
+Travelling at year number: 6 for target planet, so 6  years have passed
+Travelling at year number: 7 for target planet, so 7  years have passed
+Travelling at year number: 8 for target planet, so 8  years have passed
+Travelling at year number: 9 for target planet, so 9  years have passed
+Travelling at year number: 10 for target planet, so 10  years have passed
+Travelling at year number: 11 for target planet, so 11  years have passed
+Travelling at year number: 12 for target planet, so 12  years have passed
+Travelling at year number: 13 for target planet, so 13  years have passed
+Travelling at year number: 14 for target planet, so 14  years have passed
+Travelling at year number: 15 for target planet, so 15  years have passed
+Travelling at year number: 16 for target planet, so 16  years have passed
+Travelling at year number: 17 for target planet, so 17  years have passed
+Travelling at year number: 18 for target planet, so 18  years have passed
+Travelling at year number: 19 for target planet, so 19  years have passed
+Travelling at year number: 20 for target planet, so 20  years have passed
+Travelling at year number: 21 for target planet, so 21  years have passed
+Travelling at year number: 22 for target planet, so 22  years have passed
+Travelling at year number: 23 for target planet, so 23  years have passed
+Travelling at year number: 24 for target planet, so 24  years have passed
+Travelling at year number: 25 for target planet, so 25  years have passed
+Travelling at year number: 26 for target planet, so 26  years have passed
+Travelling at year number: 27 for target planet, so 27  years have passed
+Travelling at year number: 28 for target planet, so 28  years have passed
+Travelling at year number: 29 for target planet, so 29  years have passed
+Travelling at year number: 30 for target planet, so 30  years have passed
+Travelling at year number: 31 for target planet, so 31  years have passed
+Travelling at year number: 32 for target planet, so 32  years have passed
+Travelling at year number: 33 for target planet, so 33  years have passed
+Travelling at year number: 34 for target planet, so 34  years have passed
+Travelling at year number: 35 for target planet, so 35  years have passed
+Travelling at year number: 36 for target planet, so 36  years have passed
+Travelling at year number: 37 for target planet, so 37  years have passed
+Travelling at year number: 38 for target planet, so 38  years have passed
+Finally we arrived at final target planet ===> Pluto
+
+Trip distance for Pluto and Earth is: 5756526064.54 kilometers
+Travelling at year number: 1 for target planet, so 1  years have passed
+Travelling at year number: 2 for target planet, so 2  years have passed
+Travelling at year number: 3 for target planet, so 3  years have passed
+Travelling at year number: 4 for target planet, so 4  years have passed
+Travelling at year number: 5 for target planet, so 5  years have passed
+Travelling at year number: 6 for target planet, so 6  years have passed
+Travelling at year number: 7 for target planet, so 7  years have passed
+Travelling at year number: 8 for target planet, so 8  years have passed
+Travelling at year number: 9 for target planet, so 9  years have passed
+Travelling at year number: 10 for target planet, so 10  years have passed
+Travelling at year number: 11 for target planet, so 11  years have passed
+Travelling at year number: 12 for target planet, so 12  years have passed
+Travelling at year number: 13 for target planet, so 13  years have passed
+Travelling at year number: 14 for target planet, so 14  years have passed
+Travelling at year number: 15 for target planet, so 15  years have passed
+Travelling at year number: 16 for target planet, so 16  years have passed
+Travelling at year number: 17 for target planet, so 17  years have passed
+Travelling at year number: 18 for target planet, so 18  years have passed
+Travelling at year number: 19 for target planet, so 19  years have passed
+Travelling at year number: 20 for target planet, so 20  years have passed
+Travelling at year number: 21 for target planet, so 21  years have passed
+Travelling at year number: 22 for target planet, so 22  years have passed
+Travelling at year number: 23 for target planet, so 23  years have passed
+Travelling at year number: 24 for target planet, so 24  years have passed
+Travelling at year number: 25 for target planet, so 25  years have passed
+Travelling at year number: 26 for target planet, so 26  years have passed
+Travelling at year number: 27 for target planet, so 27  years have passed
+Travelling at year number: 28 for target planet, so 28  years have passed
+Travelling at year number: 29 for target planet, so 29  years have passed
+Travelling at year number: 30 for target planet, so 30  years have passed
+Travelling at year number: 31 for target planet, so 31  years have passed
+Travelling at year number: 32 for target planet, so 32  years have passed
+Travelling at year number: 33 for target planet, so 33  years have passed
+Travelling at year number: 34 for target planet, so 34  years have passed
+Travelling at year number: 35 for target planet, so 35  years have passed
+Travelling at year number: 36 for target planet, so 36  years have passed
+Travelling at year number: 37 for target planet, so 37  years have passed
+Travelling at year number: 38 for target planet, so 38  years have passed
+Finally we arrived at final target planet ===> Earth
+Whole trip completed successfuly and returned to Earth!
