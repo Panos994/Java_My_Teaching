@@ -1,6 +1,7 @@
 package org.example;
 
 import com.sun.source.tree.Tree;
+import org.apache.commons.lang3.Range;
 
 import java.lang.reflect.Array;
 import java.sql.SQLOutput;
@@ -1940,10 +1941,36 @@ public class Matrices {
         nestedSwitchTest();
 
         System.out.println("\n");
-        int[] minPairAbs = {5,6,4,1,2,6};
+        int[] minPairAbs = {5, 6, 4, 1, 2, 6};
         findPairWithMinAbsSumInArr(minPairAbs);
 
+        System.out.println("\n");
+        int[] arrOccIdx = {1, 2, 3, 3, 3, 4};
+        findIdxOfMaximumOccuringElemWithEqualProb(arrOccIdx);
 
+        System.out.println("\n");
+        int[] arr1Test1 = {1, 2, 3, 4};
+        int[] arr2Test2 = {2, 3, 4, 5};
+        add2ArraysToAnewArr(arr1Test1, arr2Test2);
+
+        System.out.println("\n");
+        printPattern(6);
+        printSimplePyramidNums(6);
+
+        System.out.println("\n");
+        int[] arrSumEq = {1,2,3,1,2,3};
+        System.out.println(isIndexDividesArrayIntoTwoNonEmptySubArraysWithEqualSum(arrSumEq));
+
+        System.out.println("\n");
+        int[] arrrminMaxAgain = {1,23,4,5};
+        findMinAndMax2(arrrminMaxAgain);
+
+        System.out.println("\n");
+        int[] arrTe8 = {1,2,3,4,5,6,6};
+        findDuplicatesInkRange(arrTe8, 10);
+
+        System.out.println("\n");
+        readInputsSmallerLargestVals();
     }
 
     public static String eliminateAWord(String words) {
@@ -4291,23 +4318,24 @@ public class Matrices {
             System.out.println();
         }
     }
-    public static void nestedSwitchTest(){
+
+    public static void nestedSwitchTest() {
         int option = 2;
         int subOption = 1;
         int increase = 0;
         int salary = 500;
-        for(int i = 0; i < 5;i++){
+        for (int i = 0; i < 5; i++) {
             salary++;
         }
-        switch(option){
+        switch (option) {
             case 1:
                 System.out.println("This is case 1");
                 break;
             case 2:
                 System.out.println("This is case 2");
-                switch(subOption){
+                switch (subOption) {
                     case 1:
-                        if(salary>500){
+                        if (salary > 500) {
                             increase++;
                         }
                         System.out.println(increase);
@@ -4319,12 +4347,13 @@ public class Matrices {
                         System.out.println("not valid option");
                         break;
                 }
-            break;
+                break;
             default:
                 System.out.println("not valid 1st option");
                 break;
         }
     }
+
     public static int factorial(int n) {
         if (n < 0) throw new IllegalArgumentException("Number must be non-negative");
 
@@ -4334,6 +4363,39 @@ public class Matrices {
         return n * factorial(n - 1);
     }
 
+    public static void findMinAndMax2(int[] arr){
+        if (arr == null || arr.length == 0) return;
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        for(int i = 1; i < arr.length; i++){
+            if(arr[i] > max){
+                max = arr[i];
+            }
+            if(arr[i] < min){
+                min = arr[i];
+            }
+        }
+        System.out.println("Maximum in the array: " + max + " Minimun in the array " + min);
+    }
+    private static void readInputsSmallerLargestVals(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please give a number: ");
+        if(sc.hasNextFloat()) {
+            float num = sc.nextFloat();
+
+            int ceilVal = (int) Math.ceil(num);
+            int floorVal = (int) Math.floor(num);
+
+            System.out.println("\nResults for: " + num);
+            System.out.println(" -> Small Integer not less than the number: " + ceilVal);
+            System.out.println("Given number: " + num);
+            System.out.println("-> Largerst Integer not greater than the number: " + floorVal);
+
+        } else {
+            System.out.println("Invalid input. Please enter a valid float!");
+        }
+       sc.close();
+    }
 
     /// ////////>>>>>>>new set of exercises with Arrays >>>>>>>>>/////////////
     public static void sortArray(int[] arr) {
@@ -7135,16 +7197,16 @@ public class Matrices {
         return min;
     }
 
-    public static void findPairWithMinAbsSumInArr(int[] arr){
-        if(arr.length < 2) return;
+    public static void findPairWithMinAbsSumInArr(int[] arr) {
+        if (arr.length < 2) return;
         int sum = 0;
         int element1 = 0;
         int element2 = 0;
         int min = Integer.MAX_VALUE;
-        for(int i = 0; i < arr.length; i++){
-            for(int j = i + 1; j < arr.length;j++){
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
                 sum = Math.abs(arr[i] + arr[j]);
-                if(sum < min){
+                if (sum < min) {
                     min = sum;
                     element1 = arr[i];
                     element2 = arr[j];
@@ -7155,17 +7217,17 @@ public class Matrices {
         System.out.println("Minimum sum --> " + min + " and the pair is -->  " + element1 + " and --> " + element2);
     }
 
-    public static void findPairWithMinAbsSumInArr2(int[] arr){
-        if(arr.length < 2) return;
+    public static void findPairWithMinAbsSumInArr2(int[] arr) {
+        if (arr.length < 2) return;
 
         Arrays.sort(arr);
         int left = 0, right = arr.length - 1;
         int minSum = Integer.MAX_VALUE;
         int element1 = 0, element2 = 0;
 
-        while(left <= right){
+        while (left <= right) {
             int sum = arr[left] + arr[right];
-            if(Math.abs(sum) < Math.abs(minSum)){
+            if (Math.abs(sum) < Math.abs(minSum)) {
                 minSum = sum;
                 element1 = arr[left];
                 element2 = arr[right];
@@ -7183,6 +7245,134 @@ public class Matrices {
         System.out.println("Best pair: " + element1 + " , " + element2);
         System.out.println("Minimum absolute sum: " + Math.abs(minSum));
     }
+
+    public static void findIdxOfMaximumOccuringElemWithEqualProb(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            System.out.println("Array is empty or null.");
+            return;
+        }
+        Map<Integer, Integer> map = new HashMap<>();
+        int maxFreq = 0;
+        for (int num : arr) {
+            int freq = map.getOrDefault(num, 0) + 1;
+            if (freq > maxFreq) {
+                maxFreq = freq;
+            }
+        }
+        int maxElement = -1;
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (entry.getValue() == maxFreq) {
+                maxElement = entry.getKey();
+                break;
+            }
+        }
+
+        List<Integer> indices = new ArrayList<>();
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == maxElement) {
+                indices.add(i);
+            }
+        }
+        if (indices.isEmpty()) {
+            System.out.println("No elements found to pick from.");
+            return; // Σταματάμε τη μέθοδο για να μη σκάσει η Random
+        }
+        Random rand = new Random();
+        int randomIdx = indices.get(rand.nextInt(indices.size()));
+        System.out.println("Max element: " + maxElement + " (appears " + maxFreq + " times)");
+        System.out.println("Possible indices: " + indices);
+        System.out.println("Randomly chosen index: " + randomIdx);
+    }
+
+    public static void add2ArraysToAnewArr(int[] arr1, int[] arr2) {
+        // 1. Δημιουργούμε τον πίνακα με το συνολικό μέγεθος
+        int[] arr3 = new int[arr1.length + arr2.length];
+        int currentPos = 0; // Ο μετρητής για τον arr3
+
+        // 2. Προσθέτουμε τα στοιχεία του πρώτου πίνακα
+        for (int i = 0; i < arr1.length; i++) {
+            arr3[currentPos] = arr1[i];
+            currentPos++;
+        }
+
+        // 3. Προσθέτουμε τα στοιχεία του δεύτερου πίνακα
+        for (int i = 0; i < arr2.length; i++) {
+            arr3[currentPos] = arr2[i];
+            currentPos++;
+        }
+
+        System.out.println("New merged array: " + Arrays.toString(arr3));
+    }
+
+    public static void printSimplePyramidNums(int n) {
+        for (int i = 1; i <= n; i++) {
+            for (int k = 1; k <= n - i; k++) {
+                System.out.print(" ");
+            }
+            for (int j = 1; j <= i; j++) {
+                System.out.print(i + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void printPattern(int n) { //https://www.geeksforgeeks.org/java/java-program-to-print-pascals-triangle/  -- here I got a lof help in this article (I was a bit confused)
+        List<List<Integer>> triangle = new ArrayList<>(); //I want to add the row list inside another list
+        //ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            List<Integer> row = new ArrayList<>();
+            for (int k = 0; k <= n - i; k++) {
+                System.out.print(" ");
+            }
+            for (int j = 0; j <= i; j++) {
+                if (j == 0 || j == i) {
+                    row.add(1);
+                } else {
+                    int num = triangle.get(i - 1).get(j - 1) + triangle.get(i - 1).get(j);
+                    row.add(num);
+                }
+                System.out.print(row.get(j) + " ");
+            }
+            triangle.add(row);
+            System.out.println();
+        }
+    }
+
+    private static boolean isIndexDividesArrayIntoTwoNonEmptySubArraysWithEqualSum(int[] arr) {
+        if(arr == null || arr.length < 2) return false;
+        int totalSum = 0;
+        for(int num : arr){
+            totalSum+=num;
+        }
+        int leftSum = 0;
+        for(int i = 0; i < arr.length - 1; i++){
+            leftSum+=arr[i];
+            int rightSum = totalSum - leftSum;
+            if(rightSum == leftSum){
+                System.out.println("Dividing index found at: " + i);
+                System.out.println("Left sum = Right sum " + leftSum);
+                return true;
+            }
+        }
+        System.out.println("No such index exists.");
+        return false;
+    }
+
+    private static void findDuplicatesInkRange(int[] arr, int k){
+        HashSet<Integer> window = new HashSet<>();
+
+        for(int i = 0; i < arr.length; i++){
+            if(window.contains(arr[i])){
+                System.out.println("Duplicate found: " + arr[i] + " at index " + i);
+            }
+            window.add(arr[i]);
+            if(window.size() > k){
+                // Αν το παράθυρο ξεπεράσει το μέγεθος k, αφαιρούμε το πιο παλιό στοιχείο
+                window.remove(arr[i - k]);
+            }
+        }
+    }
+
 }
 
 
