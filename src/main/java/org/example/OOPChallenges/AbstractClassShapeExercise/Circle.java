@@ -1,9 +1,9 @@
-package org.example.OOPChallenges.AbstractClassesShapesExercise;
+package org.example.OOPChallenges.AbstractClassShapeExercise;
 
-class Circle extends Shape{
+class Circle extends Shape {
     double radius;
 
-    public Circle(double radius) {
+    Circle(double radius) {
         super("Circle");
         this.radius = radius;
     }
