@@ -1971,6 +1971,18 @@ public class Matrices {
 
         System.out.println("\n");
         readInputsSmallerLargestVals();
+
+        System.out.println("\n");
+        int[] testArr111 = {1,2,3,44};
+        System.out.println(findIdxOfElementSatisfiesGivenConstraintsv2(testArr111));
+
+        System.out.println("\n");
+        int[] arrRotateAll = {1,2,3,4,5};
+        rotateArrAll(arrRotateAll);
+
+        System.out.println("\n");
+        int[] leftRotate = {1,2,3,4,5};
+        leftRotatedArr(leftRotate);
     }
 
     public static String eliminateAWord(String words) {
@@ -4395,6 +4407,16 @@ public class Matrices {
             System.out.println("Invalid input. Please enter a valid float!");
         }
        sc.close();
+    }
+
+    public static void randomGeneratedNums(){
+        Random rand = new Random();
+        int[] storedRandomVals = new int[5];
+        for(int i = 0; i < 5; i++){
+            int randomNum = rand.nextInt(1,100) + 1;
+            storedRandomVals[i] = randomNum;
+        }
+        System.out.println(Arrays.toString(storedRandomVals));
     }
 
     /// ////////>>>>>>>new set of exercises with Arrays >>>>>>>>>/////////////
@@ -7371,6 +7393,54 @@ public class Matrices {
                 window.remove(arr[i - k]);
             }
         }
+    }
+    public static int findIdxOfElementSatisfiesGivenConstraints(int[] arr){ //φέρνει το 1ο αφου εβαλα break με αυτα τα constraints
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i] % 2 == 0 && arr[i] > 0 && arr[i] <= 45){
+                System.out.println("Index of element that satisfies the constraints: ");
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static int findIdxOfElementSatisfiesGivenConstraintsv2(int[] arr){ //φέρνει το tελευταιο αφου εβαλα break με αυτα τα constraints
+        int lastIndex = -1;
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i] % 2 == 0 && arr[i] > 0 && arr[i] <= 45){
+                lastIndex = i;
+            }
+        }
+        if(lastIndex!= -1){
+            System.out.println("Index of element that satisfies the constraints: ");
+        }
+        return lastIndex;
+    }
+
+    public static void rotateArrAll(int[] arr){
+        System.out.println("initial array: " + Arrays.toString(arr));
+
+        int left =0,right = arr.length - 1;
+        while(left < right){
+            int temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+
+            left++;
+            right--;
+        }
+        System.out.println("after left rotation array: " + Arrays.toString(arr));
+    }
+
+    public static void leftRotatedArr(int[] arr){
+        System.out.println("initial array: " + Arrays.toString(arr));
+        if(arr.length == 0) return;
+        int first = arr[0];
+        for(int i = 0; i < arr.length-1; i++){
+            arr[i] = arr[i+1];
+        }
+        arr[arr.length - 1] = first;
+        System.out.println("after left rotation array: " + Arrays.toString(arr));
     }
 
 }
