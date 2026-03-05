@@ -1983,6 +1983,16 @@ public class Matrices {
         System.out.println("\n");
         int[] leftRotate = {1,2,3,4,5};
         leftRotatedArr(leftRotate);
+
+        System.out.println("\n");
+        int[] rightRotate = {1,2,3,4,5};
+        rightRotatedArr(rightRotate, 3);
+
+        System.out.println("\n");
+        gradesMessage("A");
+
+        System.out.println("\n");
+        randomGeneratedNums();
     }
 
     public static String eliminateAWord(String words) {
@@ -4417,6 +4427,25 @@ public class Matrices {
             storedRandomVals[i] = randomNum;
         }
         System.out.println(Arrays.toString(storedRandomVals));
+    }
+    public static void gradesMessage(String grade){
+        switch(grade){
+            case "A":
+                System.out.println("Outstanding");
+                break;
+            case "B":
+                System.out.println("Good");
+                break;
+            case "C":
+                System.out.println("Average");
+                break;
+            case "D":
+                System.out.println("Below Average");
+                break;
+            default:
+                System.out.println("Invalid grade");
+                break;
+        }
     }
 
     /// ////////>>>>>>>new set of exercises with Arrays >>>>>>>>>/////////////
@@ -7442,6 +7471,21 @@ public class Matrices {
         arr[arr.length - 1] = first;
         System.out.println("after left rotation array: " + Arrays.toString(arr));
     }
+
+    public static void rightRotatedArr(int[] arr, int times){
+        System.out.println("initial array: " + Arrays.toString(arr));
+        if(arr.length == 0) return;
+        times = times % arr.length; // Αν ο αριθμός των περιστροφών είναι μεγαλύτερος από το μήκος του πίνακα, μπορούμε να το μειώσουμε
+        for(int t = 0; t < times; t++){
+            int last = arr[arr.length - 1];
+            for(int i = arr.length - 1; i > 0 ; i--){
+                arr[i] = arr[i-1];
+            }
+            arr[0] = last;
+        }
+        System.out.println("after right rotation array: " + Arrays.toString(arr));
+    }
+
 
 }
 
