@@ -1993,6 +1993,24 @@ public class Matrices {
 
         System.out.println("\n");
         randomGeneratedNums();
+
+        System.out.println("\n");
+        List<Activity> activities = new ArrayList<>();
+        activities.add(new Activity(1, 4));
+        activities.add(new Activity(3 ,5));
+        activities.add(new Activity(0, 6));
+        activities.add(new Activity(5, 7));
+        activities.add(new Activity(8, 9));
+        activities.add(new Activity(5, 9));
+        List<Activity> selectedActivities = selectActivities(activities);
+        for(Activity activity : selectedActivities) {
+            System.out.println("Selected activity: Start = " + activity.getStartTime() + ", End = " + activity.getEndTime());
+        }
+
+        System.out.println("\n");
+        int digits = 15;
+        sumProdOfSigits(digits);
+
     }
 
     public static String eliminateAWord(String words) {
@@ -4446,6 +4464,19 @@ public class Matrices {
                 System.out.println("Invalid grade");
                 break;
         }
+    }
+
+    public static void sumProdOfSigits(int num){
+       int sum = 0;
+       int prod = 1;
+       while(num > 0){
+           int digit = num % 10;
+           sum+= digit;
+           prod*=digit;
+           num/=10;
+       }
+        System.out.println("Sum of digits: " + sum);
+        System.out.println("Product of digits: " + prod);
     }
 
     /// ////////>>>>>>>new set of exercises with Arrays >>>>>>>>>/////////////
@@ -7486,6 +7517,23 @@ public class Matrices {
         System.out.println("after right rotation array: " + Arrays.toString(arr));
     }
 
+    public static List<Activity> selectActivities(List<Activity> activities){
+        activities.sort(Comparator.comparingInt(Activity::getEndTime));
+
+        List<Activity> selected = new ArrayList<>();
+        if(activities.isEmpty()){
+            return selected;
+        }
+        selected.add(activities.get(0));
+        int lastEndTime = activities.get(0).getEndTime();
+        for(int i = 0; i < activities.size(); i++){
+            if(activities.get(i).getStartTime() >= lastEndTime){
+                selected.add(activities.get(i));
+                lastEndTime = activities.get(i).getEndTime();
+            }
+        }
+        return selected;
+    }
 
 }
 
