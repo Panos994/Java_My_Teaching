@@ -1958,34 +1958,34 @@ public class Matrices {
         printSimplePyramidNums(6);
 
         System.out.println("\n");
-        int[] arrSumEq = {1,2,3,1,2,3};
+        int[] arrSumEq = {1, 2, 3, 1, 2, 3};
         System.out.println(isIndexDividesArrayIntoTwoNonEmptySubArraysWithEqualSum(arrSumEq));
 
         System.out.println("\n");
-        int[] arrrminMaxAgain = {1,23,4,5};
+        int[] arrrminMaxAgain = {1, 23, 4, 5};
         findMinAndMax2(arrrminMaxAgain);
 
         System.out.println("\n");
-        int[] arrTe8 = {1,2,3,4,5,6,6};
+        int[] arrTe8 = {1, 2, 3, 4, 5, 6, 6};
         findDuplicatesInkRange(arrTe8, 10);
 
         System.out.println("\n");
         readInputsSmallerLargestVals();
 
         System.out.println("\n");
-        int[] testArr111 = {1,2,3,44};
+        int[] testArr111 = {1, 2, 3, 44};
         System.out.println(findIdxOfElementSatisfiesGivenConstraintsv2(testArr111));
 
         System.out.println("\n");
-        int[] arrRotateAll = {1,2,3,4,5};
+        int[] arrRotateAll = {1, 2, 3, 4, 5};
         rotateArrAll(arrRotateAll);
 
         System.out.println("\n");
-        int[] leftRotate = {1,2,3,4,5};
+        int[] leftRotate = {1, 2, 3, 4, 5};
         leftRotatedArr(leftRotate);
 
         System.out.println("\n");
-        int[] rightRotate = {1,2,3,4,5};
+        int[] rightRotate = {1, 2, 3, 4, 5};
         rightRotatedArr(rightRotate, 3);
 
         System.out.println("\n");
@@ -1997,19 +1997,34 @@ public class Matrices {
         System.out.println("\n");
         List<Activity> activities = new ArrayList<>();
         activities.add(new Activity(1, 4));
-        activities.add(new Activity(3 ,5));
+        activities.add(new Activity(3, 5));
         activities.add(new Activity(0, 6));
         activities.add(new Activity(5, 7));
         activities.add(new Activity(8, 9));
         activities.add(new Activity(5, 9));
         List<Activity> selectedActivities = selectActivities(activities);
-        for(Activity activity : selectedActivities) {
+        for (Activity activity : selectedActivities) {
             System.out.println("Selected activity: Start = " + activity.getStartTime() + ", End = " + activity.getEndTime());
         }
 
         System.out.println("\n");
         int digits = 15;
         sumProdOfSigits(digits);
+
+        System.out.println("\n");
+        int[] arrTriplCaramel = {5, 3, 4, 2, 1};
+        System.out.println(countTripletsFormInversionArr(arrTriplCaramel)); //O(n^3)
+
+        System.out.println("\n");
+        //sumAllIntegersDivisibleBy7InRange();
+
+        int[] arrTriT = {12, -7, -3, 4, -1, 0, 5, -6};
+        System.out.println("Before segregation:");
+        segregateInLinearTime(arrTriT);
+        System.out.println("After segregation: " + Arrays.toString(arrTriT));
+
+        System.out.println("\n");
+        concatString("Hello PL/SQL and Java and Spring and SOAP and REST");
 
     }
 
@@ -4403,24 +4418,25 @@ public class Matrices {
         return n * factorial(n - 1);
     }
 
-    public static void findMinAndMax2(int[] arr){
+    public static void findMinAndMax2(int[] arr) {
         if (arr == null || arr.length == 0) return;
         int max = Integer.MIN_VALUE;
         int min = Integer.MAX_VALUE;
-        for(int i = 1; i < arr.length; i++){
-            if(arr[i] > max){
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
                 max = arr[i];
             }
-            if(arr[i] < min){
+            if (arr[i] < min) {
                 min = arr[i];
             }
         }
         System.out.println("Maximum in the array: " + max + " Minimun in the array " + min);
     }
-    private static void readInputsSmallerLargestVals(){
+
+    private static void readInputsSmallerLargestVals() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Please give a number: ");
-        if(sc.hasNextFloat()) {
+        if (sc.hasNextFloat()) {
             float num = sc.nextFloat();
 
             int ceilVal = (int) Math.ceil(num);
@@ -4434,20 +4450,21 @@ public class Matrices {
         } else {
             System.out.println("Invalid input. Please enter a valid float!");
         }
-       sc.close();
+        sc.close();
     }
 
-    public static void randomGeneratedNums(){
+    public static void randomGeneratedNums() {
         Random rand = new Random();
         int[] storedRandomVals = new int[5];
-        for(int i = 0; i < 5; i++){
-            int randomNum = rand.nextInt(1,100) + 1;
+        for (int i = 0; i < 5; i++) {
+            int randomNum = rand.nextInt(1, 100) + 1;
             storedRandomVals[i] = randomNum;
         }
         System.out.println(Arrays.toString(storedRandomVals));
     }
-    public static void gradesMessage(String grade){
-        switch(grade){
+
+    public static void gradesMessage(String grade) {
+        switch (grade) {
             case "A":
                 System.out.println("Outstanding");
                 break;
@@ -4466,17 +4483,43 @@ public class Matrices {
         }
     }
 
-    public static void sumProdOfSigits(int num){
-       int sum = 0;
-       int prod = 1;
-       while(num > 0){
-           int digit = num % 10;
-           sum+= digit;
-           prod*=digit;
-           num/=10;
-       }
+    public static void sumProdOfSigits(int num) {
+        int sum = 0;
+        int prod = 1;
+        while (num > 0) {
+            int digit = num % 10;
+            sum += digit;
+            prod *= digit;
+            num /= 10;
+        }
         System.out.println("Sum of digits: " + sum);
         System.out.println("Product of digits: " + prod);
+    }
+
+    public static void sumAllIntegersDivisibleBy7InRange() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter lower bound (>= 0): ");
+        int lower = sc.nextInt();
+        System.out.println("Enter upper bound (> lower): ");
+        int upper = sc.nextInt();
+
+        int sum = 0;
+        for (int i = lower + 1; i < upper; i++) {
+            if (i % 7 == 0) {
+                sum += i;
+            }
+        }
+        System.out.println("Sum is " + sum);
+    }
+
+    public static void concatString(String str) {
+        String[] words = str.split(" ");
+        String result = "";
+        for (int i = 0; i < words.length; i++) {
+            words[i] = words[i].concat("!");
+            result += words[i] + " ";
+        }
+        System.out.println(Arrays.toString(words));
     }
 
     /// ////////>>>>>>>new set of exercises with Arrays >>>>>>>>>/////////////
@@ -7421,16 +7464,16 @@ public class Matrices {
     }
 
     private static boolean isIndexDividesArrayIntoTwoNonEmptySubArraysWithEqualSum(int[] arr) {
-        if(arr == null || arr.length < 2) return false;
+        if (arr == null || arr.length < 2) return false;
         int totalSum = 0;
-        for(int num : arr){
-            totalSum+=num;
+        for (int num : arr) {
+            totalSum += num;
         }
         int leftSum = 0;
-        for(int i = 0; i < arr.length - 1; i++){
-            leftSum+=arr[i];
+        for (int i = 0; i < arr.length - 1; i++) {
+            leftSum += arr[i];
             int rightSum = totalSum - leftSum;
-            if(rightSum == leftSum){
+            if (rightSum == leftSum) {
                 System.out.println("Dividing index found at: " + i);
                 System.out.println("Left sum = Right sum " + leftSum);
                 return true;
@@ -7440,23 +7483,24 @@ public class Matrices {
         return false;
     }
 
-    private static void findDuplicatesInkRange(int[] arr, int k){
+    private static void findDuplicatesInkRange(int[] arr, int k) {
         HashSet<Integer> window = new HashSet<>();
 
-        for(int i = 0; i < arr.length; i++){
-            if(window.contains(arr[i])){
+        for (int i = 0; i < arr.length; i++) {
+            if (window.contains(arr[i])) {
                 System.out.println("Duplicate found: " + arr[i] + " at index " + i);
             }
             window.add(arr[i]);
-            if(window.size() > k){
+            if (window.size() > k) {
                 // Αν το παράθυρο ξεπεράσει το μέγεθος k, αφαιρούμε το πιο παλιό στοιχείο
                 window.remove(arr[i - k]);
             }
         }
     }
-    public static int findIdxOfElementSatisfiesGivenConstraints(int[] arr){ //φέρνει το 1ο αφου εβαλα break με αυτα τα constraints
-        for(int i = 0; i < arr.length; i++){
-            if(arr[i] % 2 == 0 && arr[i] > 0 && arr[i] <= 45){
+
+    public static int findIdxOfElementSatisfiesGivenConstraints(int[] arr) { //φέρνει το 1ο αφου εβαλα break με αυτα τα constraints
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 == 0 && arr[i] > 0 && arr[i] <= 45) {
                 System.out.println("Index of element that satisfies the constraints: ");
                 return i;
             }
@@ -7464,24 +7508,24 @@ public class Matrices {
         return -1;
     }
 
-    public static int findIdxOfElementSatisfiesGivenConstraintsv2(int[] arr){ //φέρνει το tελευταιο αφου εβαλα break με αυτα τα constraints
+    public static int findIdxOfElementSatisfiesGivenConstraintsv2(int[] arr) { //φέρνει το tελευταιο αφου εβαλα break με αυτα τα constraints
         int lastIndex = -1;
-        for(int i = 0; i < arr.length; i++){
-            if(arr[i] % 2 == 0 && arr[i] > 0 && arr[i] <= 45){
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 == 0 && arr[i] > 0 && arr[i] <= 45) {
                 lastIndex = i;
             }
         }
-        if(lastIndex!= -1){
+        if (lastIndex != -1) {
             System.out.println("Index of element that satisfies the constraints: ");
         }
         return lastIndex;
     }
 
-    public static void rotateArrAll(int[] arr){
+    public static void rotateArrAll(int[] arr) {
         System.out.println("initial array: " + Arrays.toString(arr));
 
-        int left =0,right = arr.length - 1;
-        while(left < right){
+        int left = 0, right = arr.length - 1;
+        while (left < right) {
             int temp = arr[left];
             arr[left] = arr[right];
             arr[right] = temp;
@@ -7492,48 +7536,87 @@ public class Matrices {
         System.out.println("after left rotation array: " + Arrays.toString(arr));
     }
 
-    public static void leftRotatedArr(int[] arr){
+    public static void leftRotatedArr(int[] arr) {
         System.out.println("initial array: " + Arrays.toString(arr));
-        if(arr.length == 0) return;
+        if (arr.length == 0) return;
         int first = arr[0];
-        for(int i = 0; i < arr.length-1; i++){
-            arr[i] = arr[i+1];
+        for (int i = 0; i < arr.length - 1; i++) {
+            arr[i] = arr[i + 1];
         }
         arr[arr.length - 1] = first;
         System.out.println("after left rotation array: " + Arrays.toString(arr));
     }
 
-    public static void rightRotatedArr(int[] arr, int times){
+    public static void rightRotatedArr(int[] arr, int times) {
         System.out.println("initial array: " + Arrays.toString(arr));
-        if(arr.length == 0) return;
+        if (arr.length == 0) return;
         times = times % arr.length; // Αν ο αριθμός των περιστροφών είναι μεγαλύτερος από το μήκος του πίνακα, μπορούμε να το μειώσουμε
-        for(int t = 0; t < times; t++){
+        for (int t = 0; t < times; t++) {
             int last = arr[arr.length - 1];
-            for(int i = arr.length - 1; i > 0 ; i--){
-                arr[i] = arr[i-1];
+            for (int i = arr.length - 1; i > 0; i--) {
+                arr[i] = arr[i - 1];
             }
             arr[0] = last;
         }
         System.out.println("after right rotation array: " + Arrays.toString(arr));
     }
 
-    public static List<Activity> selectActivities(List<Activity> activities){
+    public static List<Activity> selectActivities(List<Activity> activities) {
         activities.sort(Comparator.comparingInt(Activity::getEndTime));
 
         List<Activity> selected = new ArrayList<>();
-        if(activities.isEmpty()){
+        if (activities.isEmpty()) {
             return selected;
         }
         selected.add(activities.get(0));
         int lastEndTime = activities.get(0).getEndTime();
-        for(int i = 0; i < activities.size(); i++){
-            if(activities.get(i).getStartTime() >= lastEndTime){
+        for (int i = 0; i < activities.size(); i++) {
+            if (activities.get(i).getStartTime() >= lastEndTime) {
                 selected.add(activities.get(i));
                 lastEndTime = activities.get(i).getEndTime();
             }
         }
         return selected;
     }
+
+    public static int countTripletsFormInversionArr(int[] arr) {
+        int count = 0;
+        for (int i = 0; i < arr.length - 2; i++) {
+            for (int j = i + 1; j < arr.length - 1; j++) {
+                for (int k = j + 1; k < arr.length; k++) {
+                    if (arr[i] > arr[j] && arr[j] > arr[k]) {
+                        count++;
+                    }
+
+                }
+            }
+        }
+        return count;
+    }
+
+    public static void segregateInLinearTime(int[] arr) {
+        int left = 0, right = arr.length - 1;
+
+        while (left < right) {
+            while (arr[left] < 0 && left < right) {
+                left++;
+            }
+            while (arr[right] >= 0 && left < right) {
+                right--;
+            }
+
+            if (left < right) {
+                int temp = arr[left];
+                arr[left] = arr[right];
+                arr[right] = temp;
+                left++;
+                right--;
+            }
+
+
+        }
+    }
+
 
 }
 
