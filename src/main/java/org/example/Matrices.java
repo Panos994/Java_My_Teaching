@@ -2026,6 +2026,18 @@ public class Matrices {
         System.out.println("\n");
         concatString("Hello PL/SQL and Java and Spring and SOAP and REST");
 
+        System.out.println("\n");
+        int[] arrSeenElem = {5,5,6,7,1};
+        findDuplicatesInLimitedRangeArray(arrSeenElem);
+
+        System.out.println("\n");
+//        System.out.println("Enter a number to display its multiplication table:");
+//        int numTable = sc.nextInt();
+//        System.out.println("Multiplication table for " + numTable + ":");
+//        for(i = 1; i <= 10; i++){
+//            System.out.println(numTable + " x " + i + " = " + (numTable * i)   );
+//        }
+
     }
 
     public static String eliminateAWord(String words) {
@@ -7616,6 +7628,19 @@ public class Matrices {
 
         }
     }
+    public static void findDuplicatesInLimitedRangeArray(int[] arr){
+        Set<Integer> seen = new HashSet<>();
+        Set<Integer> duplicates = new HashSet<>();
+        for(int num : arr){
+            if(seen.contains(num)){
+                duplicates.add(num);
+            } else{
+                seen.add(num);
+            }
+        }
+        System.out.println("Duplicates elements in the array are: " + duplicates);
+    }
+
 
 
 }
