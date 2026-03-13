@@ -2038,6 +2038,14 @@ public class Matrices {
 //            System.out.println(numTable + " x " + i + " = " + (numTable * i)   );
 //        }
 
+        System.out.println("\n");
+        int[] arrToBeSwapped = {1, 2, 3, 4, 5};
+        swapValues(arrToBeSwapped);
+        System.out.println(Arrays.toString(arrToBeSwapped));
+
+        System.out.println("\n");
+        convertDaysIntoMonths();
+
     }
 
     public static String eliminateAWord(String words) {
@@ -4462,7 +4470,7 @@ public class Matrices {
         } else {
             System.out.println("Invalid input. Please enter a valid float!");
         }
-        sc.close();
+        //sc.close();
     }
 
     public static void randomGeneratedNums() {
@@ -4532,6 +4540,23 @@ public class Matrices {
             result += words[i] + " ";
         }
         System.out.println(Arrays.toString(words));
+    }
+
+    private static int[] swapValues(int arr[]){
+        for(int i = 0; i < arr.length - 1; i+=2){
+            int temp = arr[i];
+            arr[i] = arr[i+1];
+            arr[i+1] = temp;
+        }
+        return arr;
+    }
+    public static void convertDaysIntoMonths(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please give your days to convert them into months:");
+        int days = scanner.nextInt();
+        double mon = days / 30.0;
+        int remainingDays = days % 30;
+        System.out.println("Days are equal in months --> " + String.format("%.02f",mon) + " and remaining days are: " + remainingDays);
     }
 
     /// ////////>>>>>>>new set of exercises with Arrays >>>>>>>>>/////////////
@@ -7640,7 +7665,65 @@ public class Matrices {
         }
         System.out.println("Duplicates elements in the array are: " + duplicates);
     }
+    public static void insertionSort(int[] arr){ //if array is already sorted O(n) if not O(n^2)
+        for(int i = 1; i < arr.length; i++){ //starts from the second element index 1
+            int key = arr[i];
+            int j = i - 1;
+            while(j >= 0 && arr[j] > key){ //moving elements that are greater than key to one position ahead of their current position
+                arr[j+1] = arr[j]; //shifting the element to the right
+                j--; //moving to the next element on the left
+            }
+            arr[j+1] = key; //inserting the key in its correct position in the sorted subarray
+        }
+    }
 
+    public static void selectionSortv5(int[] arr){
+        for(int i = 00; i < arr.length - 1; i++){
+            for(int j = i; j < arr.length;j++){
+                if(arr[i]> arr[j]){
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+    }
+    public static void bubbleSortv6(int[] arr){
+        for(int i = 0; i < arr.length; i++){
+            for(int j = 0; j < arr.length - i  - 1; j++){
+                if(arr[j] > arr[j+1]){
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+    }
+    public static void mergeSort(int[] arr){ //divide and conquer approach O(nlogn)
+        if(arr.length < 2) return; //base case
+        int mid = arr.length / 2;
+        int[] left = Arrays.copyOfRange(arr, 0, mid); //copies the specified range of the specified array (here I adding the array, the from index, and the to index)
+        int[] right = Arrays.copyOfRange(arr,mid, arr.length); //second half of the array here
+        mergeSort(left); //recursive call for the left half
+        mergeSort(right); //recursive call for the right half
+        merge(arr, left, right); //merging the sorted halves
+    }
+    private static void merge(int[] arr, int[] left, int[] right) {
+        int i = 0, j = 0, k = 0; //i for left array, j for right array, k for merged array
+        while (i < left.length && j < right.length) {
+            if (left[i] <= right[j]) {
+                arr[k++] = left[i++]; //if the current element in the left array is smaller than or equal to the current element in the right array, we add it to the merged array and move to the next element in the left array
+            } else {
+                arr[k++] = right[j++]; //if the current element in the right array is smaller than the current element in the left array, we add it to the merged array and move to the next element in the right array
+            }
+        }
+        while (i < left.length) { //if there are remaining elements in the left array, we add them to the merged array
+            arr[k++] = left[i++];
+        }
+        while (j < right.length) { //if there are remaining elements in the right array, we add them to the merged array
+            arr[k++] = right[j++];
+        }
+    }
 
 
 }
