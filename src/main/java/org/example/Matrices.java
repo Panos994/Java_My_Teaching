@@ -2046,6 +2046,15 @@ public class Matrices {
         System.out.println("\n");
         convertDaysIntoMonths();
 
+        System.out.println("\n");
+        int[] countingSArr = {4, 2, 2, 8, 3, 3, 1};
+        System.out.println("Original array: " + Arrays.toString(countingSArr));
+        countingSort(countingSArr);
+
+        System.out.println("\n");
+        printInvertTriangle();
+        printInvertTrv2();
+
     }
 
     public static String eliminateAWord(String words) {
@@ -4558,6 +4567,30 @@ public class Matrices {
         int remainingDays = days % 30;
         System.out.println("Days are equal in months --> " + String.format("%.02f",mon) + " and remaining days are: " + remainingDays);
     }
+
+    public static void printInvertTriangle(){ //with while loop
+        int rows = 5;
+        int i = rows;
+        while(i >=1){
+            int j = 1;
+            while(j<=i){
+                System.out.print("* ");
+                j++;
+            }
+            System.out.println();
+            i--;
+        }
+    }
+    public static void printInvertTrv2(){ //with for loop
+        for(int i = 0 ; i <= 5; i++){
+            for(int j = 0; j <=5 - i; j++){
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+
+
 
     /// ////////>>>>>>>new set of exercises with Arrays >>>>>>>>>/////////////
     public static void sortArray(int[] arr) {
@@ -7723,6 +7756,36 @@ public class Matrices {
         while (j < right.length) { //if there are remaining elements in the right array, we add them to the merged array
             arr[k++] = right[j++];
         }
+    }
+
+    public static void countingSort(int[] arr) {
+        if (arr.length == 0) return;
+        // Find the maximum value in the array
+        int max = arr[0];
+        for (int num : arr) {
+            if (num > max) max = num;
+        }
+        // Create count array to store the count of each unique value
+        int[] count = new int[max + 1];
+        // Count the occurrences of each value
+        for (int num : arr) {
+            count[num]++;
+        }
+        // Modify count array by adding previous counts (cumulative count)
+        for (int i = 1; i < count.length; i++) {
+            count[i] += count[i - 1];
+        }
+        // Output array to store sorted elements
+        int[] output = new int[arr.length];
+        // Build the output array by placing elements at their correct positions
+        // Iterate from right to left to make the sort stable
+        for (int i = arr.length - 1; i >= 0; i--) {
+            output[count[arr[i]] - 1] = arr[i];
+            count[arr[i]]--;
+        }
+        // Copy the sorted elements back to original array
+        System.arraycopy(output, 0, arr, 0, arr.length);
+        System.out.println(Arrays.toString(arr));
     }
 
 
