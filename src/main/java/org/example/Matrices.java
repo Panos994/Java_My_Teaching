@@ -2027,7 +2027,7 @@ public class Matrices {
         concatString("Hello PL/SQL and Java and Spring and SOAP and REST");
 
         System.out.println("\n");
-        int[] arrSeenElem = {5,5,6,7,1};
+        int[] arrSeenElem = {5, 5, 6, 7, 1};
         findDuplicatesInLimitedRangeArray(arrSeenElem);
 
         System.out.println("\n");
@@ -2054,6 +2054,15 @@ public class Matrices {
         System.out.println("\n");
         printInvertTriangle();
         printInvertTrv2();
+
+        int[] arrQuickSortPartition = {3, -2, -1, 5, 0, -3, 2, 1};
+        int partitionIndex = partition(arr);
+
+        System.out.println("Partition index: " + partitionIndex);
+        System.out.println("Partitioned array: ");
+        for (int num1 : arr) {
+            System.out.print(num1 + " ");
+        }
 
     }
 
@@ -4551,29 +4560,30 @@ public class Matrices {
         System.out.println(Arrays.toString(words));
     }
 
-    private static int[] swapValues(int arr[]){
-        for(int i = 0; i < arr.length - 1; i+=2){
+    private static int[] swapValues(int arr[]) {
+        for (int i = 0; i < arr.length - 1; i += 2) {
             int temp = arr[i];
-            arr[i] = arr[i+1];
-            arr[i+1] = temp;
+            arr[i] = arr[i + 1];
+            arr[i + 1] = temp;
         }
         return arr;
     }
-    public static void convertDaysIntoMonths(){
+
+    public static void convertDaysIntoMonths() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please give your days to convert them into months:");
         int days = scanner.nextInt();
         double mon = days / 30.0;
         int remainingDays = days % 30;
-        System.out.println("Days are equal in months --> " + String.format("%.02f",mon) + " and remaining days are: " + remainingDays);
+        System.out.println("Days are equal in months --> " + String.format("%.02f", mon) + " and remaining days are: " + remainingDays);
     }
 
-    public static void printInvertTriangle(){ //with while loop
+    public static void printInvertTriangle() { //with while loop
         int rows = 5;
         int i = rows;
-        while(i >=1){
+        while (i >= 1) {
             int j = 1;
-            while(j<=i){
+            while (j <= i) {
                 System.out.print("* ");
                 j++;
             }
@@ -4581,15 +4591,15 @@ public class Matrices {
             i--;
         }
     }
-    public static void printInvertTrv2(){ //with for loop
-        for(int i = 0 ; i <= 5; i++){
-            for(int j = 0; j <=5 - i; j++){
+
+    public static void printInvertTrv2() { //with for loop
+        for (int i = 0; i <= 5; i++) {
+            for (int j = 0; j <= 5 - i; j++) {
                 System.out.print("* ");
             }
             System.out.println();
         }
     }
-
 
 
     /// ////////>>>>>>>new set of exercises with Arrays >>>>>>>>>/////////////
@@ -7686,34 +7696,36 @@ public class Matrices {
 
         }
     }
-    public static void findDuplicatesInLimitedRangeArray(int[] arr){
+
+    public static void findDuplicatesInLimitedRangeArray(int[] arr) {
         Set<Integer> seen = new HashSet<>();
         Set<Integer> duplicates = new HashSet<>();
-        for(int num : arr){
-            if(seen.contains(num)){
+        for (int num : arr) {
+            if (seen.contains(num)) {
                 duplicates.add(num);
-            } else{
+            } else {
                 seen.add(num);
             }
         }
         System.out.println("Duplicates elements in the array are: " + duplicates);
     }
-    public static void insertionSort(int[] arr){ //if array is already sorted O(n) if not O(n^2)
-        for(int i = 1; i < arr.length; i++){ //starts from the second element index 1
+
+    public static void insertionSort(int[] arr) { //if array is already sorted O(n) if not O(n^2)
+        for (int i = 1; i < arr.length; i++) { //starts from the second element index 1
             int key = arr[i];
             int j = i - 1;
-            while(j >= 0 && arr[j] > key){ //moving elements that are greater than key to one position ahead of their current position
-                arr[j+1] = arr[j]; //shifting the element to the right
+            while (j >= 0 && arr[j] > key) { //moving elements that are greater than key to one position ahead of their current position
+                arr[j + 1] = arr[j]; //shifting the element to the right
                 j--; //moving to the next element on the left
             }
-            arr[j+1] = key; //inserting the key in its correct position in the sorted subarray
+            arr[j + 1] = key; //inserting the key in its correct position in the sorted subarray
         }
     }
 
-    public static void selectionSortv5(int[] arr){
-        for(int i = 00; i < arr.length - 1; i++){
-            for(int j = i; j < arr.length;j++){
-                if(arr[i]> arr[j]){
+    public static void selectionSortv5(int[] arr) {
+        for (int i = 00; i < arr.length - 1; i++) {
+            for (int j = i; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
                     int temp = arr[i];
                     arr[i] = arr[j];
                     arr[j] = temp;
@@ -7721,26 +7733,29 @@ public class Matrices {
             }
         }
     }
-    public static void bubbleSortv6(int[] arr){
-        for(int i = 0; i < arr.length; i++){
-            for(int j = 0; j < arr.length - i  - 1; j++){
-                if(arr[j] > arr[j+1]){
+
+    public static void bubbleSortv6(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
                     int temp = arr[j];
-                    arr[j] = arr[j+1];
-                    arr[j+1] = temp;
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                 }
             }
         }
     }
-    public static void mergeSort(int[] arr){ //divide and conquer approach O(nlogn)
-        if(arr.length < 2) return; //base case
+
+    public static void mergeSort(int[] arr) { //divide and conquer approach O(nlogn)
+        if (arr.length < 2) return; //base case
         int mid = arr.length / 2;
         int[] left = Arrays.copyOfRange(arr, 0, mid); //copies the specified range of the specified array (here I adding the array, the from index, and the to index)
-        int[] right = Arrays.copyOfRange(arr,mid, arr.length); //second half of the array here
+        int[] right = Arrays.copyOfRange(arr, mid, arr.length); //second half of the array here
         mergeSort(left); //recursive call for the left half
         mergeSort(right); //recursive call for the right half
         merge(arr, left, right); //merging the sorted halves
     }
+
     private static void merge(int[] arr, int[] left, int[] right) {
         int i = 0, j = 0, k = 0; //i for left array, j for right array, k for merged array
         while (i < left.length && j < right.length) {
@@ -7786,6 +7801,22 @@ public class Matrices {
         // Copy the sorted elements back to original array
         System.arraycopy(output, 0, arr, 0, arr.length);
         System.out.println(Arrays.toString(arr));
+    }
+
+    public static int partition(int[] arr) {
+        int i = -1;
+        int pivot = 0; // Θα χρησιμοποιήσουμε το 0 ως pivot για διαχωρισμό
+
+        for (int j = 0; j < arr.length; j++) {
+            if (arr[j] <= pivot) {
+                i++;
+                // Ανταλλαγή arr[i] με arr[j]
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        return i; // Επιστρέφει το index του τελευταίου στοιχείου <= pivot
     }
 
 
