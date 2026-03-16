@@ -13,6 +13,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Matrices {
+
+    private static final int CUTOFF = 10;
+
     static String[] letters = {
             "         ###  ### ###  # #   ##### ###   #  ##     ###  ",
             "         ###  ### ###  # #  #  #  ## #  #  #  #    ###  ",
@@ -2055,14 +2058,17 @@ public class Matrices {
         printInvertTriangle();
         printInvertTrv2();
 
+        System.out.println("\n");
         int[] arrQuickSortPartition = {3, -2, -1, 5, 0, -3, 2, 1};
-        int partitionIndex = partition(arr);
-
+        int partitionIndex = partition(arrQuickSortPartition);
         System.out.println("Partition index: " + partitionIndex);
         System.out.println("Partitioned array: ");
-        for (int num1 : arr) {
+        for (int num1 : arrQuickSortPartition) {
             System.out.print(num1 + " ");
         }
+
+        System.out.println("\n");
+        System.out.println(isArmstrong(153));
 
     }
 
@@ -4599,6 +4605,22 @@ public class Matrices {
             }
             System.out.println();
         }
+    }
+
+    public static boolean isArmstrong(int num){
+       String num1 = String.valueOf(num);
+       int numDigits = num1.length();
+       int sum = 0;
+       int originalNum = num;
+        while(num != 0){
+           int digit = num %10;
+           num/=10;
+           sum += Math.pow(digit, numDigits);
+       }
+        if(sum == originalNum){
+            return true;
+        }
+        return false;
     }
 
 
@@ -7819,6 +7841,57 @@ public class Matrices {
         return i; // Επιστρέφει το index του τελευταίου στοιχείου <= pivot
     }
 
+    //optimizing quicksort
+    public static void quickSort(int[] arr) {
+        quickSort(arr, 0, arr.length - 1);
+    }
+    private static void quickSort2(int[] arr, int low, int high) {
+        if (high - low + 1 <= CUTOFF) {
+            insertionSort(arr, low, high);
+            return;
+        }
+        int pivot = medianOfThree(arr, low, high);
+        int i = low, j = high - 1;
+        while (true) {
+            while (arr[++i] < pivot) {}
+            while (arr[--j] > pivot) {}
+            if (i < j) {
+                swapv2(arr, i, j);
+            } else {
+                break;
+            }
+        }
+        swapv2(arr, i, high - 1); // Restore pivot
+        quickSort2(arr, low, i - 1);
+        quickSort(arr,i+1, high);
+    }
+    private static int medianOfThree(int[] arr, int low, int high) {
+        int mid = low + (high - low) / 2;
+        if (arr[low] > arr[mid]) swap(arr, low, mid);
+        if (arr[low] > arr[high]) swap(arr, low, high);
+        if (arr[mid] > arr[high]) swap(arr, mid, high);
+        swap(arr, mid, high - 1);
+        return arr[high - 1];
+    }
+    private static void insertionSort(int[] arr, int low, int high) {
+        for (int i = low + 1; i <= high; i++) {
+            int key = arr[i];
+            int j = i - 1;
+            while (j >= low && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = key;
+        }
+    }
+    private static void swapv2(int[] arr, int i, int j) {
+        if (i != j) {
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+    // end of quicksort optimization
 
 }
 
