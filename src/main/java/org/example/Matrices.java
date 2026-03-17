@@ -2070,6 +2070,15 @@ public class Matrices {
         System.out.println("\n");
         System.out.println(isArmstrong(153));
 
+        System.out.println("\n");
+        int[][] a2D = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+        inPlaceRotateMatrixBy90DegreesClockWise(a2D);
+        printMatrix(a2D);
+
     }
 
     public static String eliminateAWord(String words) {
@@ -7892,6 +7901,47 @@ public class Matrices {
         }
     }
     // end of quicksort optimization
+
+    /*1 2 3
+      4 5 6
+      7 8 9 */
+    //should become like that:
+    /* 7 4 1
+       8 5 2
+       9 6 3
+    */
+
+    public static void inPlaceRotateMatrixBy90DegreesClockWise(int[][] a){
+        for(int i = 0; i < a.length; i++){
+            for(int j = i; j < a.length;j++){
+                int temp = a[i][j];
+                a[i][j] = a[j][i];
+                a[j][i] = temp;
+            }
+        }
+        for(int i = 0; i < a.length;i++){
+            int left = 0, right = a.length - 1;
+            while(left < right){
+                int temp = a[i][left];
+                a[i][left] = a[i][right];
+                a[i][right] = temp;
+                left++;
+                right--;
+            }
+
+        }
+        //System.out.println(Arrays.deepToString(a));
+    }
+
+    public static void printMatrix(int[][] a){
+        for(int[] row : a){
+            for(int val : row){
+                System.out.print(val + " ");
+            }
+            System.out.println();
+        }
+    }
+
 
 }
 
