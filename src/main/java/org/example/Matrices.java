@@ -2079,6 +2079,16 @@ public class Matrices {
         inPlaceRotateMatrixBy90DegreesClockWise(a2D);
         printMatrix(a2D);
 
+        System.out.println("\n");
+        int[][] a2D2 = {
+                {-3,  -2,  -1},
+                {-2,  -1,   0},
+                { 1,   2,   3 }
+        };
+        System.out.println(countNegativeElementsPresentInSortedMatrixInLinearT(a2D2));
+
+        System.out.println("\n");
+        harmonicSeries();
     }
 
     public static String eliminateAWord(String words) {
@@ -4616,20 +4626,32 @@ public class Matrices {
         }
     }
 
-    public static boolean isArmstrong(int num){
-       String num1 = String.valueOf(num);
-       int numDigits = num1.length();
-       int sum = 0;
-       int originalNum = num;
-        while(num != 0){
-           int digit = num %10;
-           num/=10;
-           sum += Math.pow(digit, numDigits);
-       }
-        if(sum == originalNum){
+    public static boolean isArmstrong(int num) {
+        String num1 = String.valueOf(num);
+        int numDigits = num1.length();
+        int sum = 0;
+        int originalNum = num;
+        while (num != 0) {
+            int digit = num % 10;
+            num /= 10;
+            sum += Math.pow(digit, numDigits);
+        }
+        if (sum == originalNum) {
             return true;
         }
         return false;
+    }
+
+    public static void harmonicSeries(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please give your n: ");
+        int nums = sc.nextInt();
+        System.out.println();
+        double sum = 0.0;
+        for(int i = 1; i <= nums;i++){
+            sum += 1.0/i;
+        }
+        System.out.printf("Sum of harmonic series: %.04f \n ", sum);
     }
 
 
@@ -7854,6 +7876,7 @@ public class Matrices {
     public static void quickSort(int[] arr) {
         quickSort(arr, 0, arr.length - 1);
     }
+
     private static void quickSort2(int[] arr, int low, int high) {
         if (high - low + 1 <= CUTOFF) {
             insertionSort(arr, low, high);
@@ -7862,8 +7885,10 @@ public class Matrices {
         int pivot = medianOfThree(arr, low, high);
         int i = low, j = high - 1;
         while (true) {
-            while (arr[++i] < pivot) {}
-            while (arr[--j] > pivot) {}
+            while (arr[++i] < pivot) {
+            }
+            while (arr[--j] > pivot) {
+            }
             if (i < j) {
                 swapv2(arr, i, j);
             } else {
@@ -7872,8 +7897,9 @@ public class Matrices {
         }
         swapv2(arr, i, high - 1); // Restore pivot
         quickSort2(arr, low, i - 1);
-        quickSort(arr,i+1, high);
+        quickSort(arr, i + 1, high);
     }
+
     private static int medianOfThree(int[] arr, int low, int high) {
         int mid = low + (high - low) / 2;
         if (arr[low] > arr[mid]) swap(arr, low, mid);
@@ -7882,6 +7908,7 @@ public class Matrices {
         swap(arr, mid, high - 1);
         return arr[high - 1];
     }
+
     private static void insertionSort(int[] arr, int low, int high) {
         for (int i = low + 1; i <= high; i++) {
             int key = arr[i];
@@ -7893,6 +7920,7 @@ public class Matrices {
             arr[j + 1] = key;
         }
     }
+
     private static void swapv2(int[] arr, int i, int j) {
         if (i != j) {
             int temp = arr[i];
@@ -7911,17 +7939,17 @@ public class Matrices {
        9 6 3
     */
 
-    public static void inPlaceRotateMatrixBy90DegreesClockWise(int[][] a){
-        for(int i = 0; i < a.length; i++){
-            for(int j = i; j < a.length;j++){
+    public static void inPlaceRotateMatrixBy90DegreesClockWise(int[][] a) {
+        for (int i = 0; i < a.length; i++) {
+            for (int j = i; j < a.length; j++) {
                 int temp = a[i][j];
                 a[i][j] = a[j][i];
                 a[j][i] = temp;
             }
         }
-        for(int i = 0; i < a.length;i++){
+        for (int i = 0; i < a.length; i++) {
             int left = 0, right = a.length - 1;
-            while(left < right){
+            while (left < right) {
                 int temp = a[i][left];
                 a[i][left] = a[i][right];
                 a[i][right] = temp;
@@ -7933,15 +7961,36 @@ public class Matrices {
         //System.out.println(Arrays.deepToString(a));
     }
 
-    public static void printMatrix(int[][] a){
-        for(int[] row : a){
-            for(int val : row){
+    public static void printMatrix(int[][] a) {
+        for (int[] row : a) {
+            for (int val : row) {
                 System.out.print(val + " ");
             }
             System.out.println();
         }
     }
 
+    public static int countNegativeElementsPresentInSortedMatrixInLinearT(int[][] arr) { //O(n) και εστω Κάθε γραμμή είναι ταξινομημένη σε αύξουσα σειρά (από μικρότερο σε μεγαλύτερο).  και Κάθε στήλη είναι επίσης ταξινομημένη σε αύξουσα σειρά.
+        int n = arr.length;
+        int m = arr[0].length;
+        int count = 0;
+        int row = 0;
+        int col = m - 1;
+        while (row < n && col >= 0) {
+            if (arr[row][col] < 0) {
+                // Όλα τα στοιχεία κάτω από αυτό στη στήλη είναι αρνητικά
+                count += (n - row);
+                col--;
+            } else {
+                row++;
+            }
+        }
+        System.out.println("Matrix is this one again: ");
+        printMatrix(arr);
+        System.out.println("Count of Negative ELEMENTS ARE: " + count);
+        return count;
+
+    }
 
 }
 
