@@ -2089,6 +2089,24 @@ public class Matrices {
 
         System.out.println("\n");
         harmonicSeries();
+
+        System.out.println("\n");
+        int[][] matrix2 =  {
+                {1, 2, 3, 4},
+                {5, 1, 2, 3},
+                {6, 5, 1, 2},
+                {7, 6, 5, 1}
+        };
+        if(toepLitz(matrix)){
+            System.out.println("The matrix is a Toeplitz matrix.");
+        } else {
+            System.out.println("The matrix is not a Toeplitz matrix.");
+        }
+        printMatrix(matrix2);
+
+        System.out.println("\n");
+        int[] conOddEven = {2, 4, 6, 1, 3, 5, 8, 10};
+        averageConsecutiveOddsEvenNums(conOddEven);
     }
 
     public static String eliminateAWord(String words) {
@@ -4652,6 +4670,38 @@ public class Matrices {
             sum += 1.0/i;
         }
         System.out.printf("Sum of harmonic series: %.04f \n ", sum);
+    }
+
+    public static void averageConsecutiveOddsEvenNums(int[] arr){
+        if(arr.length == 0){
+            System.out.println("Empty array");
+            return;
+        }
+        int sum = 0;
+        int count = 0;
+        boolean isEvenSequence = (arr[0] % 2 == 0);
+
+        for(int i = 0; i < arr.length; i++){
+            boolean currentIsEven = (arr[i] % 2 == 0);
+            if(currentIsEven == isEvenSequence){
+                // Συνεχίζουμε την ίδια ακολουθία
+                sum += arr[i];
+                count++;
+            } else {
+                // Τέλος προηγούμενης ακολουθίας, υπολογίζουμε μέσο όρο
+                double average = (double) sum / count;
+                System.out.printf("Average of consecutive %s numbers are : %.2f%n", isEvenSequence ? "even" : "odd", average);
+
+                // Ξεκινάμε νέα ακολουθία
+                sum = arr[i]; // ξεκινάει δηλαδή από το πρώτο στοιχείο που ξεκινάει η ακολουθία
+                count = 1; //το count ξεκινάει απο το 1 (το πρώτο στοιχείο δηλαδή)
+                isEvenSequence = currentIsEven; //και αδειάζουμε (reset) το sum και το count για την νέα ακολουθία
+            }
+        }
+
+        // Υπολογισμός μέσου όρου για την τελευταία ακολουθία
+        double average = (double) sum / count;
+        System.out.printf("Average of consecutive %s numbers: %.2f%n", isEvenSequence ? " even " : "odd", average);
     }
 
 
@@ -7989,9 +8039,19 @@ public class Matrices {
         printMatrix(arr);
         System.out.println("Count of Negative ELEMENTS ARE: " + count);
         return count;
-
     }
-
+    public static boolean toepLitz(int[][] matrix){
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+        for(int i = 1; i < rows; i++){
+            for(int j = 1; j < cols; j++){
+                if(matrix[i][j] != matrix[i-1][j-1]){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
 
 
