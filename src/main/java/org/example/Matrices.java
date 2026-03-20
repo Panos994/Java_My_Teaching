@@ -2081,9 +2081,9 @@ public class Matrices {
 
         System.out.println("\n");
         int[][] a2D2 = {
-                {-3,  -2,  -1},
-                {-2,  -1,   0},
-                { 1,   2,   3 }
+                {-3, -2, -1},
+                {-2, -1, 0},
+                {1, 2, 3}
         };
         System.out.println(countNegativeElementsPresentInSortedMatrixInLinearT(a2D2));
 
@@ -2091,13 +2091,13 @@ public class Matrices {
         harmonicSeries();
 
         System.out.println("\n");
-        int[][] matrix2 =  {
+        int[][] matrix2 = {
                 {1, 2, 3, 4},
                 {5, 1, 2, 3},
                 {6, 5, 1, 2},
                 {7, 6, 5, 1}
         };
-        if(toepLitz(matrix)){
+        if (toepLitz(matrix)) {
             System.out.println("The matrix is a Toeplitz matrix.");
         } else {
             System.out.println("The matrix is not a Toeplitz matrix.");
@@ -2107,6 +2107,12 @@ public class Matrices {
         System.out.println("\n");
         int[] conOddEven = {2, 4, 6, 1, 3, 5, 8, 10};
         averageConsecutiveOddsEvenNums(conOddEven);
+
+        System.out.println("\n");
+        pascalTriangle(5);
+
+        System.out.println("\n");
+        displayTrianglePatternt(10);
     }
 
     public static String eliminateAWord(String words) {
@@ -4660,20 +4666,20 @@ public class Matrices {
         return false;
     }
 
-    public static void harmonicSeries(){
+    public static void harmonicSeries() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Please give your n: ");
         int nums = sc.nextInt();
         System.out.println();
         double sum = 0.0;
-        for(int i = 1; i <= nums;i++){
-            sum += 1.0/i;
+        for (int i = 1; i <= nums; i++) {
+            sum += 1.0 / i;
         }
         System.out.printf("Sum of harmonic series: %.04f \n ", sum);
     }
 
-    public static void averageConsecutiveOddsEvenNums(int[] arr){
-        if(arr.length == 0){
+    public static void averageConsecutiveOddsEvenNums(int[] arr) {
+        if (arr.length == 0) {
             System.out.println("Empty array");
             return;
         }
@@ -4681,9 +4687,9 @@ public class Matrices {
         int count = 0;
         boolean isEvenSequence = (arr[0] % 2 == 0);
 
-        for(int i = 0; i < arr.length; i++){
+        for (int i = 0; i < arr.length; i++) {
             boolean currentIsEven = (arr[i] % 2 == 0);
-            if(currentIsEven == isEvenSequence){
+            if (currentIsEven == isEvenSequence) {
                 // Συνεχίζουμε την ίδια ακολουθία
                 sum += arr[i];
                 count++;
@@ -4702,6 +4708,17 @@ public class Matrices {
         // Υπολογισμός μέσου όρου για την τελευταία ακολουθία
         double average = (double) sum / count;
         System.out.printf("Average of consecutive %s numbers: %.2f%n", isEvenSequence ? " even " : "odd", average);
+    }
+
+    public static void displayTrianglePatternt(int n){
+        int num = 1;
+        for(int i = 1; i <= 4; i++){
+            for(int j = 1; j <=i; j++){
+                System.out.print(num);
+                num++;
+            }
+            System.out.println();
+        }
     }
 
 
@@ -8040,18 +8057,66 @@ public class Matrices {
         System.out.println("Count of Negative ELEMENTS ARE: " + count);
         return count;
     }
-    public static boolean toepLitz(int[][] matrix){
+
+    public static boolean toepLitz(int[][] matrix) {
         int rows = matrix.length;
         int cols = matrix[0].length;
-        for(int i = 1; i < rows; i++){
-            for(int j = 1; j < cols; j++){
-                if(matrix[i][j] != matrix[i-1][j-1]){
+        for (int i = 1; i < rows; i++) {
+            for (int j = 1; j < cols; j++) {
+                if (matrix[i][j] != matrix[i - 1][j - 1]) {
                     return false;
                 }
             }
         }
         return true;
     }
+
+
+    public static int factorialv2(int n) {
+        if (n < 0) throw new IllegalArgumentException("Number must be non-negative");
+
+        // Base case: το 0! και το 1! ισούται με 1
+        if (n <= 1) return 1;
+
+        return n * factorialv2(n - 1);
+    }
+
+    public static void pascalTriangle(int n) {
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= n - i; j++) {
+                System.out.print(" ");
+            }
+            for (int j = 0; j <= i; j++) {
+                System.out.print(" " + factorialv2(i) / (factorialv2(j) * factorialv2(i - j)));
+            }
+            System.out.println();
+        }
+    }
+
+    public static void findPerimeterOfIsland(int[][] arr) {
+        int n = arr.length;
+        int perimeter = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] == 1) {
+                    if (i == 0 || arr[i - 1][j] == 0) {
+                        perimeter++;
+                    }
+                    if (i == n - 1 || arr[i + 1][j] == 0) {
+                        perimeter++;
+                    }
+                    if (j == 0 || arr[i][j - 1] == 0) {
+                        perimeter++;
+                    }
+                    if (j == arr[i].length - 1 || arr[i][j + 1] == 0) {
+                        perimeter++;
+                    }
+                }
+            }
+        }
+        System.out.println("Perimeter of island is: " + perimeter);
+    }
+
 }
 
 
