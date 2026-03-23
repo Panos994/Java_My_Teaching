@@ -1,4 +1,4 @@
-package org.example.OOPChallenges.LamdaExercisesW3Schools.LamdaEx1;
+package org.example.W3Schools.LamdasW3Schools.LamdE1;
 
 public class Main {
     public static void main(String[] args) {
