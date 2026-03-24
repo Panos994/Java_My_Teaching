@@ -2113,6 +2113,14 @@ public class Matrices {
 
         System.out.println("\n");
         displayTrianglePatternt(10);
+
+        System.out.println("\n");
+        String s45 = "Hey";
+        String s56 = "Tim";
+        System.out.println(checkStringsCanCircularlyRotating(s45,s56));
+
+        System.out.println("\n");
+        System.out.println("Excel columns to which Number is: " + titleToNumber("AB"));
     }
 
     public static String eliminateAWord(String words) {
@@ -8116,6 +8124,27 @@ public class Matrices {
         }
         System.out.println("Perimeter of island is: " + perimeter);
     }
+
+    public static boolean checkStringsCanCircularlyRotating(String s1, String s2){
+        if(s1.length() != s2.length()){
+            System.out.println("Strings are not circularly rotated!");
+            return false;
+        }
+        String s1s1 = s1 + s1;
+        return s1s1.contains(s2);
+    }
+
+    public static int titleToNumber(String columnTitle) {
+        int res = 0;
+        for(int i = 0; i < columnTitle.length(); i++){
+            char c = columnTitle.charAt(i); //παιρνω γραμμα στην θεση i
+            int value = c - 'A' + 1; //και ουσιαστικα οι χαρακτηρες μεσα στο int value ειναι σε ASCII αρα εστω c = AB ειναι στ πρωτη επαναληψη 65 - 65 + 1 = 1 και μετα στην επόμενη επαναληψη 66 - 65 + 1 = 2
+            res = res * 26 + value; //και εδω πολλαπλασιαζω το αποτελεσμα με το 26 για να μετακινηθω στην επομενη θεση και προσθετω την τιμη του τρεχοντος γραμματος
+        }
+        return  res;
+    }
+
+
 
 }
 

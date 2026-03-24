@@ -1,4 +1,4 @@
-package org.example.W3Schools.JavaSmallProjectAndEx.Exercise4.Ex4;
+package org.example.W3Schools.JavaSmallProjectAndEx.Ex4;
 
 import java.util.Random;
 import java.util.Scanner;
