@@ -2121,6 +2121,11 @@ public class Matrices {
 
         System.out.println("\n");
         System.out.println("Excel columns to which Number is: " + titleToNumber("AB"));
+
+        System.out.println("\n");
+        String[] arrStr = {"ab", "cd"};
+        int[] indexes = new int[arrStr.length]; // Αρχικοί δείκτες στο 0
+        findAllInterLeavingOfGivenStrings(arrStr, indexes, "");
     }
 
     public static String eliminateAWord(String words) {
@@ -8143,9 +8148,28 @@ public class Matrices {
         }
         return  res;
     }
-
-
-
+    // Find all interleaving of given strings
+    public static void findAllInterLeavingOfGivenStrings(String[] arrStr, int[] indexes, String currentResult){
+        boolean allFinished = true;
+        for (int i = 0; i < indexes.length; i++) {
+            if (indexes[i] < arrStr[i].length()) {
+                allFinished = false;
+                break;
+            }
+        }
+        if (allFinished) {
+            System.out.println(currentResult);
+            return;
+        }
+        for(int i = 0; i <arrStr.length; i++){
+            if(indexes[i] < arrStr[i].length()){
+                char c = arrStr[i].charAt(indexes[i]);
+                indexes[i]++;
+                findAllInterLeavingOfGivenStrings(arrStr, indexes, currentResult + c);
+                indexes[i]--;
+            }
+        }
+    }
 }
 
 
