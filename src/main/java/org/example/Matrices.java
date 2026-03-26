@@ -2126,6 +2126,9 @@ public class Matrices {
         String[] arrStr = {"ab", "cd"};
         int[] indexes = new int[arrStr.length]; // Αρχικοί δείκτες στο 0
         findAllInterLeavingOfGivenStrings(arrStr, indexes, "");
+
+        System.out.println("\n");
+        removeOccurencesOfABandCInAString("XABYCZAB");
     }
 
     public static String eliminateAWord(String words) {
@@ -8170,6 +8173,27 @@ public class Matrices {
             }
         }
     }
+
+    public static void removeOccurencesOfABandCInAString(String myString){
+//        String res = myString.replaceAll("AB", "").replaceAll("C", "");
+//        System.out.println(res);
+        //or
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        while (i < myString.length()){
+            if(i + 1 < myString.length() && myString.charAt(i) == 'A' && myString.charAt(i + 1) == 'B'){
+                i+=2;//παραλειψη του ΑΒ
+            } else if (myString.charAt(i) == 'C'){
+                i++;//παραλειψη του C
+            } else {
+                sb.append(myString.charAt(i));
+                i++;
+            }
+        }
+        System.out.println(sb.toString());
+    }
+
+
 }
 
 
