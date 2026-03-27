@@ -2129,6 +2129,9 @@ public class Matrices {
 
         System.out.println("\n");
         removeOccurencesOfABandCInAString("XABYCZAB");
+
+        System.out.println("\n");
+        runLengthCompressionAlgoright("AAAABBBCCDAA");
     }
 
     public static String eliminateAWord(String words) {
@@ -8192,6 +8195,27 @@ public class Matrices {
         }
         System.out.println(sb.toString());
     }
+
+    public static String runLengthCompressionAlgoright(String input){ //RLE run length endoding
+        if(input == null || input.isEmpty()){
+            return "";
+        }
+        int counterOfChar = 1;
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < input.length() - 1;i++){
+            if(input.charAt(i) == input.charAt(i+1)){
+                counterOfChar++;
+            } else {
+                sb.append(input.charAt(i)).append(counterOfChar);
+                counterOfChar = 1;
+            }
+        }
+        // Πρόσθεση του τελευταίου χαρακτήρα και του μετρητή του
+        sb.append(input.charAt(input.length()-1)).append(counterOfChar);
+        System.out.println(sb.toString());
+        return sb.toString();
+    }
+
 
 
 }
