@@ -2132,6 +2132,9 @@ public class Matrices {
 
         System.out.println("\n");
         runLengthCompressionAlgoright("AAAABBBCCDAA");
+
+        System.out.println("\n");
+        System.out.println(isPalindromev3("noon"));
     }
 
     public static String eliminateAWord(String words) {
@@ -8214,6 +8217,18 @@ public class Matrices {
         sb.append(input.charAt(input.length()-1)).append(counterOfChar);
         System.out.println(sb.toString());
         return sb.toString();
+    }
+
+    public static boolean isPalindromev3(String str){
+        int left = 0, right = str.length() - 1;
+        while(left < right){
+            if(str.charAt(left) == str.charAt(right)){
+                return true;
+            }
+            left++;
+            right--;
+        }
+        return false;
     }
 
 
