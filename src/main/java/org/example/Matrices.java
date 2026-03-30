@@ -2135,6 +2135,11 @@ public class Matrices {
 
         System.out.println("\n");
         System.out.println(isPalindromev3("noon"));
+
+        System.out.println("\n");
+        String roman = "MCMIV";
+        int number = convertRomanToInt(roman);
+        System.out.println("Roman " + roman + " = " + number);
     }
 
     public static String eliminateAWord(String words) {
@@ -8231,6 +8236,35 @@ public class Matrices {
         return false;
     }
 
+    public static int convertRomanToInt(String romanStr){
+        int res = 0;
+        Map<Character, Integer> romanMap = createRomanMap();
+        for(int i = 0; i <romanStr.length(); i++){
+            int currentVal = romanMap.get(romanStr.charAt(i));
+            int nextVal = 0;
+            if(i + 1 < romanStr.length()){
+                nextVal = romanMap.get(romanStr.charAt(i+1));
+            }
+            if(currentVal < nextVal){
+                res-= currentVal;
+            } else {
+                res += currentVal;
+            }
+        }
+        return res;
+    }
+
+    private static Map<Character, Integer> createRomanMap(){
+        Map<Character, Integer> romanMap = new HashMap<>();
+        romanMap.put('I', 1);
+        romanMap.put('V', 5);
+        romanMap.put('X', 10);
+        romanMap.put('L', 50);
+        romanMap.put('C', 100);
+        romanMap.put('D', 500);
+        romanMap.put('M', 1000);
+        return romanMap;
+    }
 
 
 }
