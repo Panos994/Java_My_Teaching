@@ -2140,6 +2140,9 @@ public class Matrices {
         String roman = "MCMIV";
         int number = convertRomanToInt(roman);
         System.out.println("Roman " + roman + " = " + number);
+
+        System.out.println("\n");
+        removeAdjacentDuplCharactersFromAString("aabbccadf");
     }
 
     public static String eliminateAWord(String words) {
@@ -8264,6 +8267,22 @@ public class Matrices {
         romanMap.put('D', 500);
         romanMap.put('M', 1000);
         return romanMap;
+    }
+    public static void removeAdjacentDuplCharactersFromAString(String input){
+        if(input == null || input.isEmpty()){
+            return;
+        }
+        StringBuilder sb = new StringBuilder();
+        char prevC = input.charAt(0);
+        sb.append(prevC);
+        for(int i = 1; i < input.length();i++){
+            char currentC = input.charAt(i);
+            while(currentC != prevC){
+                sb.append(currentC);
+                prevC = currentC;
+            }
+        }
+        System.out.println(sb.toString());
     }
 
 
