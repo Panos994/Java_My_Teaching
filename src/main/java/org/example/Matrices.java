@@ -2148,6 +2148,10 @@ public class Matrices {
         System.out.println(determineStringIsSubsequenceOfAnotherString("abc", "ahbgdc")); // true
         System.out.println(determineStringIsSubsequenceOfAnotherString("axc", "ahbgdc")); // false
 
+        System.out.println("\n");
+        System.out.println(reverseString("geeks for geeks"));
+        System.out.println(reverseStringRecursive("geeks for geeks"));
+
 
     }
 
@@ -8301,6 +8305,22 @@ public class Matrices {
         }
         return i == str1.length();
     }
+
+    public static String reverseString(String str){
+        StringBuilder sb = new StringBuilder();
+        for(int i = str.length()-1; i >= 0;i--){
+            sb.append(str.charAt(i));
+        }
+        return sb.toString();
+    }
+
+    //with recursion
+    public static String reverseStringRecursive(String str){
+        if (str.isEmpty())
+            return str;
+        return reverseStringRecursive(str.substring(1)) + str.charAt(0); //-->geeks for geeks ==> eeks for geeks (παιρνω το g και το προσθετει στο τελος
+    } //substring(1) παιρνει το string χωρις τον 1ο χαρακτηρα -- και γινεται αυτο μεχρι να γινει κενο το string -- στο τελος το επιστρεφει reversed
+
 
 
 }
