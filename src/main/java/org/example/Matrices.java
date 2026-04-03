@@ -2152,6 +2152,10 @@ public class Matrices {
         System.out.println(reverseString("geeks for geeks"));
         System.out.println(reverseStringRecursive("geeks for geeks"));
 
+        System.out.println("\n");
+        String ban = "banana";
+        System.out.println(checkAStringForRepeatedSubstring(ban));
+
 
     }
 
@@ -8322,6 +8326,21 @@ public class Matrices {
     } //substring(1) παιρνει το string χωρις τον 1ο χαρακτηρα -- και γινεται αυτο μεχρι να γινει κενο το string -- στο τελος το επιστρεφει reversed
 
 
+    public static boolean checkAStringForRepeatedSubstring(String str){
+        Set<String> visited = new HashSet<>();
+        for (int length = 1; length <= str.length() - 1; length++) {
+            for (int start = 0; start <= str.length() - length; start++) {
+                String substring = str.substring(start, start + length);
+                if (visited.contains(substring)) {
+                    return true;
+                } else {
+                    visited.add(substring);
+                }
+            }
+            visited.clear(); // Καθαρίζουμε το set για substrings άλλου μήκους
+        }
+        return false;
+    }
 
 }
 
