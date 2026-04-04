@@ -1,6 +1,7 @@
 package org.example;
 
 import com.sun.source.tree.Tree;
+import javafx.beans.binding.StringBinding;
 import org.apache.commons.lang3.Range;
 
 import java.lang.reflect.Array;
@@ -2155,6 +2156,11 @@ public class Matrices {
         System.out.println("\n");
         String ban = "banana";
         System.out.println(checkAStringForRepeatedSubstring(ban));
+
+        System.out.println("\n");
+        String st1 = "abcdef";
+        String st2 = "def";
+        findDifferenceBetweenTwoStrings(st1, st2);
 
 
     }
@@ -8340,6 +8346,17 @@ public class Matrices {
             visited.clear(); // Καθαρίζουμε το set για substrings άλλου μήκους
         }
         return false;
+    }
+
+    public static void findDifferenceBetweenTwoStrings(String str1, String str2){
+        StringBuilder diff = new StringBuilder();
+        for (int i = 0; i < str1.length(); i++) {
+            char c = str1.charAt(i);
+            if (str2.indexOf(c) == -1) { // αν ο χαρακτήρας δεν υπάρχει στο str2
+                diff.append(c);
+            }
+        }
+        System.out.println("Difference between two strings is: " + diff.toString());
     }
 
 }
