@@ -2162,6 +2162,11 @@ public class Matrices {
         String st2 = "def";
         findDifferenceBetweenTwoStrings(st1, st2);
 
+        System.out.println("\n");
+        String str111 = "listen";
+        String str222 = "silent";
+        System.out.println(isAnagramOrNot(str111, str222));
+
 
     }
 
@@ -8358,6 +8363,19 @@ public class Matrices {
         }
         System.out.println("Difference between two strings is: " + diff.toString());
     }
+
+    private static boolean isAnagramOrNot(String str1, String str2){
+        if(str1.length() != str2.length()){
+            return false;
+        }
+        char[] c1 = str1.toCharArray();
+        char[] c2 = str2.toCharArray();
+        Arrays.sort(c1);
+        Arrays.sort(c2);
+        return Arrays.equals(c1, c2);
+    }
+
+
 
 }
 
