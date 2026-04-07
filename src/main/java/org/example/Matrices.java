@@ -8375,8 +8375,62 @@ public class Matrices {
         return Arrays.equals(c1, c2);
     }
 
+    //bit hacks 1  (bit manipulations problems)
+    //Το τελευταίο bit ενός αριθμού δείχνει αν είναι ζυγός ή περιττός.
+    //Αν το τελευταίο bit είναι 0 → ζυγός, είναι 1 → περιττός.
+    public static boolean isEvenBit(int n){
+        return (n & 1) == 0; //αν το τελευταίο bit είναι 0 τότε είναι άρτιος αριθμός
+    }
+
+    public static boolean isOddBit(int n){
+        return (n & 1) == 1;
+    }
+
+    //Αν το XOR των δύο αριθμών έχει το πιο σημαντικό bit (sign bit) 1, τότε έχουν αντίθετα πρόσημα.
+    public static boolean haveOppositeSigns(int x, int y){
+        return (x ^ y) < 0;
+    }
+
+    //Μπορείς να προσθέσεις 1 χρησιμοποιώντας bitwise πράξεις, αλλά πιο απλά:
+    public static int addOne(int n){
+        int m = 1;
+        while ((n & m) != 0){
+            n = n ^ m;
+            m <<=1;
+        }
+        n = n ^ m;
+        return n;
+    }
+
+    //Ανταλλαγή δύο αριθμών χωρίς τρίτη μεταβλητή
+    //Ιδέα:
+    //Χρησιμοποιείς XOR για να ανταλλάξεις τιμές.
+    public static void swapBits(int[] arr, int i, int j){
+        if(i != j){
+            arr[i] = arr[i] ^ arr[j];
+            arr[j] = arr[i] ^ arr[j];
+            arr[i] = arr[i] ^ arr[j];
+        }
+    }
+
+    ////////////
+    public static int hammingDistanceCalc(int x, int y){
+        int xor = x ^ y;
+        int count = 0;
+        while(xor != 0){
+            count = count + (xor & 1);
+            xor = xor >>= 1;
+        }
+        return count;
+    }
+    //or
+    public static int hammingDistanceCalc2(int x, int y) {
+        return Integer.bitCount(x ^ y);
+    }
 
 
+    ////BIT HACKS 2:
+    //bit hacks 2  (bit manipulations problems)
 }
 
 
