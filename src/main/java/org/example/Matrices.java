@@ -2167,6 +2167,10 @@ public class Matrices {
         String str222 = "silent";
         System.out.println(isAnagramOrNot(str111, str222));
 
+        System.out.println("\n");
+        int[] arr2026 = {1,44,55,222,333,4,555};
+        findElementsInArrayThatAreGreaterThanAllElemsToTheirRight(arr2026);
+
 
     }
 
@@ -8431,6 +8435,44 @@ public class Matrices {
 
     ////BIT HACKS 2:
     //bit hacks 2  (bit manipulations problems)
+    //Playing with k'th bit
+    //Τι είναι το k'th bit;  Κάθε ακέραιος αριθμός αποθηκεύεται στη μνήμη ως μια σειρά από bits (0 ή 1).
+    //Τα bits αριθμούνται από το 0 (το λιγότερο σημαντικό bit, το δεξιότερο) προς τα αριστερά.
+    //Το k'th bit σημαίνει το bit στη θέση k (ξεκινώντας από 0).  πχ Ο αριθμός 13 σε δυαδική μορφή είναι: ειναι 0000 1101 (Το 0'ο bit (το πιο δεξί) είναι 1.
+    //Το 1'ο bit είναι 0, Το 2'ο bit είναι 1, Το 3'ο bit είναι 1, κλπ.
+    //Τι σημαίνει "παίζω με το k'th bit --> ΠΧ Έλεγχος αν το k'th bit είναι 0 ή 1, Θέτω το k'th bit σε 1, Καθαρίζω (σβήνω) το k'th bit σε 0,
+    //Αλλάζω (toggle) το k'th bit από 0 σε 1 από 1 σε 0
+    public boolean isKthBitSet(int n, int k){
+        return (n & (1<<k)) != 0;
+    }
+    int setKthBit(int n, int k) {
+        return n | (1 << k);
+    }
+    int clearKthBit(int n, int k) {
+        return n & ~(1 << k);
+    }
+    //4. Αλλάζω (toggle) το k'th bit
+    int toggleKthBit(int n, int k) {
+        return n ^ (1 << k);
+    }
+
+    //etc etc here https://www.techiedelight.com/data-structures-and-algorithms-problems/ (search CTRL + F ==> Bit Hacks)
+    // ---------------------------------------------------------------------------------------------------------------------------------
+
+    public static void findElementsInArrayThatAreGreaterThanAllElemsToTheirRight(int[] arr){
+        int maxRight = Integer.MIN_VALUE;
+        List<Integer> res = new ArrayList<>();
+        for(int i = arr.length - 1; i >= 0; i--){
+            if(arr[i] > maxRight){
+                maxRight = arr[i];
+                res.add(arr[i]);
+            }
+        }
+        Collections.reverse(res);
+        System.out.println("Elements that are greater than all elements to their right: " + res);
+    }
+
+
 }
 
 
