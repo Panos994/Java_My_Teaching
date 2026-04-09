@@ -2171,6 +2171,11 @@ public class Matrices {
         int[] arr2026 = {1,44,55,222,333,4,555};
         findElementsInArrayThatAreGreaterThanAllElemsToTheirRight(arr2026);
 
+        System.out.println("\n");
+        String moon = "moon";
+        System.out.println(reverseStrWithoutRecursion(moon));
+        System.out.println(reverseStrWithRecursion(moon));
+
 
     }
 
@@ -8470,6 +8475,19 @@ public class Matrices {
         }
         Collections.reverse(res);
         System.out.println("Elements that are greater than all elements to their right: " + res);
+    }
+
+    public static String reverseStrWithoutRecursion(String str){
+        StringBuilder sb = new StringBuilder();
+        for(int i = str.length() - 1; i >= 0;i--){
+            sb.append(str.charAt(i));
+        }
+        return sb.toString();
+    }
+    //with recursion
+    public static String reverseStrWithRecursion(String str){ //I have same exercises above
+        if(str.isEmpty()) return str;
+        return reverseStrWithRecursion(str.substring(1)) + str.charAt(0);
     }
 
 
