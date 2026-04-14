@@ -2176,6 +2176,17 @@ public class Matrices {
         System.out.println(reverseStrWithoutRecursion(moon));
         System.out.println(reverseStrWithRecursion(moon));
 
+        System.out.println("\n");
+//        TreeNode root = new TreeNode(1);
+//        root.left = new TreeNode(2);
+//        root.right = new TreeNode(3);
+//        root.left.left = newNode(4);
+//        root.left.right = new TreeNode(5);
+//        root.right.right = new TreeNode(6);
+//
+//        System.out.println("Level order traversal:");
+//        levelOrderTraversal(root);
+
 
     }
 
@@ -8488,6 +8499,59 @@ public class Matrices {
     public static String reverseStrWithRecursion(String str){ //I have same exercises above
         if(str.isEmpty()) return str;
         return reverseStrWithRecursion(str.substring(1)) + str.charAt(0);
+    }
+
+    //level order traversal in a binary tree
+    class TreeNode{
+        int val;
+        TreeNode left, right;
+        TreeNode(int val){
+            this.val = val;
+            left = right = null;
+        }
+    }
+    public class BinaryTree {
+        public static void levelOrderTraversal(TreeNode root) { //level order traversal in a binary tree
+            if (root == null) return;
+            Queue<TreeNode> queue = new LinkedList<>();
+            queue.add(root);
+            while(!queue.isEmpty()){
+                TreeNode current = queue.poll();
+                System.out.println(current.val + " ");
+                if(current.left != null){
+                    queue.add(current.left);
+                }
+                if(current.right != null){
+                    queue.add(current.right);
+                }
+            }
+        }
+    }
+
+    //377.
+    public static int findNumberOfRotationsInCircularlySortedArr(int[] arr){ //array is sorted already
+        if(arr.length < 2) return 0;  //γραμμικη αναζητηση
+        int smallestElementIndex  = 0;
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i] < arr[smallestElementIndex]){
+                smallestElementIndex = i;
+            }
+        }
+        return smallestElementIndex;
+    }
+    //or with binary search
+    public static int findNumberOfRotationsInCircularlySortedArrV2(int[] arr){
+        if(arr.length < 2) return 0;
+        int left = 0,  right = arr.length - 1;
+        while(left < right){
+            int mid = left +  (right - left) /2; //1 + (5-1)/2 = 3 (2.5)
+            if(arr[mid] > arr[right]){
+                right = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        return left;
     }
 
 
