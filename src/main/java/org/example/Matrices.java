@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.text.CollationElementIterator;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Matrices {
 
@@ -2187,6 +2188,9 @@ public class Matrices {
 //        System.out.println("Level order traversal:");
 //        levelOrderTraversal(root);
 
+        System.out.println("\n");
+        int[] arrTeLf = {1,2,1,3,4,5,6,7,7,8,7};
+        findFirstLastOccurrenceOfANumberInSortedArrV2(arrTeLf, 7);
 
     }
 
@@ -8553,6 +8557,59 @@ public class Matrices {
         }
         return left;
     }
+
+    public static void findFirstLastOccurenceOfANumberInSortedArr(int[] arr, int x){ //with streams
+        OptionalInt firstIdx = IntStream.range(0, arr.length).filter(i -> arr[i] == x).findFirst();
+        OptionalInt lastIdx = IntStream.range(0, arr.length).filter(i -> arr[i] == x).reduce((first, last) -> last);
+        System.out.println("First occurence of " + x + " is at index: " + firstIdx);
+        System.out.println("Last occurence of " + x + " is at index: " + lastIdx);
+    }
+    //or with binary search
+    public static int findFirstOccurrence(int[] arr, int x){
+        if(arr.length < 2) {
+            return -1;
+        }
+        int res = -1;
+        int left = 0, right = arr.length - 1;
+        while(left <= right){
+            int mid = left + (right - left)/2;
+            if(arr[mid] == x){
+                res = mid;
+                right = mid -1; // ψάχνουμε αριστερά για πρώτη εμφάνιση
+            } else if (arr[mid] < x){
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return res;
+    }
+    public static int findLastOccurrence(int[] arr, int x){
+        if(arr.length < 2) {
+            return -1;
+        }
+        int res = -1;
+        int left = 0, right = arr.length - 1;
+        while(left <= right){
+            int mid = left + (right - left)/2;
+            if(arr[mid] == x){
+                res = mid;
+                left = mid + 1; // ψάχνουμε δεξιά για τελευταία εμφάνιση
+            } else if (arr[mid] < x){
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return res;
+    }
+    public static void findFirstLastOccurrenceOfANumberInSortedArrV2(int[] arr, int x){
+        int first = findFirstOccurrence(arr,x);
+        int last = findLastOccurrence(arr,x);
+        System.out.println("First occurence of " + x + " is at index: " + first);
+        System.out.println("Last occurence of " + x + " is at index: " + last);
+    }
+
 
 
 }
