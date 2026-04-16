@@ -8610,6 +8610,15 @@ public class Matrices {
         System.out.println("Last occurence of " + x + " is at index: " + last);
     }
 
+    public static void countOccurencesOfANumber(int[] arr, int x){ //in a sorted Array
+        int count = 0;
+        for(int i = 0; i < arr.length;i++){
+            if(arr[i]==x){
+                count++;
+            }
+        }
+        System.out.println("Number of occurences of this number: " + count);
+    }
 
 
 }
