@@ -8620,6 +8620,21 @@ public class Matrices {
         System.out.println("Number of occurences of this number: " + count);
     }
 
+    public static void findFlourAndCeilNumInSortedArr(int[] arr){
+        double ceiNum = Integer.MIN_VALUE;
+        double floorNum = Integer.MAX_VALUE;
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i] < 0){
+                ceiNum = Math.ceil(arr[i]);
+            } else {
+                floorNum = Math.floor(arr[i]);
+            }
+        }
+        System.out.println("Ceil number is: " + ceiNum);
+        System.out.println("Floor number is: " + floorNum);
+    }
+
+
 
 }
 
