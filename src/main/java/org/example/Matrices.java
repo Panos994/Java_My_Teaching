@@ -2192,6 +2192,13 @@ public class Matrices {
         int[] arrTeLf = {1,2,1,3,4,5,6,7,7,8,7};
         findFirstLastOccurrenceOfANumberInSortedArrV2(arrTeLf, 7);
 
+        System.out.println("\n");
+        int[] arrBin1s = {0,0,0,1,1,1,1};
+        System.out.println(find1sInBinarySortedArr(arrBin1s));
+
+        System.out.println("\n");
+        System.out.println(powerFunc(2,3));
+
     }
 
     public static String eliminateAWord(String words) {
@@ -8632,6 +8639,30 @@ public class Matrices {
         }
         System.out.println("Ceil number is: " + ceiNum);
         System.out.println("Floor number is: " + floorNum);
+    }
+
+    public static int find1sInBinarySortedArr(int[] arr){ //bin search way
+        int left = 0, right = arr.length-1;
+        int firstOneIdx = -1;
+        while(left <= right){
+            int mid = left + (right - left) / 2;
+            if(arr[mid] == 1){
+                firstOneIdx = mid;
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return (firstOneIdx == 1) ? 0 : (arr.length - firstOneIdx);
+    }
+
+    public static double powerFunc(double base, int exponent){
+        double res = 1;
+        for(int i = 0; i < exponent; i++){
+            res *=base;
+        }
+        return res;
+
     }
 
 
