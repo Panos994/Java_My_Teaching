@@ -2119,7 +2119,7 @@ public class Matrices {
         System.out.println("\n");
         String s45 = "Hey";
         String s56 = "Tim";
-        System.out.println(checkStringsCanCircularlyRotating(s45,s56));
+        System.out.println(checkStringsCanCircularlyRotating(s45, s56));
 
         System.out.println("\n");
         System.out.println("Excel columns to which Number is: " + titleToNumber("AB"));
@@ -2169,7 +2169,7 @@ public class Matrices {
         System.out.println(isAnagramOrNot(str111, str222));
 
         System.out.println("\n");
-        int[] arr2026 = {1,44,55,222,333,4,555};
+        int[] arr2026 = {1, 44, 55, 222, 333, 4, 555};
         findElementsInArrayThatAreGreaterThanAllElemsToTheirRight(arr2026);
 
         System.out.println("\n");
@@ -2189,15 +2189,24 @@ public class Matrices {
 //        levelOrderTraversal(root);
 
         System.out.println("\n");
-        int[] arrTeLf = {1,2,1,3,4,5,6,7,7,8,7};
+        int[] arrTeLf = {1, 2, 1, 3, 4, 5, 6, 7, 7, 8, 7};
         findFirstLastOccurrenceOfANumberInSortedArrV2(arrTeLf, 7);
 
         System.out.println("\n");
-        int[] arrBin1s = {0,0,0,1,1,1,1};
+        int[] arrBin1s = {0, 0, 0, 1, 1, 1, 1};
         System.out.println(find1sInBinarySortedArr(arrBin1s));
 
         System.out.println("\n");
-        System.out.println(powerFunc(2,3));
+        System.out.println(powerFunc(2, 3));
+
+        System.out.println("\n");
+        int[] test1Arr = {1,2,3,4,5,6,7};
+        int target22 = 4;
+        int floor = findFloor(test1Arr, 0, test1Arr.length - 1, target22, Integer.MIN_VALUE);
+        int ceil = findCeil(test1Arr, 0, test1Arr.length - 1, target22, Integer.MAX_VALUE);
+        System.out.println("Floor: " + (floor == Integer.MIN_VALUE ? "No floor" : floor));
+        System.out.println("Ceil: " + (ceil == Integer.MAX_VALUE ? "No ceil" : ceil));
+
 
     }
 
@@ -4796,10 +4805,10 @@ public class Matrices {
         System.out.printf("Average of consecutive %s numbers: %.2f%n", isEvenSequence ? " even " : "odd", average);
     }
 
-    public static void displayTrianglePatternt(int n){
+    public static void displayTrianglePatternt(int n) {
         int num = 1;
-        for(int i = 1; i <= 4; i++){
-            for(int j = 1; j <=i; j++){
+        for (int i = 1; i <= 4; i++) {
+            for (int j = 1; j <= i; j++) {
                 System.out.print(num);
                 num++;
             }
@@ -8203,8 +8212,8 @@ public class Matrices {
         System.out.println("Perimeter of island is: " + perimeter);
     }
 
-    public static boolean checkStringsCanCircularlyRotating(String s1, String s2){
-        if(s1.length() != s2.length()){
+    public static boolean checkStringsCanCircularlyRotating(String s1, String s2) {
+        if (s1.length() != s2.length()) {
             System.out.println("Strings are not circularly rotated!");
             return false;
         }
@@ -8214,15 +8223,16 @@ public class Matrices {
 
     public static int titleToNumber(String columnTitle) {
         int res = 0;
-        for(int i = 0; i < columnTitle.length(); i++){
+        for (int i = 0; i < columnTitle.length(); i++) {
             char c = columnTitle.charAt(i); //παιρνω γραμμα στην θεση i
             int value = c - 'A' + 1; //και ουσιαστικα οι χαρακτηρες μεσα στο int value ειναι σε ASCII αρα εστω c = AB ειναι στ πρωτη επαναληψη 65 - 65 + 1 = 1 και μετα στην επόμενη επαναληψη 66 - 65 + 1 = 2
             res = res * 26 + value; //και εδω πολλαπλασιαζω το αποτελεσμα με το 26 για να μετακινηθω στην επομενη θεση και προσθετω την τιμη του τρεχοντος γραμματος
         }
-        return  res;
+        return res;
     }
+
     // Find all interleaving of given strings
-    public static void findAllInterLeavingOfGivenStrings(String[] arrStr, int[] indexes, String currentResult){
+    public static void findAllInterLeavingOfGivenStrings(String[] arrStr, int[] indexes, String currentResult) {
         boolean allFinished = true;
         for (int i = 0; i < indexes.length; i++) {
             if (indexes[i] < arrStr[i].length()) {
@@ -8234,8 +8244,8 @@ public class Matrices {
             System.out.println(currentResult);
             return;
         }
-        for(int i = 0; i <arrStr.length; i++){
-            if(indexes[i] < arrStr[i].length()){
+        for (int i = 0; i < arrStr.length; i++) {
+            if (indexes[i] < arrStr[i].length()) {
                 char c = arrStr[i].charAt(indexes[i]);
                 indexes[i]++;
                 findAllInterLeavingOfGivenStrings(arrStr, indexes, currentResult + c);
@@ -8244,16 +8254,16 @@ public class Matrices {
         }
     }
 
-    public static void removeOccurencesOfABandCInAString(String myString){
+    public static void removeOccurencesOfABandCInAString(String myString) {
 //        String res = myString.replaceAll("AB", "").replaceAll("C", "");
 //        System.out.println(res);
         //or
         StringBuilder sb = new StringBuilder();
         int i = 0;
-        while (i < myString.length()){
-            if(i + 1 < myString.length() && myString.charAt(i) == 'A' && myString.charAt(i + 1) == 'B'){
-                i+=2;//παραλειψη του ΑΒ
-            } else if (myString.charAt(i) == 'C'){
+        while (i < myString.length()) {
+            if (i + 1 < myString.length() && myString.charAt(i) == 'A' && myString.charAt(i + 1) == 'B') {
+                i += 2;//παραλειψη του ΑΒ
+            } else if (myString.charAt(i) == 'C') {
                 i++;//παραλειψη του C
             } else {
                 sb.append(myString.charAt(i));
@@ -8263,14 +8273,14 @@ public class Matrices {
         System.out.println(sb.toString());
     }
 
-    public static String runLengthCompressionAlgoright(String input){ //RLE run length endoding
-        if(input == null || input.isEmpty()){
+    public static String runLengthCompressionAlgoright(String input) { //RLE run length endoding
+        if (input == null || input.isEmpty()) {
             return "";
         }
         int counterOfChar = 1;
         StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < input.length() - 1;i++){
-            if(input.charAt(i) == input.charAt(i+1)){
+        for (int i = 0; i < input.length() - 1; i++) {
+            if (input.charAt(i) == input.charAt(i + 1)) {
                 counterOfChar++;
             } else {
                 sb.append(input.charAt(i)).append(counterOfChar);
@@ -8278,15 +8288,15 @@ public class Matrices {
             }
         }
         // Πρόσθεση του τελευταίου χαρακτήρα και του μετρητή του
-        sb.append(input.charAt(input.length()-1)).append(counterOfChar);
+        sb.append(input.charAt(input.length() - 1)).append(counterOfChar);
         System.out.println(sb.toString());
         return sb.toString();
     }
 
-    public static boolean isPalindromev3(String str){
+    public static boolean isPalindromev3(String str) {
         int left = 0, right = str.length() - 1;
-        while(left < right){
-            if(str.charAt(left) == str.charAt(right)){
+        while (left < right) {
+            if (str.charAt(left) == str.charAt(right)) {
                 return true;
             }
             left++;
@@ -8295,17 +8305,17 @@ public class Matrices {
         return false;
     }
 
-    public static int convertRomanToInt(String romanStr){
+    public static int convertRomanToInt(String romanStr) {
         int res = 0;
         Map<Character, Integer> romanMap = createRomanMap();
-        for(int i = 0; i <romanStr.length(); i++){
+        for (int i = 0; i < romanStr.length(); i++) {
             int currentVal = romanMap.get(romanStr.charAt(i));
             int nextVal = 0;
-            if(i + 1 < romanStr.length()){
-                nextVal = romanMap.get(romanStr.charAt(i+1));
+            if (i + 1 < romanStr.length()) {
+                nextVal = romanMap.get(romanStr.charAt(i + 1));
             }
-            if(currentVal < nextVal){
-                res-= currentVal;
+            if (currentVal < nextVal) {
+                res -= currentVal;
             } else {
                 res += currentVal;
             }
@@ -8313,7 +8323,7 @@ public class Matrices {
         return res;
     }
 
-    private static Map<Character, Integer> createRomanMap(){
+    private static Map<Character, Integer> createRomanMap() {
         Map<Character, Integer> romanMap = new HashMap<>();
         romanMap.put('I', 1);
         romanMap.put('V', 5);
@@ -8324,16 +8334,17 @@ public class Matrices {
         romanMap.put('M', 1000);
         return romanMap;
     }
-    public static void removeAdjacentDuplCharactersFromAString(String input){
-        if(input == null || input.isEmpty()){
+
+    public static void removeAdjacentDuplCharactersFromAString(String input) {
+        if (input == null || input.isEmpty()) {
             return;
         }
         StringBuilder sb = new StringBuilder();
         char prevC = input.charAt(0);
         sb.append(prevC);
-        for(int i = 1; i < input.length();i++){
+        for (int i = 1; i < input.length(); i++) {
             char currentC = input.charAt(i);
-            while(currentC != prevC){
+            while (currentC != prevC) {
                 sb.append(currentC);
                 prevC = currentC;
             }
@@ -8341,10 +8352,10 @@ public class Matrices {
         System.out.println(sb.toString());
     }
 
-    public static boolean determineStringIsSubsequenceOfAnotherString(String str1, String str2){
-        int i = 0, j=0;
-        while(i < str1.length() && j < str2.length()){
-            if(str1.charAt(i) == str2.charAt(j)){
+    public static boolean determineStringIsSubsequenceOfAnotherString(String str1, String str2) {
+        int i = 0, j = 0;
+        while (i < str1.length() && j < str2.length()) {
+            if (str1.charAt(i) == str2.charAt(j)) {
                 i++;
             }
             j++;
@@ -8352,23 +8363,23 @@ public class Matrices {
         return i == str1.length();
     }
 
-    public static String reverseString(String str){
+    public static String reverseString(String str) {
         StringBuilder sb = new StringBuilder();
-        for(int i = str.length()-1; i >= 0;i--){
+        for (int i = str.length() - 1; i >= 0; i--) {
             sb.append(str.charAt(i));
         }
         return sb.toString();
     }
 
     //with recursion
-    public static String reverseStringRecursive(String str){
+    public static String reverseStringRecursive(String str) {
         if (str.isEmpty())
             return str;
         return reverseStringRecursive(str.substring(1)) + str.charAt(0); //-->geeks for geeks ==> eeks for geeks (παιρνω το g και το προσθετει στο τελος
     } //substring(1) παιρνει το string χωρις τον 1ο χαρακτηρα -- και γινεται αυτο μεχρι να γινει κενο το string -- στο τελος το επιστρεφει reversed
 
 
-    public static boolean checkAStringForRepeatedSubstring(String str){
+    public static boolean checkAStringForRepeatedSubstring(String str) {
         Set<String> visited = new HashSet<>();
         for (int length = 1; length <= str.length() - 1; length++) {
             for (int start = 0; start <= str.length() - length; start++) {
@@ -8384,7 +8395,7 @@ public class Matrices {
         return false;
     }
 
-    public static void findDifferenceBetweenTwoStrings(String str1, String str2){
+    public static void findDifferenceBetweenTwoStrings(String str1, String str2) {
         StringBuilder diff = new StringBuilder();
         for (int i = 0; i < str1.length(); i++) {
             char c = str1.charAt(i);
@@ -8395,8 +8406,8 @@ public class Matrices {
         System.out.println("Difference between two strings is: " + diff.toString());
     }
 
-    private static boolean isAnagramOrNot(String str1, String str2){
-        if(str1.length() != str2.length()){
+    private static boolean isAnagramOrNot(String str1, String str2) {
+        if (str1.length() != str2.length()) {
             return false;
         }
         char[] c1 = str1.toCharArray();
@@ -8409,25 +8420,25 @@ public class Matrices {
     //bit hacks 1  (bit manipulations problems)
     //Το τελευταίο bit ενός αριθμού δείχνει αν είναι ζυγός ή περιττός.
     //Αν το τελευταίο bit είναι 0 → ζυγός, είναι 1 → περιττός.
-    public static boolean isEvenBit(int n){
+    public static boolean isEvenBit(int n) {
         return (n & 1) == 0; //αν το τελευταίο bit είναι 0 τότε είναι άρτιος αριθμός
     }
 
-    public static boolean isOddBit(int n){
+    public static boolean isOddBit(int n) {
         return (n & 1) == 1;
     }
 
     //Αν το XOR των δύο αριθμών έχει το πιο σημαντικό bit (sign bit) 1, τότε έχουν αντίθετα πρόσημα.
-    public static boolean haveOppositeSigns(int x, int y){
+    public static boolean haveOppositeSigns(int x, int y) {
         return (x ^ y) < 0;
     }
 
     //Μπορείς να προσθέσεις 1 χρησιμοποιώντας bitwise πράξεις, αλλά πιο απλά:
-    public static int addOne(int n){
+    public static int addOne(int n) {
         int m = 1;
-        while ((n & m) != 0){
+        while ((n & m) != 0) {
             n = n ^ m;
-            m <<=1;
+            m <<= 1;
         }
         n = n ^ m;
         return n;
@@ -8436,31 +8447,32 @@ public class Matrices {
     //Ανταλλαγή δύο αριθμών χωρίς τρίτη μεταβλητή
     //Ιδέα:
     //Χρησιμοποιείς XOR για να ανταλλάξεις τιμές.
-    public static void swapBits(int[] arr, int i, int j){
-        if(i != j){
+    public static void swapBits(int[] arr, int i, int j) {
+        if (i != j) {
             arr[i] = arr[i] ^ arr[j];
             arr[j] = arr[i] ^ arr[j];
             arr[i] = arr[i] ^ arr[j];
         }
     }
 
-    ////////////
-    public static int hammingDistanceCalc(int x, int y){
+    /// /////////
+    public static int hammingDistanceCalc(int x, int y) {
         int xor = x ^ y;
         int count = 0;
-        while(xor != 0){
+        while (xor != 0) {
             count = count + (xor & 1);
             xor = xor >>= 1;
         }
         return count;
     }
+
     //or
     public static int hammingDistanceCalc2(int x, int y) {
         return Integer.bitCount(x ^ y);
     }
 
 
-    ////BIT HACKS 2:
+    /// /BIT HACKS 2:
     //bit hacks 2  (bit manipulations problems)
     //Playing with k'th bit
     //Τι είναι το k'th bit;  Κάθε ακέραιος αριθμός αποθηκεύεται στη μνήμη ως μια σειρά από bits (0 ή 1).
@@ -8469,15 +8481,18 @@ public class Matrices {
     //Το 1'ο bit είναι 0, Το 2'ο bit είναι 1, Το 3'ο bit είναι 1, κλπ.
     //Τι σημαίνει "παίζω με το k'th bit --> ΠΧ Έλεγχος αν το k'th bit είναι 0 ή 1, Θέτω το k'th bit σε 1, Καθαρίζω (σβήνω) το k'th bit σε 0,
     //Αλλάζω (toggle) το k'th bit από 0 σε 1 από 1 σε 0
-    public boolean isKthBitSet(int n, int k){
-        return (n & (1<<k)) != 0;
+    public boolean isKthBitSet(int n, int k) {
+        return (n & (1 << k)) != 0;
     }
+
     int setKthBit(int n, int k) {
         return n | (1 << k);
     }
+
     int clearKthBit(int n, int k) {
         return n & ~(1 << k);
     }
+
     //4. Αλλάζω (toggle) το k'th bit
     int toggleKthBit(int n, int k) {
         return n ^ (1 << k);
@@ -8486,11 +8501,11 @@ public class Matrices {
     //etc etc here https://www.techiedelight.com/data-structures-and-algorithms-problems/ (search CTRL + F ==> Bit Hacks)
     // ---------------------------------------------------------------------------------------------------------------------------------
 
-    public static void findElementsInArrayThatAreGreaterThanAllElemsToTheirRight(int[] arr){
+    public static void findElementsInArrayThatAreGreaterThanAllElemsToTheirRight(int[] arr) {
         int maxRight = Integer.MIN_VALUE;
         List<Integer> res = new ArrayList<>();
-        for(int i = arr.length - 1; i >= 0; i--){
-            if(arr[i] > maxRight){
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (arr[i] > maxRight) {
                 maxRight = arr[i];
                 res.add(arr[i]);
             }
@@ -8499,40 +8514,43 @@ public class Matrices {
         System.out.println("Elements that are greater than all elements to their right: " + res);
     }
 
-    public static String reverseStrWithoutRecursion(String str){
+    public static String reverseStrWithoutRecursion(String str) {
         StringBuilder sb = new StringBuilder();
-        for(int i = str.length() - 1; i >= 0;i--){
+        for (int i = str.length() - 1; i >= 0; i--) {
             sb.append(str.charAt(i));
         }
         return sb.toString();
     }
+
     //with recursion
-    public static String reverseStrWithRecursion(String str){ //I have same exercises above
-        if(str.isEmpty()) return str;
+    public static String reverseStrWithRecursion(String str) { //I have same exercises above
+        if (str.isEmpty()) return str;
         return reverseStrWithRecursion(str.substring(1)) + str.charAt(0);
     }
 
     //level order traversal in a binary tree
-    class TreeNode{
+    class TreeNode {
         int val;
         TreeNode left, right;
-        TreeNode(int val){
+
+        TreeNode(int val) {
             this.val = val;
             left = right = null;
         }
     }
+
     public class BinaryTree {
         public static void levelOrderTraversal(TreeNode root) { //level order traversal in a binary tree
             if (root == null) return;
             Queue<TreeNode> queue = new LinkedList<>();
             queue.add(root);
-            while(!queue.isEmpty()){
+            while (!queue.isEmpty()) {
                 TreeNode current = queue.poll();
                 System.out.println(current.val + " ");
-                if(current.left != null){
+                if (current.left != null) {
                     queue.add(current.left);
                 }
-                if(current.right != null){
+                if (current.right != null) {
                     queue.add(current.right);
                 }
             }
@@ -8540,23 +8558,24 @@ public class Matrices {
     }
 
     //377.
-    public static int findNumberOfRotationsInCircularlySortedArr(int[] arr){ //array is sorted already
-        if(arr.length < 2) return 0;  //γραμμικη αναζητηση
-        int smallestElementIndex  = 0;
-        for(int i = 0; i < arr.length; i++){
-            if(arr[i] < arr[smallestElementIndex]){
+    public static int findNumberOfRotationsInCircularlySortedArr(int[] arr) { //array is sorted already
+        if (arr.length < 2) return 0;  //γραμμικη αναζητηση
+        int smallestElementIndex = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < arr[smallestElementIndex]) {
                 smallestElementIndex = i;
             }
         }
         return smallestElementIndex;
     }
+
     //or with binary search
-    public static int findNumberOfRotationsInCircularlySortedArrV2(int[] arr){
-        if(arr.length < 2) return 0;
-        int left = 0,  right = arr.length - 1;
-        while(left < right){
-            int mid = left +  (right - left) /2; //1 + (5-1)/2 = 3 (2.5)
-            if(arr[mid] > arr[right]){
+    public static int findNumberOfRotationsInCircularlySortedArrV2(int[] arr) {
+        if (arr.length < 2) return 0;
+        int left = 0, right = arr.length - 1;
+        while (left < right) {
+            int mid = left + (right - left) / 2; //1 + (5-1)/2 = 3 (2.5)
+            if (arr[mid] > arr[right]) {
                 right = mid + 1;
             } else {
                 right = mid;
@@ -8565,25 +8584,26 @@ public class Matrices {
         return left;
     }
 
-    public static void findFirstLastOccurenceOfANumberInSortedArr(int[] arr, int x){ //with streams
+    public static void findFirstLastOccurenceOfANumberInSortedArr(int[] arr, int x) { //with streams
         OptionalInt firstIdx = IntStream.range(0, arr.length).filter(i -> arr[i] == x).findFirst();
         OptionalInt lastIdx = IntStream.range(0, arr.length).filter(i -> arr[i] == x).reduce((first, last) -> last);
         System.out.println("First occurence of " + x + " is at index: " + firstIdx);
         System.out.println("Last occurence of " + x + " is at index: " + lastIdx);
     }
+
     //or with binary search
-    public static int findFirstOccurrence(int[] arr, int x){
-        if(arr.length < 2) {
+    public static int findFirstOccurrence(int[] arr, int x) {
+        if (arr.length < 2) {
             return -1;
         }
         int res = -1;
         int left = 0, right = arr.length - 1;
-        while(left <= right){
-            int mid = left + (right - left)/2;
-            if(arr[mid] == x){
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (arr[mid] == x) {
                 res = mid;
-                right = mid -1; // ψάχνουμε αριστερά για πρώτη εμφάνιση
-            } else if (arr[mid] < x){
+                right = mid - 1; // ψάχνουμε αριστερά για πρώτη εμφάνιση
+            } else if (arr[mid] < x) {
                 left = mid + 1;
             } else {
                 right = mid - 1;
@@ -8591,18 +8611,19 @@ public class Matrices {
         }
         return res;
     }
-    public static int findLastOccurrence(int[] arr, int x){
-        if(arr.length < 2) {
+
+    public static int findLastOccurrence(int[] arr, int x) {
+        if (arr.length < 2) {
             return -1;
         }
         int res = -1;
         int left = 0, right = arr.length - 1;
-        while(left <= right){
-            int mid = left + (right - left)/2;
-            if(arr[mid] == x){
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (arr[mid] == x) {
                 res = mid;
                 left = mid + 1; // ψάχνουμε δεξιά για τελευταία εμφάνιση
-            } else if (arr[mid] < x){
+            } else if (arr[mid] < x) {
                 left = mid + 1;
             } else {
                 right = mid - 1;
@@ -8610,28 +8631,29 @@ public class Matrices {
         }
         return res;
     }
-    public static void findFirstLastOccurrenceOfANumberInSortedArrV2(int[] arr, int x){
-        int first = findFirstOccurrence(arr,x);
-        int last = findLastOccurrence(arr,x);
+
+    public static void findFirstLastOccurrenceOfANumberInSortedArrV2(int[] arr, int x) {
+        int first = findFirstOccurrence(arr, x);
+        int last = findLastOccurrence(arr, x);
         System.out.println("First occurence of " + x + " is at index: " + first);
         System.out.println("Last occurence of " + x + " is at index: " + last);
     }
 
-    public static void countOccurencesOfANumber(int[] arr, int x){ //in a sorted Array
+    public static void countOccurencesOfANumber(int[] arr, int x) { //in a sorted Array
         int count = 0;
-        for(int i = 0; i < arr.length;i++){
-            if(arr[i]==x){
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == x) {
                 count++;
             }
         }
         System.out.println("Number of occurences of this number: " + count);
     }
 
-    public static void findFlourAndCeilNumInSortedArr(int[] arr){
+    public static void findFlourAndCeilNumInSortedArr(int[] arr) {
         double ceiNum = Integer.MIN_VALUE;
         double floorNum = Integer.MAX_VALUE;
-        for(int i = 0; i < arr.length; i++){
-            if(arr[i] < 0){
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < 0) {
                 ceiNum = Math.ceil(arr[i]);
             } else {
                 floorNum = Math.floor(arr[i]);
@@ -8641,12 +8663,12 @@ public class Matrices {
         System.out.println("Floor number is: " + floorNum);
     }
 
-    public static int find1sInBinarySortedArr(int[] arr){ //bin search way
-        int left = 0, right = arr.length-1;
+    public static int find1sInBinarySortedArr(int[] arr) { //bin search way
+        int left = 0, right = arr.length - 1;
         int firstOneIdx = -1;
-        while(left <= right){
+        while (left <= right) {
             int mid = left + (right - left) / 2;
-            if(arr[mid] == 1){
+            if (arr[mid] == 1) {
                 firstOneIdx = mid;
                 right = mid - 1;
             } else {
@@ -8656,18 +8678,74 @@ public class Matrices {
         return (firstOneIdx == 1) ? 0 : (arr.length - firstOneIdx);
     }
 
-    public static double powerFunc(double base, int exponent){
+    public static double powerFunc(double base, int exponent) {
         double res = 1;
-        for(int i = 0; i < exponent; i++){
-            res *=base;
+        for (int i = 0; i < exponent; i++) {
+            res *= base;
         }
         return res;
 
     }
 
+    //nonrecursive solution
+    public static int[] findFloodAndCeilNumInSortedArr(int[] arr, int target) {
+        int ceilNum = Integer.MAX_VALUE;
+        int floorNum = Integer.MIN_VALUE;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] <= target && arr[i] >= floorNum) {
+                floorNum = arr[i];
+            }
+            if (arr[i] >= target && arr[i] < ceilNum) {
+                ceilNum = arr[i];
+            }
+        }
+        return new int[]{floorNum, ceilNum};
+    }
 
+//    public static int bis(int[] arr, int left, int right, int targ) {
+//        if (left > right) return -1;
+//
+//        int mid = left + (right - left) / 2;
+//        if (arr[mid] == targ) {
+//            return mid;
+//        } else if (arr[mid] > targ) {
+//            return bis(arr, left, mid - 1, targ);
+//        } else {
+//            return bis(arr, right, mid + 1, targ);
+//
+//        }
+//    }
+    //recursive solution
+    public static int findFloor(int[] arr, int left, int right, int targ, int floor){
+        if (left > right) return -1;
+
+        int mid = left + (right - left) / 2;
+        if (arr[mid] == targ) {
+            return mid;
+        } else if (arr[mid] > targ) {
+            return findFloor(arr, left, mid - 1, targ, floor);
+        } else {
+            return findFloor(arr, right, mid + 1, targ, arr[mid]);
+
+        }
+    }
+    public static int findCeil(int[] arr, int left, int right, int targ, int ceil){
+        if (left > right) return -1;
+
+        int mid = left + (right - left) / 2;
+        if (arr[mid] == targ) {
+            return mid;
+        } else if (arr[mid] < targ) {
+            return findCeil(arr, left, mid + 1, targ, ceil);
+        } else {
+            return findCeil(arr, right, mid - 1, targ, arr[mid]);
+        }
+    }
 
 }
+
+
+
 
 
 
