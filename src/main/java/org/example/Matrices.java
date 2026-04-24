@@ -2207,6 +2207,10 @@ public class Matrices {
         System.out.println("Floor: " + (floor == Integer.MIN_VALUE ? "No floor" : floor));
         System.out.println("Ceil: " + (ceil == Integer.MAX_VALUE ? "No ceil" : ceil));
 
+        System.out.println("\n");
+        int[] arrDuplS = {1,1,2,3,4,4,5,5,6};
+        findFreqOfEachElementInSortedArrContainDupl(arrDuplS);
+
 
     }
 
@@ -8741,6 +8745,21 @@ public class Matrices {
             return findCeil(arr, right, mid - 1, targ, arr[mid]);
         }
     }
+    public static void findFreqOfEachElementInSortedArrContainDupl(int[] arr){
+        int count = 1;
+        for(int i = 1; i < arr.length; i++) {
+            if(arr[i] == arr[i-1]){
+                count++;
+            } else{
+                System.out.println("Element " + arr[i-1] + " has duplicate count: " +  count);
+                count = 1;
+            }
+
+        }
+        System.out.println("Element " + arr[arr.length - 1] + " has duplicate count: " +  count);
+    }
+
+
 
 }
 
