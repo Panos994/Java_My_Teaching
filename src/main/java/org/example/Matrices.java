@@ -2211,6 +2211,11 @@ public class Matrices {
         int[] arrDuplS = {1,1,2,3,4,4,5,5,6};
         findFreqOfEachElementInSortedArrContainDupl(arrDuplS);
 
+        System.out.println("\n");
+        int[] arrBF = {0,4,8,9,15,16,25,26};
+        int sqrt = findSqRootOfNumUsingBinS(25);
+        System.out.println(sqrt);
+
 
     }
 
@@ -8757,6 +8762,28 @@ public class Matrices {
 
         }
         System.out.println("Element " + arr[arr.length - 1] + " has duplicate count: " +  count);
+    }
+
+    public static int findSqRootOfNumUsingBinS(int target){
+        if(target < 0){
+            throw new IllegalArgumentException("Number must be non-negative");
+        }
+        if(target == 0 || target == 1) return target;
+        int left = 0, right = target;
+        int res = 0;
+        while(left<= right){
+            int mid = left + (right - left) / 2; //
+            long sq = (long) mid * mid; //για αποφυγη Overflow
+            if(sq == target){
+                return mid;
+            } else if(sq < target){
+                res = mid;
+                left = mid + 1;
+            } else{
+                right = mid - 1;
+            }
+        }
+        return res;
     }
 
 
