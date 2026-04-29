@@ -2220,6 +2220,10 @@ public class Matrices {
         String[] arrStry = {"geeksforgeeks", "geeks", "geek", "geezer"};
         System.out.println(lcpProb(arrStry));
 
+        System.out.println("\n");
+        int[] arrExp = {0,1,2,3,4,5,6,7};
+        System.out.println(expSearch(arrExp, 5));
+
 
     }
 
@@ -8802,6 +8806,32 @@ public class Matrices {
         return first.substring(0,i);
     }
 
+    public static int expSearch(int[] arr, int target){ //exponential search
+        Arrays.sort(arr);
+        int n = arr.length;
+        if (n==0) return -1;
+        if(arr[0] == target) return 0;
+        int i = 1;
+        while(i < n && arr[i] < target){
+            i*=2;
+        }
+        int left = i/2;
+        int right = Math.min(i,n-1);
+        return biS(arr, left, right, target);
+    }
+    public static int biS(int[] arr, int left, int right, int target){
+        while(left <= right){
+            int mid = left + (right - left)/2;
+            if(arr[mid] == target){
+                return mid;
+            } else if(arr[mid] > target) {
+                return right = mid - 1;
+            } else {
+                return left = mid + 1;
+            }
+        }
+        return -1;
+    }
 
 
 }
