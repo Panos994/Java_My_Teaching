@@ -2224,6 +2224,14 @@ public class Matrices {
         int[] arrExp = {0,1,2,3,4,5,6,7};
         System.out.println(expSearch(arrExp, 5));
 
+        System.out.println("\n");
+        int[] arra = {2, 5, 7, 10, 14, 18, 23, 31, 44};
+        ArrayReader r = new ArrayReader(arra);
+
+        System.out.println(unboundedBinarySearch(r, 14)); // 4
+        System.out.println(unboundedBinarySearch(r, 6));  // -1
+        System.out.println(unboundedBinarySearch(r, 44)); // 8
+
 
     }
 
@@ -8833,8 +8841,44 @@ public class Matrices {
         return -1;
     }
 
+    static class ArrayReader {
+        private final int[] arr;
+        ArrayReader(int[] arr){
+            this.arr = arr;
+        }
+        int get(int index){
+            if(index < 0 || index >= arr.length) return Integer.MAX_VALUE;
+            return arr[index];
+        }
+    }
+    public static int unboundedBinarySearch(ArrayReader reader, int target){ //hypothesis is ordered
+        if(reader.get(0) == target){
+            return 0;
+        }
+        int low = 0;
+        int high = 1;
+        while(reader.get(high) < target){
+            low = high;
+            high = high * 2;
+        }
+
+        while (low <= high){
+            int mid = low + (high - low)/2;
+            int val = reader.get(mid);
+            if(val == target){
+                return mid;
+            } else if (val > target){
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return -1;
+    }
+
 
 }
+
 
 
 
