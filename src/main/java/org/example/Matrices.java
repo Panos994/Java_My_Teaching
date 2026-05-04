@@ -2200,7 +2200,7 @@ public class Matrices {
         System.out.println(powerFunc(2, 3));
 
         System.out.println("\n");
-        int[] test1Arr = {1,2,3,4,5,6,7};
+        int[] test1Arr = {1, 2, 3, 4, 5, 6, 7};
         int target22 = 4;
         int floor = findFloor(test1Arr, 0, test1Arr.length - 1, target22, Integer.MIN_VALUE);
         int ceil = findCeil(test1Arr, 0, test1Arr.length - 1, target22, Integer.MAX_VALUE);
@@ -2208,11 +2208,11 @@ public class Matrices {
         System.out.println("Ceil: " + (ceil == Integer.MAX_VALUE ? "No ceil" : ceil));
 
         System.out.println("\n");
-        int[] arrDuplS = {1,1,2,3,4,4,5,5,6};
+        int[] arrDuplS = {1, 1, 2, 3, 4, 4, 5, 5, 6};
         findFreqOfEachElementInSortedArrContainDupl(arrDuplS);
 
         System.out.println("\n");
-        int[] arrBF = {0,4,8,9,15,16,25,26};
+        int[] arrBF = {0, 4, 8, 9, 15, 16, 25, 26};
         int sqrt = findSqRootOfNumUsingBinS(25);
         System.out.println(sqrt);
 
@@ -2221,7 +2221,7 @@ public class Matrices {
         System.out.println(lcpProb(arrStry));
 
         System.out.println("\n");
-        int[] arrExp = {0,1,2,3,4,5,6,7};
+        int[] arrExp = {0, 1, 2, 3, 4, 5, 6, 7};
         System.out.println(expSearch(arrExp, 5));
 
         System.out.println("\n");
@@ -2232,6 +2232,16 @@ public class Matrices {
         System.out.println(unboundedBinarySearch(r, 6));  // -1
         System.out.println(unboundedBinarySearch(r, 44)); // 8
 
+        System.out.println("\n");
+        int[] aefinter = {10, 20, 30, 40, 50, 60, 70, 80, 90};
+        int target222 = 70;
+
+        int idx = interpolationSearch(aefinter, target222);
+        System.out.println("Index: " + idx); // 6
+
+        System.out.println("\n Recursive fib Programming");
+        System.out.println(fibv22(10));
+        System.out.println(fibMemoMap(10));
 
     }
 
@@ -8727,7 +8737,7 @@ public class Matrices {
         return new int[]{floorNum, ceilNum};
     }
 
-//    public static int bis(int[] arr, int left, int right, int targ) {
+    //    public static int bis(int[] arr, int left, int right, int targ) {
 //        if (left > right) return -1;
 //
 //        int mid = left + (right - left) / 2;
@@ -8741,7 +8751,7 @@ public class Matrices {
 //        }
 //    }
     //recursive solution
-    public static int findFloor(int[] arr, int left, int right, int targ, int floor){
+    public static int findFloor(int[] arr, int left, int right, int targ, int floor) {
         if (left > right) return -1;
 
         int mid = left + (right - left) / 2;
@@ -8754,7 +8764,8 @@ public class Matrices {
 
         }
     }
-    public static int findCeil(int[] arr, int left, int right, int targ, int ceil){
+
+    public static int findCeil(int[] arr, int left, int right, int targ, int ceil) {
         if (left > right) return -1;
 
         int mid = left + (right - left) / 2;
@@ -8766,73 +8777,75 @@ public class Matrices {
             return findCeil(arr, right, mid - 1, targ, arr[mid]);
         }
     }
-    public static void findFreqOfEachElementInSortedArrContainDupl(int[] arr){
+
+    public static void findFreqOfEachElementInSortedArrContainDupl(int[] arr) {
         int count = 1;
-        for(int i = 1; i < arr.length; i++) {
-            if(arr[i] == arr[i-1]){
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] == arr[i - 1]) {
                 count++;
-            } else{
-                System.out.println("Element " + arr[i-1] + " has duplicate count: " +  count);
+            } else {
+                System.out.println("Element " + arr[i - 1] + " has duplicate count: " + count);
                 count = 1;
             }
 
         }
-        System.out.println("Element " + arr[arr.length - 1] + " has duplicate count: " +  count);
+        System.out.println("Element " + arr[arr.length - 1] + " has duplicate count: " + count);
     }
 
-    public static int findSqRootOfNumUsingBinS(int target){
-        if(target < 0){
+    public static int findSqRootOfNumUsingBinS(int target) {
+        if (target < 0) {
             throw new IllegalArgumentException("Number must be non-negative");
         }
-        if(target == 0 || target == 1) return target;
+        if (target == 0 || target == 1) return target;
         int left = 0, right = target;
         int res = 0;
-        while(left<= right){
+        while (left <= right) {
             int mid = left + (right - left) / 2; //
             long sq = (long) mid * mid; //για αποφυγη Overflow
-            if(sq == target){
+            if (sq == target) {
                 return mid;
-            } else if(sq < target){
+            } else if (sq < target) {
                 res = mid;
                 left = mid + 1;
-            } else{
+            } else {
                 right = mid - 1;
             }
         }
         return res;
     }
 
-    public static String lcpProb(String[] arr){
+    public static String lcpProb(String[] arr) {
         Arrays.sort(arr);
         String first = arr[0];
         String last = arr[arr.length - 1];
         int minLen = Math.min(first.length(), last.length());
         int i = 0;
-        while(i < minLen && first.charAt(i) == last.charAt(i)){
+        while (i < minLen && first.charAt(i) == last.charAt(i)) {
             i++;
         }
-        return first.substring(0,i);
+        return first.substring(0, i);
     }
 
-    public static int expSearch(int[] arr, int target){ //exponential search
+    public static int expSearch(int[] arr, int target) { //exponential search
         Arrays.sort(arr);
         int n = arr.length;
-        if (n==0) return -1;
-        if(arr[0] == target) return 0;
+        if (n == 0) return -1;
+        if (arr[0] == target) return 0;
         int i = 1;
-        while(i < n && arr[i] < target){
-            i*=2;
+        while (i < n && arr[i] < target) {
+            i *= 2;
         }
-        int left = i/2;
-        int right = Math.min(i,n-1);
+        int left = i / 2;
+        int right = Math.min(i, n - 1);
         return biS(arr, left, right, target);
     }
-    public static int biS(int[] arr, int left, int right, int target){
-        while(left <= right){
-            int mid = left + (right - left)/2;
-            if(arr[mid] == target){
+
+    public static int biS(int[] arr, int left, int right, int target) {
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (arr[mid] == target) {
                 return mid;
-            } else if(arr[mid] > target) {
+            } else if (arr[mid] > target) {
                 return right = mid - 1;
             } else {
                 return left = mid + 1;
@@ -8843,31 +8856,34 @@ public class Matrices {
 
     static class ArrayReader {
         private final int[] arr;
-        ArrayReader(int[] arr){
+
+        ArrayReader(int[] arr) {
             this.arr = arr;
         }
-        int get(int index){
-            if(index < 0 || index >= arr.length) return Integer.MAX_VALUE;
+
+        int get(int index) {
+            if (index < 0 || index >= arr.length) return Integer.MAX_VALUE;
             return arr[index];
         }
     }
-    public static int unboundedBinarySearch(ArrayReader reader, int target){ //hypothesis is ordered
-        if(reader.get(0) == target){
+
+    public static int unboundedBinarySearch(ArrayReader reader, int target) { //hypothesis is ordered
+        if (reader.get(0) == target) {
             return 0;
         }
         int low = 0;
         int high = 1;
-        while(reader.get(high) < target){
+        while (reader.get(high) < target) {
             low = high;
             high = high * 2;
         }
 
-        while (low <= high){
-            int mid = low + (high - low)/2;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
             int val = reader.get(mid);
-            if(val == target){
+            if (val == target) {
                 return mid;
-            } else if (val > target){
+            } else if (val > target) {
                 high = mid - 1;
             } else {
                 low = mid + 1;
@@ -8876,6 +8892,44 @@ public class Matrices {
         return -1;
     }
 
+    public static int interpolationSearch(int[] arr, int target) { //ordered array
+        int n = arr.length;
+        int low = 0, high = n - 1;
+        while (low <= high && target >= arr[low] && target <= arr[high]) {
+            if (arr[high] == arr[low]) { // avoid division by zero
+                return (arr[low] == target) ? low : -1;
+            }
+            long numerator = (long) (target - arr[low]) * (high - low);
+            long denominator = (arr[high] - arr[low]);
+            int pos = (int) (low + numerator / denominator);
+            if (arr[pos] == target) {
+                return pos;
+            } else if (arr[pos] < target) {
+                low = pos + 1;
+            } else {
+                high = pos - 1;
+            }
+        }
+
+        return -1;
+
+    }
+    //recursive prog
+    public static int fibv22(int n){
+        if (n <= 1) {
+            return n;
+        }
+        return fibv22(n-1) + fibv22(n-2);
+    }
+    //dynamic programming Fibonacci
+    static Map<Integer, Integer> memo = new java.util.HashMap<>();
+    public static int fibMemoMap(int n) {
+        if (n <= 1) return n;
+        if (memo.containsKey(n)) return memo.get(n);
+        int val = fibMemoMap(n - 1) + fibMemoMap(n - 2);
+        memo.put(n, val);
+        return val;
+    }
 
 }
 
