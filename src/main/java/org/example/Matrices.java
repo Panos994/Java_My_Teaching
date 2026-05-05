@@ -2243,6 +2243,11 @@ public class Matrices {
         System.out.println(fibv22(10));
         System.out.println(fibMemoMap(10));
 
+        System.out.println("\n");
+        int M = 3, N = 3;
+        int[][] matrix3 = new int[M][N]; // αν έχει εμπόδια π.χ. νέο πίνακα
+        System.out.println("Total paths: " + countPaths(matrix3));
+
     }
 
     public static String eliminateAWord(String words) {
@@ -8929,6 +8934,47 @@ public class Matrices {
         int val = fibMemoMap(n - 1) + fibMemoMap(n - 2);
         memo.put(n, val);
         return val;
+    }
+
+    //count all paths in a matrix from first cell until last cell - Αναδρομική Λύση με Memoization
+    public static int countPaths(int[][] matrix){
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int[][] memo = new int [m][n];
+
+        for(int i = 0; i < m;i++){
+            Arrays.fill(memo[i], - 1);
+        }
+        return dfs(0,0,m,n,memo);
+    }
+
+    private static int dfs(int i, int j, int m, int n, int[][] memo) {
+        if(i >= m || j >= n) return 0;
+
+        if(i == m-1 && j == n-1) return 1;
+        if(memo[i][j] != -1) return memo[i][j];
+
+        memo[i][j] = dfs(i+1,j,m,n,memo) + dfs(i, j+1,m,n,memo);
+        return memo[i][j];
+    }
+
+    // or  Dynamic Programming (Bottom-Up)
+    public static int countPathsDP(int[][] matrix) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int[][] dp = new int[m][n];
+        // Γέμισε το τελευταίο κελί με 1
+        dp[m-1][n-1] = 1;
+        // Γέμισε την τελευταία γραμμή και στήλη
+        for (int i = m-2; i >= 0; i--) dp[i][n-1] = 1;
+        for (int j = n-2; j >= 0; j--) dp[m-1][j] = 1;
+        // Βρες τα υπόλοιπα cells
+        for (int i = m-2; i >= 0; i--) {
+            for (int j = n-2; j >= 0; j--) {
+                dp[i][j] = dp[i+1][j] + dp[i][j+1];
+            }
+        }
+        return dp[0][0];
     }
 
 }
