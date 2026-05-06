@@ -2248,6 +2248,11 @@ public class Matrices {
         int[][] matrix3 = new int[M][N]; // αν έχει εμπόδια π.χ. νέο πίνακα
         System.out.println("Total paths: " + countPaths(matrix3));
 
+        System.out.println("\n");
+        int n3 = 3;
+        List<String> ans = generate(n3);
+        for (String s : ans) System.out.println(s);
+
     }
 
     public static String eliminateAWord(String words) {
@@ -8977,6 +8982,58 @@ public class Matrices {
         return dp[0][0];
     }
 
+
+    // Find all n-digit binary numbers without any consecutive 1’s
+    public static List<String> generate(int n) {
+        // Λίστα που θα περιέχει ΟΛΑ τα έγκυρα δυαδικά strings μήκους n
+        List<String> res = new ArrayList<>();
+
+        // Χρησιμοποιούμε StringBuilder για να χτίζουμε το τρέχον string σταδιακά (πιο αποδοτικό από String)
+        StringBuilder sb = new StringBuilder();
+
+        // Ξεκινάμε DFS/Backtracking:
+        // pos = 0  -> είμαστε στην αρχή (δεν έχουμε βάλει κανένα ψηφίο)
+        // prev = 0 -> θεωρούμε ότι "το προηγούμενο" δεν ήταν 1 (άρα επιτρέπεται να βάλουμε 1 στην αρχή)
+        dfs2(0, 0, n, sb, res);
+
+        // Επιστρέφουμε όλα τα valid strings που βρέθηκαν
+        return res;
+    }
+
+    public static void dfs2(int pos, int prev, int n, StringBuilder sb, List<String> res) {
+        // pos  = πόσα bits έχουμε ήδη τοποθετήσει στο sb (τρέχουσα θέση/βάθος recursion)
+        // prev = τι βάλαμε ακριβώς πριν:
+        //        0 αν το προηγούμενο bit ήταν '0'
+        //        1 αν το προηγούμενο bit ήταν '1'
+        // n    = συνολικό μήκος που πρέπει να έχει κάθε binary number
+        // sb   = το τρέχον binary string που χτίζουμε
+        // res  = η λίστα αποτελεσμάτων (ό,τι ολοκληρώνουμε, το προσθέτουμε εδώ)
+
+        // ΒΑΣΗ αναδρομής: αν έχουμε βάλει ήδη n bits, τότε το sb έχει μήκος n
+        if (pos == n) {
+            // Το τρέχον sb είναι έγκυρο (γιατί δεν επιτρέψαμε ποτέ να μπει "11")
+            // το μετατρέπουμε σε String και το αποθηκεύουμε
+            res.add(sb.toString());
+            return; // σταματάμε αυτό το branch
+        }
+
+        // --- Επιλογή 1: να βάλουμε '0' ---
+        // Το '0' επιτρέπεται ΠΑΝΤΑ (δεν δημιουργεί ποτέ consecutive 1s)
+        sb.append('0');                 // βάζουμε το '0' στο τέλος του sb
+        dfs2(pos + 1, 0, n, sb, res);   // προχωράμε στην επόμενη θέση, και prev γίνεται 0
+        sb.deleteCharAt(sb.length() - 1); // BACKTRACK: αφαιρούμε το τελευταίο char για να δοκιμάσουμε άλλη επιλογή
+
+        // --- Επιλογή 2: να βάλουμε '1' ---
+        // Το '1' επιτρέπεται ΜΟΝΟ αν το προηγούμενο bit ΔΕΝ ήταν 1
+        // Δηλαδή: αν prev == 0
+        if (prev == 0) {
+            sb.append('1');                 // βάζουμε '1'
+            dfs2(pos + 1, 1, n, sb, res);   // προχωράμε, και prev γίνεται 1 (γιατί μόλις βάλαμε 1)
+            sb.deleteCharAt(sb.length() - 1); // BACKTRACK: αφαιρούμε το '1'
+        }
+
+        // Αν prev == 1, ΔΕΝ βάζουμε '1', γιατί θα δημιουργούσαμε "11" (διαδοχικούς άσσους)
+    }
 }
 
 
