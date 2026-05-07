@@ -2253,6 +2253,11 @@ public class Matrices {
         List<String> ans = generate(n3);
         for (String s : ans) System.out.println(s);
 
+        System.out.println("\n");
+        int[] x1 = { 5, 3, 4, 6, 3 };
+        int[] y2 = { 8, 4, 3, 5, 10 };
+        System.out.println(finMaxProfitCanBeEarnedByConditionallySellingStocks(x1, y2, x1.length - 1));
+
     }
 
     public static String eliminateAWord(String words) {
@@ -9034,6 +9039,20 @@ public class Matrices {
 
         // Αν prev == 1, ΔΕΝ βάζουμε '1', γιατί θα δημιουργούσαμε "11" (διαδοχικούς άσσους)
     }
+
+    //Find maximum profit that can be earned by conditionally selling stocks
+    public static int finMaxProfitCanBeEarnedByConditionallySellingStocks(int[] a, int[] b, int n){
+       if(n < 0) return 0;
+
+       int profit = 0;
+
+       profit = Integer.max(profit, a[n] + finMaxProfitCanBeEarnedByConditionallySellingStocks(a,b,n-1));
+
+       profit = Integer.max(profit, b[n] + finMaxProfitCanBeEarnedByConditionallySellingStocks(a,b,n-2));
+
+       return profit;
+    }
+
 }
 
 
