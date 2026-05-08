@@ -5,6 +5,7 @@ import javafx.beans.binding.StringBinding;
 import org.apache.commons.lang3.Range;
 
 import java.lang.reflect.Array;
+import java.math.BigInteger;
 import java.sql.SQLOutput;
 import java.text.CollationKey;
 import java.util.LinkedList;
@@ -2257,6 +2258,11 @@ public class Matrices {
         int[] x1 = { 5, 3, 4, 6, 3 };
         int[] y2 = { 8, 4, 3, 5, 10 };
         System.out.println(finMaxProfitCanBeEarnedByConditionallySellingStocks(x1, y2, x1.length - 1));
+
+        System.out.println("\n");
+        int n11 =  11;
+        System.out.println(fibV4(n11)); //recursive
+        System.out.println(fibIterative(n11)); //iterative
 
     }
 
@@ -9052,6 +9058,32 @@ public class Matrices {
 
        return profit;
     }
+
+    //Program to find n’th Fibonacci number
+    //recursion simple fibo algo
+    public static int fibV4(int n){
+        if(n == 1) return 1;
+        if(n == 0) return 0;
+
+        return fibV4(n-1) + fibV4(n-2);
+    }
+    //for nth fibonacci we choose the iterative method --> O(n) time complexity, O(1) memory
+    public static BigInteger fibIterative(int n){
+        if(n == 1) return BigInteger.ONE;
+        if(n == 0) return BigInteger.ZERO;
+
+        BigInteger a = BigInteger.ZERO; //F(0)
+        BigInteger b = BigInteger.ONE; //F(1)
+
+        for(int i = 2; i <=n ;i++){
+            BigInteger c = a.add(b); //F(i)
+            a = b;
+            b = c;
+        }
+        return b; //F(n)
+    }
+
+
 
 }
 

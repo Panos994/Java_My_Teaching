@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class Main {
     public static void main(String[] args) {
@@ -29,6 +30,21 @@ public class Main {
         System.out.println(nus);
 
 
+//        String s = "Java is the best programming language in the world";
+//        Supplier<String> st = () -> {
+//            String longest = "";
+//            if (s == null || s.trim().isEmpty()) {
+//                return longest;
+//            }
+//
+//            for (String word : s.trim().split("\\s+")) {
+//                if (word.length() > longest.length()) {
+//                    longest = word;
+//                }
+//            }
+//            return longest;
+//        };
+//        System.out.println(st.get());
 
     }
 }
