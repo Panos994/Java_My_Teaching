@@ -2264,6 +2264,11 @@ public class Matrices {
         System.out.println(fibV4(n11)); //recursive
         System.out.println(fibIterative(n11)); //iterative
 
+        System.out.println("\n");
+        int[] arr3454 = {1, 3, 2, 4, 3, 5};
+        longestAlternatingSubarrayProb(arr3454);
+        // Output: Longest alternating subarray length is: 6
+
     }
 
     public static String eliminateAWord(String words) {
@@ -9083,7 +9088,25 @@ public class Matrices {
         return b; //F(n)
     }
 
+    public static void longestAlternatingSubarrayProb(int[] arr){
+        if(arr.length < 2){
+            System.out.println("Longest alternating subarray length is: " + arr.length);
+            return;
+        }
+        int maxLength = 1;
+        int currentLength = 2;
 
+        for(int i = 2; i < arr.length; i++){ //Ξεκινάμε από 2 γιατί θέλουμε να ελέγξουμε arr[i-2]. Διατρέχουμε τον πίνακα μία φορά: O(n), Δεν χρειάζεται επιπλέον χώρος εκτός από μερικές μεταβλητές: O(1)
+            if((arr[i] > arr[i-1] && arr[i-1] < arr[i-2]) || (arr[i] < arr[i-1] && arr[i-1] > arr[i-2])){
+                currentLength++;
+            } else {
+                maxLength = Math.max(maxLength, currentLength);
+                currentLength = 2;  // Ξεκινά νέο ζεύγος εναλλαγής
+            }
+        }
+        maxLength = Math.max(maxLength, currentLength); // για την περίπτωση που το longest subarray τελειώνει στο τέλος του array (  Αν καταλήξει το max στο τέλος)
+        System.out.println("Longest alternating subarray length is: " + maxLength);
+    }
 
 }
 
