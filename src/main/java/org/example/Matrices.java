@@ -2255,12 +2255,12 @@ public class Matrices {
         for (String s : ans) System.out.println(s);
 
         System.out.println("\n");
-        int[] x1 = { 5, 3, 4, 6, 3 };
-        int[] y2 = { 8, 4, 3, 5, 10 };
+        int[] x1 = {5, 3, 4, 6, 3};
+        int[] y2 = {8, 4, 3, 5, 10};
         System.out.println(finMaxProfitCanBeEarnedByConditionallySellingStocks(x1, y2, x1.length - 1));
 
         System.out.println("\n");
-        int n11 =  11;
+        int n11 = 11;
         System.out.println(fibV4(n11)); //recursive
         System.out.println(fibIterative(n11)); //iterative
 
@@ -2268,6 +2268,39 @@ public class Matrices {
         int[] arr3454 = {1, 3, 2, 4, 3, 5};
         longestAlternatingSubarrayProb(arr3454);
         // Output: Longest alternating subarray length is: 6
+
+        int n56 = 6;
+        List<List<Integer>> graph = new ArrayList<>();
+        int[] arrival = new int[n56];
+        int[] departure = new int[n56];
+        boolean[] visited = new boolean[n56];
+        for (int i56 = 0; i56 < n56; i56++) {
+            graph.add(new ArrayList<>());
+        }
+        // Παράδειγμα συνδέσεων (edges)
+        graph.get(0).add(1);
+        graph.get(1).add(0);
+
+        graph.get(0).add(2);
+        graph.get(2).add(0);
+
+        graph.get(1).add(3);
+        graph.get(3).add(1);
+
+        graph.get(1).add(4);
+        graph.get(4).add(1);
+
+        graph.get(2).add(5);
+        graph.get(5).add(2);
+        for (int i56 = 0; i56 < n; i56++) {
+            if (!visited[i56]) {
+                getArrivalAndDepartureTimeOfVerticesDFS(graph, i56, visited, arrival, departure);
+            }
+        }
+        //print the time
+        for (int i56 = 0; i56 < n; i56++) {
+            System.out.println("Vertex " + i56 + ": Arrival " + arrival[i56] + ", Departure " + departure[i56]);
+        }
 
     }
 
@@ -8940,15 +8973,18 @@ public class Matrices {
         return -1;
 
     }
+
     //recursive prog
-    public static int fibv22(int n){
+    public static int fibv22(int n) {
         if (n <= 1) {
             return n;
         }
-        return fibv22(n-1) + fibv22(n-2);
+        return fibv22(n - 1) + fibv22(n - 2);
     }
+
     //dynamic programming Fibonacci
     static Map<Integer, Integer> memo = new java.util.HashMap<>();
+
     public static int fibMemoMap(int n) {
         if (n <= 1) return n;
         if (memo.containsKey(n)) return memo.get(n);
@@ -8958,24 +8994,24 @@ public class Matrices {
     }
 
     //count all paths in a matrix from first cell until last cell - Αναδρομική Λύση με Memoization
-    public static int countPaths(int[][] matrix){
+    public static int countPaths(int[][] matrix) {
         int m = matrix.length;
         int n = matrix[0].length;
-        int[][] memo = new int [m][n];
+        int[][] memo = new int[m][n];
 
-        for(int i = 0; i < m;i++){
-            Arrays.fill(memo[i], - 1);
+        for (int i = 0; i < m; i++) {
+            Arrays.fill(memo[i], -1);
         }
-        return dfs(0,0,m,n,memo);
+        return dfs(0, 0, m, n, memo);
     }
 
     private static int dfs(int i, int j, int m, int n, int[][] memo) {
-        if(i >= m || j >= n) return 0;
+        if (i >= m || j >= n) return 0;
 
-        if(i == m-1 && j == n-1) return 1;
-        if(memo[i][j] != -1) return memo[i][j];
+        if (i == m - 1 && j == n - 1) return 1;
+        if (memo[i][j] != -1) return memo[i][j];
 
-        memo[i][j] = dfs(i+1,j,m,n,memo) + dfs(i, j+1,m,n,memo);
+        memo[i][j] = dfs(i + 1, j, m, n, memo) + dfs(i, j + 1, m, n, memo);
         return memo[i][j];
     }
 
@@ -8985,14 +9021,14 @@ public class Matrices {
         int n = matrix[0].length;
         int[][] dp = new int[m][n];
         // Γέμισε το τελευταίο κελί με 1
-        dp[m-1][n-1] = 1;
+        dp[m - 1][n - 1] = 1;
         // Γέμισε την τελευταία γραμμή και στήλη
-        for (int i = m-2; i >= 0; i--) dp[i][n-1] = 1;
-        for (int j = n-2; j >= 0; j--) dp[m-1][j] = 1;
+        for (int i = m - 2; i >= 0; i--) dp[i][n - 1] = 1;
+        for (int j = n - 2; j >= 0; j--) dp[m - 1][j] = 1;
         // Βρες τα υπόλοιπα cells
-        for (int i = m-2; i >= 0; i--) {
-            for (int j = n-2; j >= 0; j--) {
-                dp[i][j] = dp[i+1][j] + dp[i][j+1];
+        for (int i = m - 2; i >= 0; i--) {
+            for (int j = n - 2; j >= 0; j--) {
+                dp[i][j] = dp[i + 1][j] + dp[i][j + 1];
             }
         }
         return dp[0][0];
@@ -9052,35 +9088,36 @@ public class Matrices {
     }
 
     //Find maximum profit that can be earned by conditionally selling stocks
-    public static int finMaxProfitCanBeEarnedByConditionallySellingStocks(int[] a, int[] b, int n){
-       if(n < 0) return 0;
+    public static int finMaxProfitCanBeEarnedByConditionallySellingStocks(int[] a, int[] b, int n) {
+        if (n < 0) return 0;
 
-       int profit = 0;
+        int profit = 0;
 
-       profit = Integer.max(profit, a[n] + finMaxProfitCanBeEarnedByConditionallySellingStocks(a,b,n-1));
+        profit = Integer.max(profit, a[n] + finMaxProfitCanBeEarnedByConditionallySellingStocks(a, b, n - 1));
 
-       profit = Integer.max(profit, b[n] + finMaxProfitCanBeEarnedByConditionallySellingStocks(a,b,n-2));
+        profit = Integer.max(profit, b[n] + finMaxProfitCanBeEarnedByConditionallySellingStocks(a, b, n - 2));
 
-       return profit;
+        return profit;
     }
 
     //Program to find n’th Fibonacci number
     //recursion simple fibo algo
-    public static int fibV4(int n){
-        if(n == 1) return 1;
-        if(n == 0) return 0;
+    public static int fibV4(int n) {
+        if (n == 1) return 1;
+        if (n == 0) return 0;
 
-        return fibV4(n-1) + fibV4(n-2);
+        return fibV4(n - 1) + fibV4(n - 2);
     }
+
     //for nth fibonacci we choose the iterative method --> O(n) time complexity, O(1) memory
-    public static BigInteger fibIterative(int n){
-        if(n == 1) return BigInteger.ONE;
-        if(n == 0) return BigInteger.ZERO;
+    public static BigInteger fibIterative(int n) {
+        if (n == 1) return BigInteger.ONE;
+        if (n == 0) return BigInteger.ZERO;
 
         BigInteger a = BigInteger.ZERO; //F(0)
         BigInteger b = BigInteger.ONE; //F(1)
 
-        for(int i = 2; i <=n ;i++){
+        for (int i = 2; i <= n; i++) {
             BigInteger c = a.add(b); //F(i)
             a = b;
             b = c;
@@ -9088,16 +9125,16 @@ public class Matrices {
         return b; //F(n)
     }
 
-    public static void longestAlternatingSubarrayProb(int[] arr){
-        if(arr.length < 2){
+    public static void longestAlternatingSubarrayProb(int[] arr) {
+        if (arr.length < 2) {
             System.out.println("Longest alternating subarray length is: " + arr.length);
             return;
         }
         int maxLength = 1;
         int currentLength = 2;
 
-        for(int i = 2; i < arr.length; i++){ //Ξεκινάμε από 2 γιατί θέλουμε να ελέγξουμε arr[i-2]. Διατρέχουμε τον πίνακα μία φορά: O(n), Δεν χρειάζεται επιπλέον χώρος εκτός από μερικές μεταβλητές: O(1)
-            if((arr[i] > arr[i-1] && arr[i-1] < arr[i-2]) || (arr[i] < arr[i-1] && arr[i-1] > arr[i-2])){
+        for (int i = 2; i < arr.length; i++) { //Ξεκινάμε από 2 γιατί θέλουμε να ελέγξουμε arr[i-2]. Διατρέχουμε τον πίνακα μία φορά: O(n), Δεν χρειάζεται επιπλέον χώρος εκτός από μερικές μεταβλητές: O(1)
+            if ((arr[i] > arr[i - 1] && arr[i - 1] < arr[i - 2]) || (arr[i] < arr[i - 1] && arr[i - 1] > arr[i - 2])) {
                 currentLength++;
             } else {
                 maxLength = Math.max(maxLength, currentLength);
@@ -9106,6 +9143,20 @@ public class Matrices {
         }
         maxLength = Math.max(maxLength, currentLength); // για την περίπτωση που το longest subarray τελειώνει στο τέλος του array (  Αν καταλήξει το max στο τέλος)
         System.out.println("Longest alternating subarray length is: " + maxLength);
+    }
+
+    // Arrival and departure time of vertices in DFS
+    static int time = 0;
+
+    public static void getArrivalAndDepartureTimeOfVerticesDFS(List<List<Integer>> graph, int v, boolean[] visited, int[] arrival, int[] departure) {
+        visited[v] = true;
+        arrival[v] = ++time;
+        for (int u : graph.get(v)) {
+            if (!visited[u]) {
+                getArrivalAndDepartureTimeOfVerticesDFS(graph, u, visited, arrival, departure);
+            }
+        }
+        departure[v] = ++time;
     }
 
 }
