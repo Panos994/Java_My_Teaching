@@ -13,5 +13,17 @@ public class Main {
 
         names.sort((a,b) -> Integer.compare(a.length(), b.length()));
         System.out.println(names);
+
+        namesFunc("Panos");
+        namesFunc("Aggeliki", "Panos");
+        namesFunc("Dimitra", "Aggeliki", "Panos");
+        namesFunc("Dimitra","Aggeliki","Panos","Giannis");
+
+    }
+    public static void namesFunc(String... n){
+        for(String i : n){
+            System.out.println(i + ", ");
+        }
+        System.out.println();
     }
 }

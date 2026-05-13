@@ -2302,7 +2302,18 @@ public class Matrices {
             System.out.println("Vertex " + i56 + ": Arrival " + arrival[i56] + ", Departure " + departure[i56]);
         }
 
+        System.out.println("\n");
+        int[][] cost = {
+                {0, 1, 0, 0},
+                {0, 0, 1, 0},
+                {0, 0, 0, 1},
+                {0, 0, 0, 0}
+        };
+
+        boolean[][] reach = transitiveClosureOfGraphFloydWarshall(cost, cost.length);
+        printReach(reach);
     }
+
 
     public static String eliminateAWord(String words) {
         if (words == null || words.isEmpty()) {
@@ -9157,6 +9168,43 @@ public class Matrices {
             }
         }
         departure[v] = ++time;
+    }
+
+    // Transitive closure of a graph with floyd warshall algorithm
+    // cost[i][j] == 1 means there is a direct edge i -> j
+    public static boolean[][] transitiveClosureOfGraphFloydWarshall(int[][] cost, int n) {
+        boolean[][] reach = new boolean[n][n];
+        // 1) init reachability from adjacency matrix
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                reach[i][j] = (cost[i][j] == 1);
+            }
+            // optional but typical: each node reaches itself
+            reach[i][i] = true;
+        }
+        // 2) Floyd–Warshall for transitive closure:
+        // if i can reach k and k can reach j => i can reach j
+        for (int k = 0; k < n; k++) {
+            for (int i = 0; i < n; i++) {
+                // small optimization: if i can't reach k, no need to try j
+                if (!reach[i][k]) continue;
+
+                for (int j = 0; j < n; j++) {
+                    if (reach[k][j]) {
+                        reach[i][j] = true;
+                    }
+                }
+            }
+        }
+        return reach;
+    }
+    public static void printReach(boolean[][] reach){
+        for(int i = 0; i <reach.length;i++){
+            for(int j = 0; j< reach[i].length; j++){
+                System.out.print((reach[i][j] ? 1 : 0) + " ");
+            }
+            System.out.println();
+        }
     }
 
 }
