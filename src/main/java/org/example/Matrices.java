@@ -2312,6 +2312,23 @@ public class Matrices {
 
         boolean[][] reach = transitiveClosureOfGraphFloydWarshall(cost, cost.length);
         printReach(reach);
+
+        System.out.println("\n");
+        int n67 = 5;
+        List<List<Integer>> g = new ArrayList<>();
+        for (int i3 = 0; i3 < n67; i3++) g.add(new ArrayList<>());
+        // Παράδειγμα directed edges
+        // 0->1, 1->2, 2->0 (κύκλος)
+        g.get(0).add(1);
+        g.get(1).add(2);
+        g.get(2).add(0);
+        // 2->3, 3->4, 4->2 (δεύτερος κύκλος που συνδέεται με τον πρώτο μέσω 2)
+        g.get(2).add(3);
+        g.get(3).add(4);
+        g.get(4).add(2);
+        System.out.println(isGraphStronglyConnected(g, n67)); // true
+
+        System.out.println("Thank you");
     }
 
 
@@ -9198,14 +9215,76 @@ public class Matrices {
         }
         return reach;
     }
-    public static void printReach(boolean[][] reach){
-        for(int i = 0; i <reach.length;i++){
-            for(int j = 0; j< reach[i].length; j++){
+
+    public static void printReach(boolean[][] reach) {
+        for (int i = 0; i < reach.length; i++) {
+            for (int j = 0; j < reach[i].length; j++) {
                 System.out.print((reach[i][j] ? 1 : 0) + " ");
             }
             System.out.println();
         }
     }
+
+    //Check if a graph is strongly connected or not -------------------------------------------
+    public static boolean isGraphStronglyConnected(List<List<Integer>> graph, int n) {
+        if (n == 0) return true;
+        // 1) Traverse original graph from 0
+        boolean[] visited = new boolean[n];
+        dfs(graph, 0, visited);
+        if (!allVisited(visited)) return false;
+
+        // 2) Build reversed graph
+        List<List<Integer>> reversed = reverseGraph(graph, n);
+
+        // 3) Traverse reversed graph from 0
+        Arrays.fill(visited, false);
+        dfs(reversed, 0, visited);
+        return allVisited(visited);
+    }
+
+    // ----- DFS -----
+    private static void dfs(List<List<Integer>> g, int start, boolean[] visited) {
+        visited[start] = true;
+        for (int nei : g.get(start)) {
+            if (!visited[nei]) dfs(g, nei, visited);
+        }
+    }
+
+    // ----- BFS (αντί για DFS, ίδιο concept) -----
+    private static void bfs(List<List<Integer>> g, int start, boolean[] visited) {
+        ArrayDeque<Integer> q = new ArrayDeque<>();
+        visited[start] = true;
+        q.add(start);
+
+        while (!q.isEmpty()) {
+            int u = q.poll();
+            for (int v : g.get(u)) {
+                if (!visited[v]) {
+                    visited[v] = true;
+                    q.add(v);
+                }
+            }
+        }
+    }
+
+    // Reverse adjacency list for directed graph
+    private static List<List<Integer>> reverseGraph(List<List<Integer>> graph, int n) {
+        List<List<Integer>> rev = new ArrayList<>(n);
+        for (int i = 0; i < n; i++) rev.add(new ArrayList<>());
+
+        for (int u = 0; u < n; u++) {
+            for (int v : graph.get(u)) {
+                rev.get(v).add(u); // reverse edge u -> v becomes v -> u
+            }
+        }
+        return rev;
+    }
+
+    private static boolean allVisited(boolean[] visited) {
+        for (boolean b : visited) if (!b) return false;
+        return true;
+    }
+
 
 }
 
