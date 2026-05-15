@@ -2329,6 +2329,34 @@ public class Matrices {
         System.out.println(isGraphStronglyConnected(g, n67)); // true
 
         System.out.println("Thank you");
+
+        System.out.println("\n");
+        int n677 = sc.nextInt();
+
+        long[][] dist = new long[n677][n677];
+
+        // Input: weights matrix, -1 means no edge (except diagonal)
+        for (int i677 = 0; i677 < n677; i677++) {
+            for (int j67 = 0; j67 < n677; j67++) {
+                long w = sc.nextLong();
+                if (i677 == j67) dist[i677][j67] = 0;
+                else if (w == -1) dist[i677][j67] = INF;
+                else dist[i677][j67] = w;
+            }
+        }
+
+        floydWarshall(dist);
+
+        // Print result: use -1 for unreachable
+        for (int i677 = 0; i677 < n677; i677++) {
+            for (int j67 = 0; j67 < n677; j67++) {
+                if (dist[i677][j67] >= INF / 2) System.out.print(-1);
+                else System.out.print(dist[i677][j67]);
+                if (j67 + 1 < n677) System.out.print(" ");
+            }
+            System.out.println();
+        }
+
     }
 
 
@@ -9285,6 +9313,27 @@ public class Matrices {
         return true;
     }
 
+
+    //All-Pairs Shortest Paths – Floyd Warshall Algorithm
+    static final long INF = (long) 1e15;  //this should be at the beginning of the class
+    public static void floydWarshall(long[][] dist){
+        int n = dist.length;
+        for(int k = 0; k < n; k++){
+            for(int i = 0; i < n; i++){
+                // μικρή βελτιστοποίηση: αν i->k δεν υπάρχει, μην προσπαθείς
+                if(dist[i][k] == INF) continue;;
+                for(int j = 0; j < n; j++){
+                    if(dist[k][j] == INF) continue;
+                    long candidate = dist[i][k] + dist[k][j];
+                    if(candidate < dist[i][j]){
+                        dist[i][j] = candidate;
+                    }
+                }
+
+
+            }
+        }
+    }
 
 }
 
