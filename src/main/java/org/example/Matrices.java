@@ -2357,6 +2357,15 @@ public class Matrices {
             System.out.println();
         }
 
+        System.out.println("-".repeat(150));
+        List<String[]> tickets = List.of(
+                new String[]{"SFO", "LAX"},
+                new String[]{"JFK", "SFO"},
+                new String[]{"LAX", "SEA"}
+        );
+
+        System.out.println(findItenaryFromListOfDepartAndArrivalAirports(tickets)); // [JFK, SFO, LAX, SEA]
+
     }
 
 
@@ -9333,6 +9342,37 @@ public class Matrices {
 
             }
         }
+    }
+
+    //Find itinerary from the given list of departure and arrival airports
+    public static List<String> findItenaryFromListOfDepartAndArrivalAirports(List<String[]> tickets){
+        Map<String, String> nextByFrom = new HashMap<>();
+        Set<String> arrivals = new HashSet<>();
+        for(String[] t : tickets){
+            String from = t[0];
+            String to = t[1];
+            nextByFrom.put(from, to);
+            arrivals.add(to);
+        }
+
+        String start = null;
+        for(String from : nextByFrom.keySet()){
+            if(!arrivals.contains(from)){
+               start = from;
+               break;
+            }
+        }
+        if(start == null){
+            throw new IllegalArgumentException("No valid start airport found.");
+        }
+        List<String> route = new ArrayList<>();
+        String cur = start;
+        route.add(cur);
+        while(nextByFrom.containsKey(cur)){
+            cur = nextByFrom.get(cur);
+            route.add(cur);
+        }
+        return route;
     }
 
 }
