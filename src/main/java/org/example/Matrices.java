@@ -2366,6 +2366,12 @@ public class Matrices {
 
         System.out.println(findItenaryFromListOfDepartAndArrivalAirports(tickets)); // [JFK, SFO, LAX, SEA]
 
+        String separator = "-".repeat(150);
+        System.out.println(separator);
+        int[] a56 = { 50, 30, 40, 10, 5, 20, 35 }; // max-heap example
+        convertMaxToMinHeap(a56);
+        System.out.println(Arrays.toString(a56));
+
     }
 
 
@@ -9373,6 +9379,39 @@ public class Matrices {
             route.add(cur);
         }
         return route;
+    }
+
+
+    //Convert max heap to min heap in linear time
+    public static void convertMaxToMinHeap(int[] a) {
+        int n = a.length;
+        // build min-heap bottom-up
+        for (int i = n / 2 - 1; i >= 0; i--) {
+            minHeapify(a, n, i);
+        }
+    }
+
+    private static void minHeapify(int[] a, int n, int i) {
+        while (true) {
+            int left = 2 * i + 1;
+            int right = 2 * i + 2;
+            int smallest = i;
+
+            if (left < n && a[left] < a[smallest]) {
+                smallest = left;
+            }
+            if (right < n && a[right] < a[smallest]) {
+                smallest = right;
+            }
+
+            if (smallest == i) break;
+
+            int tmp = a[i];
+            a[i] = a[smallest];
+            a[smallest] = tmp;
+
+            i = smallest; // συνεχίζουμε προς τα κάτω
+        }
     }
 
 }
