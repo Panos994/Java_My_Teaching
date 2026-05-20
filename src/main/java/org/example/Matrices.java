@@ -2372,6 +2372,10 @@ public class Matrices {
         convertMaxToMinHeap(a56);
         System.out.println(Arrays.toString(a56));
 
+        System.out.println(separator);
+        int[] ropes = {4, 3, 2, 6};
+        System.out.println(minCostToConnect(ropes)); // 29
+
     }
 
 
@@ -9412,6 +9416,27 @@ public class Matrices {
 
             i = smallest; // συνεχίζουμε προς τα κάτω
         }
+    }
+
+    //  Connect n ropes with minimal cost
+    public static long minCostToConnect(int[] ropes){
+        if(ropes.length <=1 || ropes == null) return 0;
+        PriorityQueue<Long> pq = new PriorityQueue<>();
+
+        for(int r : ropes){
+            pq.add((long) r);
+        }
+        int totalCost = 0;
+
+        while(pq.size() >1){
+            long a = pq.poll();  // smallest
+            long b = pq.poll(); //second smallest
+            long merged = a + b;
+
+            totalCost += merged;
+            pq.add(merged);
+        }
+        return totalCost;
     }
 
 }
