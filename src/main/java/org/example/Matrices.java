@@ -2376,6 +2376,13 @@ public class Matrices {
         int[] ropes = {4, 3, 2, 6};
         System.out.println(minCostToConnect(ropes)); // 29
 
+        System.out.println(separator);
+        int[] arr3000 = {20, 15, 26, 2, 98, 6};
+        System.out.println(Arrays.toString(replaceRank(arr3000))); // [4, 3, 5, 1, 6, 2]
+
+        int[] arr2500 = {100, 100, 50, 50, 50, 200};
+        System.out.println(Arrays.toString(replaceRank(arr2500))); // [2, 2, 1, 1, 1, 3]
+
     }
 
 
@@ -9437,6 +9444,30 @@ public class Matrices {
             pq.add(merged);
         }
         return totalCost;
+    }
+
+    //Replace each array element by its corresponding rank
+    public static int[] replaceRank(int[] arr) {
+        int n = arr.length;
+
+        int[] sorted = arr.clone();
+        Arrays.sort(sorted);
+
+        Map<Integer, Integer> rankMap = new HashMap<>();
+        int rank = 1;
+
+        for (int i = 0; i < n; i++) {
+            if (!rankMap.containsKey(sorted[i])) {
+                rankMap.put(sorted[i], rank);
+                rank++;
+            }
+        }
+
+        int[] result = new int[n];
+        for (int i = 0; i < n; i++) {
+            result[i] = rankMap.get(arr[i]);
+        }
+        return result;
     }
 
 }
