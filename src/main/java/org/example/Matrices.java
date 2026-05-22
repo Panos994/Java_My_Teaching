@@ -1,5 +1,6 @@
 package org.example;
 
+import com.github.dockerjava.api.model.Link;
 import com.sun.source.tree.Tree;
 import javafx.beans.binding.StringBinding;
 import org.apache.commons.lang3.Range;
@@ -14,7 +15,19 @@ import java.text.CollationElementIterator;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+class Node
+{
+    int data;
+    Node next;
 
+    Node(int data, Node next)
+    {
+        this.data = data;
+        this.next = next;
+    }
+
+    Node() {}
+}
 public class Matrices {
 
     private static final int CUTOFF = 10;
@@ -2382,6 +2395,24 @@ public class Matrices {
 
         int[] arr2500 = {100, 100, 50, 50, 50, 200};
         System.out.println(Arrays.toString(replaceRank(arr2500))); // [2, 2, 1, 1, 1, 3]
+
+        System.out.println(separator);
+        int[] keys = {1, 2, 3, 4};
+        // points to the head node of the linked list
+        Node head = null;
+        // construct a linked list
+        for (int i555 = keys.length - 1; i555 >= 0; i555--) {
+            head = new Node(keys[i555], head);
+        }
+        // copy linked list
+        Node copy = copyList(head);
+        // print duplicate linked list
+        printList(copy);
+        System.out.println(separator);
+        LinkedList<String> str = new LinkedList<>(List.of("Hello", "World", "Java", "Programming"));
+        LinkedList<String> copStr = cloneLinkedList(str);
+        System.out.println("Original LinkedList: " + str);
+        System.out.println("Cloned LinkedList: " + copStr);
 
     }
 
@@ -9468,6 +9499,54 @@ public class Matrices {
             result[i] = rankMap.get(arr[i]);
         }
         return result;
+    }
+
+    public static void printList(Node head)
+    {
+        Node ptr = head;
+        while (ptr != null)
+        {
+            System.out.print(ptr.data + " —> ");
+            ptr = ptr.next;
+        }
+
+        System.out.println("null");
+    }
+
+    // Function takes a linked list and returns its complete copy
+    public static Node copyList(Node head)
+    {
+        Node current = head;    // used to iterate over the original list
+        Node newList = null;    // head of the new list
+        Node tail = null;       // point to the last node in a new list
+
+        while (current != null)
+        {
+            // special case for the first new node
+            if (newList == null)
+            {
+                newList = new Node(current.data, null);
+                tail = newList;
+            }
+            else {
+                tail.next = new Node();
+                tail = tail.next;
+                tail.data = current.data;
+                tail.next = null;
+            }
+            current = current.next;
+        }
+
+        return newList;
+    }
+
+//    public static LinkedList<String> cloneLinkedList(LinkedList<String> initial){
+//        LinkedList<String> cloned = new LinkedList<>();
+//        cloned = (LinkedList<String>) initial.clone();
+//        return cloned;
+//    }
+    public static LinkedList<String> cloneLinkedList(LinkedList<String> initial) {
+        return (LinkedList<String>) initial.clone();
     }
 
 }
