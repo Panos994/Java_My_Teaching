@@ -9549,6 +9549,13 @@ public class Matrices {
         return (LinkedList<String>) initial.clone();
     }
 
+    public static void deleteLinkedList(LinkedList<String> initial){
+        if(initial.isEmpty()){
+            throw new IllegalArgumentException("List is already empty");
+        }
+        initial.clear();
+    }
+
 }
 
 
