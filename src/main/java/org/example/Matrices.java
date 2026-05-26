@@ -2414,6 +2414,11 @@ public class Matrices {
         System.out.println("Original LinkedList: " + str);
         System.out.println("Cloned LinkedList: " + copStr);
 
+        System.out.println(separator);
+        LinkedList<String> st12 = new LinkedList<>(List.of("A", "B", "C", "D"));
+        popToALinkedList(st12);
+        System.out.println("Original LinkedList after pop: " + st12);
+
     }
 
 
@@ -9556,6 +9561,12 @@ public class Matrices {
         initial.clear();
     }
 
+    public static void popToALinkedList(LinkedList<String> initial){
+        if(initial.isEmpty()){
+            throw new IllegalArgumentException("List is empty");
+        }
+        initial.pop();
+    }
 }
 
 
