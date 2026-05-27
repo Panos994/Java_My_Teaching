@@ -9567,7 +9567,73 @@ public class Matrices {
         }
         initial.pop();
     }
+
+    //
+    public static void findMax(int[] arr){
+        int max = Integer.MIN_VALUE;
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i] > max){
+                max = arr[i];
+            }
+
+        }
+        System.out.println("Max element: " + max);
+    }
+    public static int findSecondMax(int[] arr){
+        for(int i = 0; i < arr.length-1; i++){
+            for(int j = 0; j < arr.length - i - 1; j++){
+                if(arr[j] > arr[j+1]){
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+        int max = Integer.MIN_VALUE;
+        int secondMax = Integer.MIN_VALUE;
+        for(int num : arr){
+            if(num > max){
+                secondMax = max;
+                max = num;
+            } else if(num > secondMax && num!=max){
+                secondMax = num;
+            }
+        }
+        //or simply Arrays.sort(arr);
+        return secondMax;
+    }
+    public static int[] reverseArr2(int[] initial){
+        int[] reverse = new int[initial.length];
+        for(int i = 0; i < initial.length; i++){
+            reverse[i] = initial[initial.length - 1 - i];
+        }
+        return reverse;
+    }
+
+    public static void countNum(int[] arr, int n){
+        int count = 0;
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i] ==n){
+                count++;
+            }
+        }
+        System.out.println("Number of occurrences of " + n + " is: " + count);
+    }
+    public static void firstNumber(int[] arr, int n){
+        for(int i = 1; i < arr.length; i++){
+            if(arr[i]%i == 0){
+                System.out.println(arr[i] + " is divisible by its index: " + i);
+                return;
+            }
+        }
+        System.out.println(n + " not found in the array.");
+    }
+
+    //
+
 }
+
+
 
 
 
