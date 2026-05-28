@@ -9628,8 +9628,82 @@ public class Matrices {
         }
         System.out.println(n + " not found in the array.");
     }
+    public static void whichNums(int[] arr){
+        int sum = 0;
+        double avg = 0.0;
+        for(int i = 0; i < arr.length;i++){
+            sum+= arr[i];
+        }
+        avg =  (double) sum /arr.length;
+        for(int i = 0; i < arr.length;i++){
+            if(arr[i] > avg){
+                System.out.println(arr[i] + " is greater than the average: " + avg);
+            }
+        }
+    }
+    public static void printCountPairs(int[] arr, int target){
+        int sum = 0;
+        for(int i = 0; i < arr.length; i++){
+            for(int j = i+1;j<arr.length;j++){
+                sum = arr[i] + arr[j];
+                if(sum == target){
+                    System.out.println("Pairs are: " + arr[i] + " + " + arr[j]);
+                }
+            }
+        }
+    }
+    public static int countPairs(int[] arr, int target){
+        int count = 0;
+
+        for(int i = 0; i < arr.length; i++){
+            for(int j = i + 1; j < arr.length; j++){
+                if(arr[i] + arr[j] == target){
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
 
     //
+
+
+
+    //Split nodes of a linked list into the front and back halves
+    //Δηλαδή, αν έχεις μια λίστα όπως:
+    //
+    //1 -> 2 -> 3 -> 4 -> 5 -> 6
+//    front half: 1 -> 2 -> 3
+//    back half: 4 -> 5 -> 6
+
+    //create a class Node (is above)
+    public static Node[] splitList(Node head){
+        if(head == null) return new Node[]{null,null};
+        if(head.next == null) return new Node[]{head,null};
+
+        Node slow = head;
+        Node fast = head;
+        Node prev = null;
+
+        while(fast!=null && fast.next != null){
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        prev.next = null;
+        return new Node[]{head, slow};
+    }
+
+    //
+    public static int countListElems(LinkedList<Integer> initial){
+        int count = 0;
+        for(int i = 0; i < initial.size(); i++){
+            count+=initial.get(i);
+        }
+        return count;
+    }
 
 }
 
