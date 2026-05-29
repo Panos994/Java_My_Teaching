@@ -2419,6 +2419,12 @@ public class Matrices {
         popToALinkedList(st12);
         System.out.println("Original LinkedList after pop: " + st12);
 
+        System.out.println(separator);
+        List<Integer> myLi = new ArrayList<>(List.of(1, 2, 3, 4, 5,5));
+        remD(myLi);
+
+
+
     }
 
 
@@ -9703,6 +9709,30 @@ public class Matrices {
             count+=initial.get(i);
         }
         return count;
+    }
+
+    // remove duplicates from a sorted linked list
+    public static Node removeDuplicates(Node head)
+    {
+        Node current = head;
+        while(current!= null && current.next != null){
+            if(current.data == current.next.data){
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
+        }
+        return head;
+    }
+    public static void remD(List<Integer> initial){
+        Collections.sort(initial);
+        List<Integer> res = new ArrayList<>();
+        for(Integer num : initial){
+            if(res.isEmpty() || !res.get(res.size() - 1).equals(num)){
+                res.add(num);
+            }
+        }
+        System.out.println("List after removing duplicates: " + res);
     }
 
 }
