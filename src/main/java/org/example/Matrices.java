@@ -2423,6 +2423,9 @@ public class Matrices {
         List<Integer> myLi = new ArrayList<>(List.of(1, 2, 3, 4, 5,5));
         remD(myLi);
 
+        System.out.println("\n");
+        firstNonRepeatingChar("swiss");
+
 
 
     }
@@ -9735,6 +9738,50 @@ public class Matrices {
         System.out.println("List after removing duplicates: " + res);
     }
 
+    // Move the front node of a linked list in front of another list
+    //πριν: source = A -> B -> C, destination = X -> Y
+    //μετά: source = B -> C, destination = A -> X -> Y
+    public void moveFrontNodeOfALInFrontOfAnotherL(Node[] sourceRef, Node[] destRef){
+        if(sourceRef[0] == null) {
+            return;
+        }
+        Node newNode = sourceRef[0];
+        sourceRef[0] = sourceRef[0].next;
+
+        newNode.next = destRef[0];
+        destRef[0] = newNode;
+    }
+
+    //Longest Subarray with Sum at Most K
+    public int longestSubWithSumAtMostK(int[] nums, int k){
+        int sum = 0;
+        int left = 0;
+        int maxLen = 0;
+      for(int right = 0; right<nums.length; right++){
+          sum+=nums[right];
+          while(sum > k && left <= right){
+              sum -= nums[left];
+              left++;
+          }
+          maxLen = Math.max(maxLen, right - left + 1);
+      }
+      return maxLen;
+    }
+    //first non repeating character
+    public static void firstNonRepeatingChar(String s){
+        int[] freq = new int[256];
+
+        for(int i = 0;i <s.length();i++){
+            freq[s.charAt(i)]++;
+        }
+        for(int i = 0; i <s.length(); i++){
+            if(freq[s.charAt(i)] == 1){
+                System.out.println("First non-repeating character is: " + s.charAt(i));
+                return;
+            }
+        }
+        System.out.println("No non-repeating character found");
+    }
 }
 
 
