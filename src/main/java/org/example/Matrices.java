@@ -29,7 +29,7 @@ class Node
     Node() {}
 }
 public class Matrices {
-
+    Scanner sc = new Scanner(System.in);
     private static final int CUTOFF = 10;
 
     static String[] letters = {
@@ -2425,6 +2425,9 @@ public class Matrices {
 
         System.out.println("\n");
         firstNonRepeatingChar("swiss");
+
+        Matrices m2 = new Matrices();
+        m2.inputStringsManipulationAndCounter();
 
 
 
@@ -9781,6 +9784,35 @@ public class Matrices {
             }
         }
         System.out.println("No non-repeating character found");
+    }
+
+
+    //
+    public void inputStringsManipulationAndCounter(){
+        System.out.println("Enter your sentence please: ");
+        String inp = sc.nextLine();
+        String[] words = inp.split(" ");
+        int wordsCounter = words.length;
+        int vowelCounter = inp.length();
+        String vowels = "aeiouAEIOU";
+        String maxWord = "";
+        int maxLen = 0;
+        for(int i = 0; i < inp.length();i++){
+            if(vowels.indexOf(inp.charAt(i))!= -1){
+                vowelCounter++;
+            }
+        }
+
+        for(String word : words){
+            if(word.length() > maxLen){
+                maxLen = word.length();
+                maxWord = word;
+                System.out.println("Word with max length is: " + word);
+            }
+        }
+        System.out.println("Number of words in the sentence is: " + wordsCounter);
+        System.out.println("Number of vowels in the sentence is: " + vowelCounter);
+        System.out.println("Word with max length is: " + maxWord);
     }
 }
 
