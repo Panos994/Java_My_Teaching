@@ -2429,6 +2429,10 @@ public class Matrices {
         Matrices m2 = new Matrices();
         m2.inputStringsManipulationAndCounter();
 
+        System.out.println(separator);
+        int[] arr2000 = {-2, 1, -3, 4, -1, 2, -5, 4};
+        System.out.println(maxSumSubArr(arr2000));
+
 
 
     }
@@ -9813,6 +9817,51 @@ public class Matrices {
         System.out.println("Number of words in the sentence is: " + wordsCounter);
         System.out.println("Number of vowels in the sentence is: " + vowelCounter);
         System.out.println("Word with max length is: " + maxWord);
+    }
+
+    //reverse a double linked list:
+//    class Node
+//    {
+//        int data;
+//        Node next;
+//        Node prev;
+//
+//        Node(int data, Node next, Node prev)
+//        {
+//            this.data = data;
+//            this.next = next;
+//            this.prev = prev;
+//        }
+//
+//        Node() {}
+//    }
+//
+//    public static Node reverseDoubleLinkedList(Node head){
+//        Node current = head;
+//        Node temp = null;
+//        while(current!=null){
+//            temp = current.prev;
+//            current.prev = current.next;
+//            current.next = temp;
+//
+//            current = current.prev;
+//        }
+//        if(temp!=null){
+//            head = temp.prev;
+//        }
+//        return head;
+//    }
+
+
+    public static int maxSumSubArr(int[] arr){
+        if(arr.length == 1) return arr[0];
+        int max = arr[0];
+        int currentSum = arr[0];
+        for(int i = 1; i < arr.length; i++){
+            currentSum = Math.max(arr[i], currentSum + arr[i]);
+            max = Math.max(max, currentSum);
+        }
+        return max;
     }
 }
 
