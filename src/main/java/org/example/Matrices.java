@@ -15,19 +15,20 @@ import java.text.CollationElementIterator;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-class Node
-{
+
+class Node {
     int data;
     Node next;
 
-    Node(int data, Node next)
-    {
+    Node(int data, Node next) {
         this.data = data;
         this.next = next;
     }
 
-    Node() {}
+    Node() {
+    }
 }
+
 public class Matrices {
     Scanner sc = new Scanner(System.in);
     private static final int CUTOFF = 10;
@@ -2381,7 +2382,7 @@ public class Matrices {
 
         String separator = "-".repeat(150);
         System.out.println(separator);
-        int[] a56 = { 50, 30, 40, 10, 5, 20, 35 }; // max-heap example
+        int[] a56 = {50, 30, 40, 10, 5, 20, 35}; // max-heap example
         convertMaxToMinHeap(a56);
         System.out.println(Arrays.toString(a56));
 
@@ -2420,7 +2421,7 @@ public class Matrices {
         System.out.println("Original LinkedList after pop: " + st12);
 
         System.out.println(separator);
-        List<Integer> myLi = new ArrayList<>(List.of(1, 2, 3, 4, 5,5));
+        List<Integer> myLi = new ArrayList<>(List.of(1, 2, 3, 4, 5, 5));
         remD(myLi);
 
         System.out.println("\n");
@@ -2433,7 +2434,9 @@ public class Matrices {
         int[] arr2000 = {-2, 1, -3, 4, -1, 2, -5, 4};
         System.out.println(maxSumSubArr(arr2000));
 
-
+        System.out.println(separator);
+        List<String> myLisop = new ArrayList<>(List.of("oso, lolo, seo, soso"));
+        System.out.println(checkListStringIsPalindromic(myLisop));
 
     }
 
@@ -9394,16 +9397,18 @@ public class Matrices {
 
     //All-Pairs Shortest Paths – Floyd Warshall Algorithm
     static final long INF = (long) 1e15;  //this should be at the beginning of the class
-    public static void floydWarshall(long[][] dist){
+
+    public static void floydWarshall(long[][] dist) {
         int n = dist.length;
-        for(int k = 0; k < n; k++){
-            for(int i = 0; i < n; i++){
+        for (int k = 0; k < n; k++) {
+            for (int i = 0; i < n; i++) {
                 // μικρή βελτιστοποίηση: αν i->k δεν υπάρχει, μην προσπαθείς
-                if(dist[i][k] == INF) continue;;
-                for(int j = 0; j < n; j++){
-                    if(dist[k][j] == INF) continue;
+                if (dist[i][k] == INF) continue;
+                ;
+                for (int j = 0; j < n; j++) {
+                    if (dist[k][j] == INF) continue;
                     long candidate = dist[i][k] + dist[k][j];
-                    if(candidate < dist[i][j]){
+                    if (candidate < dist[i][j]) {
                         dist[i][j] = candidate;
                     }
                 }
@@ -9414,10 +9419,10 @@ public class Matrices {
     }
 
     //Find itinerary from the given list of departure and arrival airports
-    public static List<String> findItenaryFromListOfDepartAndArrivalAirports(List<String[]> tickets){
+    public static List<String> findItenaryFromListOfDepartAndArrivalAirports(List<String[]> tickets) {
         Map<String, String> nextByFrom = new HashMap<>();
         Set<String> arrivals = new HashSet<>();
-        for(String[] t : tickets){
+        for (String[] t : tickets) {
             String from = t[0];
             String to = t[1];
             nextByFrom.put(from, to);
@@ -9425,19 +9430,19 @@ public class Matrices {
         }
 
         String start = null;
-        for(String from : nextByFrom.keySet()){
-            if(!arrivals.contains(from)){
-               start = from;
-               break;
+        for (String from : nextByFrom.keySet()) {
+            if (!arrivals.contains(from)) {
+                start = from;
+                break;
             }
         }
-        if(start == null){
+        if (start == null) {
             throw new IllegalArgumentException("No valid start airport found.");
         }
         List<String> route = new ArrayList<>();
         String cur = start;
         route.add(cur);
-        while(nextByFrom.containsKey(cur)){
+        while (nextByFrom.containsKey(cur)) {
             cur = nextByFrom.get(cur);
             route.add(cur);
         }
@@ -9478,16 +9483,16 @@ public class Matrices {
     }
 
     //  Connect n ropes with minimal cost
-    public static long minCostToConnect(int[] ropes){
-        if(ropes.length <=1 || ropes == null) return 0;
+    public static long minCostToConnect(int[] ropes) {
+        if (ropes.length <= 1 || ropes == null) return 0;
         PriorityQueue<Long> pq = new PriorityQueue<>();
 
-        for(int r : ropes){
+        for (int r : ropes) {
             pq.add((long) r);
         }
         int totalCost = 0;
 
-        while(pq.size() >1){
+        while (pq.size() > 1) {
             long a = pq.poll();  // smallest
             long b = pq.poll(); //second smallest
             long merged = a + b;
@@ -9522,11 +9527,9 @@ public class Matrices {
         return result;
     }
 
-    public static void printList(Node head)
-    {
+    public static void printList(Node head) {
         Node ptr = head;
-        while (ptr != null)
-        {
+        while (ptr != null) {
             System.out.print(ptr.data + " —> ");
             ptr = ptr.next;
         }
@@ -9535,21 +9538,17 @@ public class Matrices {
     }
 
     // Function takes a linked list and returns its complete copy
-    public static Node copyList(Node head)
-    {
+    public static Node copyList(Node head) {
         Node current = head;    // used to iterate over the original list
         Node newList = null;    // head of the new list
         Node tail = null;       // point to the last node in a new list
 
-        while (current != null)
-        {
+        while (current != null) {
             // special case for the first new node
-            if (newList == null)
-            {
+            if (newList == null) {
                 newList = new Node(current.data, null);
                 tail = newList;
-            }
-            else {
+            } else {
                 tail.next = new Node();
                 tail = tail.next;
                 tail.data = current.data;
@@ -9561,7 +9560,7 @@ public class Matrices {
         return newList;
     }
 
-//    public static LinkedList<String> cloneLinkedList(LinkedList<String> initial){
+    //    public static LinkedList<String> cloneLinkedList(LinkedList<String> initial){
 //        LinkedList<String> cloned = new LinkedList<>();
 //        cloned = (LinkedList<String>) initial.clone();
 //        return cloned;
@@ -9570,110 +9569,116 @@ public class Matrices {
         return (LinkedList<String>) initial.clone();
     }
 
-    public static void deleteLinkedList(LinkedList<String> initial){
-        if(initial.isEmpty()){
+    public static void deleteLinkedList(LinkedList<String> initial) {
+        if (initial.isEmpty()) {
             throw new IllegalArgumentException("List is already empty");
         }
         initial.clear();
     }
 
-    public static void popToALinkedList(LinkedList<String> initial){
-        if(initial.isEmpty()){
+    public static void popToALinkedList(LinkedList<String> initial) {
+        if (initial.isEmpty()) {
             throw new IllegalArgumentException("List is empty");
         }
         initial.pop();
     }
 
     //
-    public static void findMax(int[] arr){
+    public static void findMax(int[] arr) {
         int max = Integer.MIN_VALUE;
-        for(int i = 0; i < arr.length; i++){
-            if(arr[i] > max){
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > max) {
                 max = arr[i];
             }
 
         }
         System.out.println("Max element: " + max);
     }
-    public static int findSecondMax(int[] arr){
-        for(int i = 0; i < arr.length-1; i++){
-            for(int j = 0; j < arr.length - i - 1; j++){
-                if(arr[j] > arr[j+1]){
+
+    public static int findSecondMax(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
                     int temp = arr[j];
-                    arr[j] = arr[j+1];
-                    arr[j+1] = temp;
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                 }
             }
         }
         int max = Integer.MIN_VALUE;
         int secondMax = Integer.MIN_VALUE;
-        for(int num : arr){
-            if(num > max){
+        for (int num : arr) {
+            if (num > max) {
                 secondMax = max;
                 max = num;
-            } else if(num > secondMax && num!=max){
+            } else if (num > secondMax && num != max) {
                 secondMax = num;
             }
         }
         //or simply Arrays.sort(arr);
         return secondMax;
     }
-    public static int[] reverseArr2(int[] initial){
+
+    public static int[] reverseArr2(int[] initial) {
         int[] reverse = new int[initial.length];
-        for(int i = 0; i < initial.length; i++){
+        for (int i = 0; i < initial.length; i++) {
             reverse[i] = initial[initial.length - 1 - i];
         }
         return reverse;
     }
 
-    public static void countNum(int[] arr, int n){
+    public static void countNum(int[] arr, int n) {
         int count = 0;
-        for(int i = 0; i < arr.length; i++){
-            if(arr[i] ==n){
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == n) {
                 count++;
             }
         }
         System.out.println("Number of occurrences of " + n + " is: " + count);
     }
-    public static void firstNumber(int[] arr, int n){
-        for(int i = 1; i < arr.length; i++){
-            if(arr[i]%i == 0){
+
+    public static void firstNumber(int[] arr, int n) {
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] % i == 0) {
                 System.out.println(arr[i] + " is divisible by its index: " + i);
                 return;
             }
         }
         System.out.println(n + " not found in the array.");
     }
-    public static void whichNums(int[] arr){
+
+    public static void whichNums(int[] arr) {
         int sum = 0;
         double avg = 0.0;
-        for(int i = 0; i < arr.length;i++){
-            sum+= arr[i];
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
         }
-        avg =  (double) sum /arr.length;
-        for(int i = 0; i < arr.length;i++){
-            if(arr[i] > avg){
+        avg = (double) sum / arr.length;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > avg) {
                 System.out.println(arr[i] + " is greater than the average: " + avg);
             }
         }
     }
-    public static void printCountPairs(int[] arr, int target){
+
+    public static void printCountPairs(int[] arr, int target) {
         int sum = 0;
-        for(int i = 0; i < arr.length; i++){
-            for(int j = i+1;j<arr.length;j++){
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
                 sum = arr[i] + arr[j];
-                if(sum == target){
+                if (sum == target) {
                     System.out.println("Pairs are: " + arr[i] + " + " + arr[j]);
                 }
             }
         }
     }
-    public static int countPairs(int[] arr, int target){
+
+    public static int countPairs(int[] arr, int target) {
         int count = 0;
 
-        for(int i = 0; i < arr.length; i++){
-            for(int j = i + 1; j < arr.length; j++){
-                if(arr[i] + arr[j] == target){
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] + arr[j] == target) {
                     count++;
                 }
             }
@@ -9685,7 +9690,6 @@ public class Matrices {
     //
 
 
-
     //Split nodes of a linked list into the front and back halves
     //Δηλαδή, αν έχεις μια λίστα όπως:
     //
@@ -9694,15 +9698,15 @@ public class Matrices {
 //    back half: 4 -> 5 -> 6
 
     //create a class Node (is above)
-    public static Node[] splitList(Node head){
-        if(head == null) return new Node[]{null,null};
-        if(head.next == null) return new Node[]{head,null};
+    public static Node[] splitList(Node head) {
+        if (head == null) return new Node[]{null, null};
+        if (head.next == null) return new Node[]{head, null};
 
         Node slow = head;
         Node fast = head;
         Node prev = null;
 
-        while(fast!=null && fast.next != null){
+        while (fast != null && fast.next != null) {
             prev = slow;
             slow = slow.next;
             fast = fast.next.next;
@@ -9713,20 +9717,19 @@ public class Matrices {
     }
 
     //
-    public static int countListElems(LinkedList<Integer> initial){
+    public static int countListElems(LinkedList<Integer> initial) {
         int count = 0;
-        for(int i = 0; i < initial.size(); i++){
-            count+=initial.get(i);
+        for (int i = 0; i < initial.size(); i++) {
+            count += initial.get(i);
         }
         return count;
     }
 
     // remove duplicates from a sorted linked list
-    public static Node removeDuplicates(Node head)
-    {
+    public static Node removeDuplicates(Node head) {
         Node current = head;
-        while(current!= null && current.next != null){
-            if(current.data == current.next.data){
+        while (current != null && current.next != null) {
+            if (current.data == current.next.data) {
                 current.next = current.next.next;
             } else {
                 current = current.next;
@@ -9734,11 +9737,12 @@ public class Matrices {
         }
         return head;
     }
-    public static void remD(List<Integer> initial){
+
+    public static void remD(List<Integer> initial) {
         Collections.sort(initial);
         List<Integer> res = new ArrayList<>();
-        for(Integer num : initial){
-            if(res.isEmpty() || !res.get(res.size() - 1).equals(num)){
+        for (Integer num : initial) {
+            if (res.isEmpty() || !res.get(res.size() - 1).equals(num)) {
                 res.add(num);
             }
         }
@@ -9748,8 +9752,8 @@ public class Matrices {
     // Move the front node of a linked list in front of another list
     //πριν: source = A -> B -> C, destination = X -> Y
     //μετά: source = B -> C, destination = A -> X -> Y
-    public void moveFrontNodeOfALInFrontOfAnotherL(Node[] sourceRef, Node[] destRef){
-        if(sourceRef[0] == null) {
+    public void moveFrontNodeOfALInFrontOfAnotherL(Node[] sourceRef, Node[] destRef) {
+        if (sourceRef[0] == null) {
             return;
         }
         Node newNode = sourceRef[0];
@@ -9760,29 +9764,30 @@ public class Matrices {
     }
 
     //Longest Subarray with Sum at Most K
-    public int longestSubWithSumAtMostK(int[] nums, int k){
+    public int longestSubWithSumAtMostK(int[] nums, int k) {
         int sum = 0;
         int left = 0;
         int maxLen = 0;
-      for(int right = 0; right<nums.length; right++){
-          sum+=nums[right];
-          while(sum > k && left <= right){
-              sum -= nums[left];
-              left++;
-          }
-          maxLen = Math.max(maxLen, right - left + 1);
-      }
-      return maxLen;
+        for (int right = 0; right < nums.length; right++) {
+            sum += nums[right];
+            while (sum > k && left <= right) {
+                sum -= nums[left];
+                left++;
+            }
+            maxLen = Math.max(maxLen, right - left + 1);
+        }
+        return maxLen;
     }
+
     //first non repeating character
-    public static void firstNonRepeatingChar(String s){
+    public static void firstNonRepeatingChar(String s) {
         int[] freq = new int[256];
 
-        for(int i = 0;i <s.length();i++){
+        for (int i = 0; i < s.length(); i++) {
             freq[s.charAt(i)]++;
         }
-        for(int i = 0; i <s.length(); i++){
-            if(freq[s.charAt(i)] == 1){
+        for (int i = 0; i < s.length(); i++) {
+            if (freq[s.charAt(i)] == 1) {
                 System.out.println("First non-repeating character is: " + s.charAt(i));
                 return;
             }
@@ -9792,7 +9797,7 @@ public class Matrices {
 
 
     //
-    public void inputStringsManipulationAndCounter(){
+    public void inputStringsManipulationAndCounter() {
         System.out.println("Enter your sentence please: ");
         String inp = sc.nextLine();
         String[] words = inp.split(" ");
@@ -9801,14 +9806,14 @@ public class Matrices {
         String vowels = "aeiouAEIOU";
         String maxWord = "";
         int maxLen = 0;
-        for(int i = 0; i < inp.length();i++){
-            if(vowels.indexOf(inp.charAt(i))!= -1){
+        for (int i = 0; i < inp.length(); i++) {
+            if (vowels.indexOf(inp.charAt(i)) != -1) {
                 vowelCounter++;
             }
         }
 
-        for(String word : words){
-            if(word.length() > maxLen){
+        for (String word : words) {
+            if (word.length() > maxLen) {
                 maxLen = word.length();
                 maxWord = word;
                 System.out.println("Word with max length is: " + word);
@@ -9853,15 +9858,28 @@ public class Matrices {
 //    }
 
 
-    public static int maxSumSubArr(int[] arr){
-        if(arr.length == 1) return arr[0];
+    public static int maxSumSubArr(int[] arr) {
+        if (arr.length == 1) return arr[0];
         int max = arr[0];
         int currentSum = arr[0];
-        for(int i = 1; i < arr.length; i++){
+        for (int i = 1; i < arr.length; i++) {
             currentSum = Math.max(arr[i], currentSum + arr[i]);
             max = Math.max(max, currentSum);
         }
         return max;
+    }
+
+    //Check if a linked list of strings is palindromic
+    public static boolean checkListStringIsPalindromic(List<String> myList) {
+        int left = 0, right = myList.size() - 1;
+        while (left < right) {
+            if (!myList.get(left).equals(myList.get(right))) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
     }
 }
 
