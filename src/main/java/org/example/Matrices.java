@@ -28,6 +28,16 @@ class Node {
     Node() {
     }
 }
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int data) {
+        this.val = data;
+        this.next = null;
+    }
+}
+
 
 public class Matrices {
     Scanner sc = new Scanner(System.in);
@@ -2437,6 +2447,19 @@ public class Matrices {
         System.out.println(separator);
         List<String> myLisop = new ArrayList<>(List.of("oso, lolo, seo, soso"));
         System.out.println(checkListStringIsPalindromic(myLisop));
+
+        System.out.println(separator);
+        ListNode head3 = new ListNode(1);
+        head3.next = new ListNode(2);
+        head3.next.next = new ListNode(3);
+        head3.next.next.next = new ListNode(2);
+        head3.next.next.next.next = new ListNode(4);
+        System.out.println("Original list:");
+        printList(head3);
+        int key = 2;
+        head3 = removeAllNodesFromALinkedListThatMatchesAGivenKey(head3, key);
+        System.out.println("List after removing key " + key + ":");
+        printList(head3);
 
     }
 
@@ -9869,6 +9892,20 @@ public class Matrices {
         return max;
     }
 
+    public static void maxOccurences(int[] arr){
+        int max = Integer.MIN_VALUE;
+        int count = 0;
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i] > max){
+                max = arr[i];
+                count = 1;
+            } else if(arr[i] == max){
+                count++;
+            }
+        }
+        System.out.println("Max element occurs: " + count + " times ");
+    }
+
     //Check if a linked list of strings is palindromic
     public static boolean checkListStringIsPalindromic(List<String> myList) {
         int left = 0, right = myList.size() - 1;
@@ -9880,6 +9917,30 @@ public class Matrices {
             right--;
         }
         return true;
+    }
+    //Remove all nodes from a linked list that matches a given key
+    public static ListNode removeAllNodesFromALinkedListThatMatchesAGivenKey(ListNode head, int key){
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+
+        ListNode current = dummy;
+        while(current.next != null){
+            if(current.next.val == key){
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
+        }
+        return dummy.next;
+    }
+
+    public static void printList(ListNode head){
+        ListNode current = head;
+        while(current != null){
+            System.out.println(current.val + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
     }
 }
 
