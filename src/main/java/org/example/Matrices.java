@@ -9942,6 +9942,56 @@ public class Matrices {
         }
         System.out.println("null");
     }
+
+    // Implement power function without using multiplication and division operators
+    public static int multiply(int a, int b){
+        int res = 0;
+        for(int i = 0; i < b; i++){
+            res+=a;
+        }
+        return res;
+    }
+    public static int division(int dividend, int divisor){
+        if(divisor == 0) throw new IllegalArgumentException("Division by zero");
+        int quotient = 0;
+        int remainder = dividend;
+        while(remainder >= divisor){
+            remainder-=divisor;
+            quotient++;
+        }
+        return quotient;
+    }
+    public static int power(int base, int exponent){
+        if(exponent == 0) return 1;
+        int res = base;
+        for(int i = 1; i < exponent; i++){
+            res = multiply(res, base);
+        }
+        return res;
+    }
+
+    public static int returnLen (int[] arr){
+        if(arr.length == 0) return 0;
+        int maxLen = 1;
+        int currentLen = 1;
+        for(int i = 1; i < arr.length; i++){
+            if(arr[i] > arr[i-1]){
+                currentLen++;
+            }else {
+                if(currentLen > maxLen){
+                    maxLen = currentLen;
+                }
+                currentLen = 1;
+            }
+        }
+        if(currentLen > maxLen){
+            maxLen = currentLen;
+        }
+        System.out.println("Length of biggest continuous  increasing subarray is: " + maxLen);
+        return maxLen;
+
+    }
+
 }
 
 
