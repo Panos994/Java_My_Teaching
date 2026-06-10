@@ -9991,6 +9991,44 @@ public class Matrices {
         return maxLen;
 
     }
+    //Swap two numbers without using a third variable
+    public static void swapUsingAdditionSubtraction(int a, int b){
+        a = a + b;
+        b = a - b;
+        a = a - b;
+    }
+
+    public static int maxSumSubArr2(int[] arr){
+        if(arr.length == 1) return arr[0];
+        int currentSum = arr[0];
+        int max = arr[0];
+        for(int i = 1; i < arr.length; i++){
+            currentSum = Math.max(arr[i], currentSum + arr[i]);
+            max = Math.max(max, currentSum);
+        }
+        return max;
+    }
+    public static int palindromicCount(String s){
+        int count = 0;
+        int n = s.length();
+        for(int i = 0; i < n; i++){
+            count+=expandAroundCenter(s,i,i);
+            count+=expandAroundCenter(s,i,i + 1);
+
+        }
+        return count;
+    }
+    public static int expandAroundCenter(String s, int left, int right){
+        int count = 0;
+        while(left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)){
+            count++;
+            left--;
+            right++;
+        }
+        return count;
+    }
+
+
 
 }
 
