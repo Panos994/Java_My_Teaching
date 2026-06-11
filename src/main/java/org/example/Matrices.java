@@ -2461,6 +2461,9 @@ public class Matrices {
         System.out.println("List after removing key " + key + ":");
         printList(head3);
 
+        System.out.println(separator);
+        swapInSingleLine(5,10);
+
     }
 
 
@@ -10003,8 +10006,9 @@ public class Matrices {
         int currentSum = arr[0];
         int max = arr[0];
         for(int i = 1; i < arr.length; i++){
-            currentSum = Math.max(arr[i], currentSum + arr[i]);
-            max = Math.max(max, currentSum);
+            currentSum = Math.max(arr[i], currentSum + arr[i]); //  // π.χ. αν arr = [1, 2, 10], όταν i=2 (arr[i]=10), συγκρίνουμε 10 με currentSum + 10 (που είναι 3 + 10 = 13)
+            // Επειδή 13 > 10, το currentSum γίνεται 13
+            max = Math.max(max, currentSum);  // Ενημερώνουμε το max αν το νέο currentSum είναι μεγαλύτερο από το προηγούμενο max
         }
         return max;
     }
@@ -10026,6 +10030,52 @@ public class Matrices {
             right++;
         }
         return count;
+    }
+
+
+    //Single line expressions to swap two integers in Java
+    public static void swapInSingleLine(int a, int b){
+        System.out.println("Before swapping: a = " + a + " , b = " + b);
+        a = a + b - (b = a);
+        System.out.println("After swap: a = " + a + ", b = " + b);
+    }
+
+    public static int maxSumSubArr3(int[] arr){
+        if(arr.length == 1) return 1;
+        int currentSum = arr[0];
+        int max = arr[0];
+        for(int i = 0; i <arr.length; i++){
+            int sum = currentSum + arr[i];
+            currentSum = Math.max(arr[i], sum);
+            max = Math.max(max, currentSum);
+        }
+        return max;
+    }
+
+    public static void subsetSumEqualsToATargetNum(int[] arr, int target){
+        int sum = 0;
+        for(int i = 0; i < arr.length;i++){
+            sum+=arr[i];
+            if(sum == target){
+                System.out.println("This sub elements is equals to the target num: " + sum);
+            }
+        }
+    }
+    public static boolean subsetSumEqualsToATargetNum2(int[] arr, int target){
+        Set<Integer> sums = new HashSet<>();
+        sums.add(arr[0]); // Το κενό υποσύνολο έχει άθροισμα 0
+        for(int num : arr){
+            Set<Integer> newSums = new HashSet<>(sums);
+            for(int s : sums){
+                int newSum = s + num;
+                if(newSum == target){
+                    return true;
+                }
+                newSums.add(newSum);
+            }
+            sums = newSums;
+        }
+        return sums.contains(target);
     }
 
 
