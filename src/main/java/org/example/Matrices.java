@@ -2464,6 +2464,11 @@ public class Matrices {
         System.out.println(separator);
         swapInSingleLine(5,10);
 
+        System.out.println(separator);
+        int[] testArr234 = {2, 5, 1, 2, 3, 5,1,2, 4};
+        getLoopElem2(testArr234);
+        getLoopElement(testArr234);
+
     }
 
 
@@ -10076,6 +10081,60 @@ public class Matrices {
             sums = newSums;
         }
         return sums.contains(target);
+    }
+
+
+    //Compute modulus division without division and modulo operator
+    public static int modulus(int divident, int divisor){
+        if(divisor == 0) throw new IllegalArgumentException("divisor cannot be 0");
+        int remainder = divident;
+        while(remainder >= divisor){
+            remainder = remainder - divisor;
+        }
+        return remainder;
+    }
+
+    public static int maxSubArrIncreasedByOne(int[] arr){
+        if(arr.length == 1) return 1;
+        if(arr.length == 0) return 0;
+        int max = 1;
+        int currentLength = 1;
+        for(int i = 1; i < arr.length; i++){
+             if(arr[i] == arr[i-1] + 1){
+                 currentLength++;
+             } else{
+                 currentLength = 1;
+             }
+             if(currentLength > max){
+                 max = currentLength;
+             }
+        }
+        return max;
+    }
+   public static int getLoopElement(int[] arr){
+        if(arr.length == 0) return 0;
+        if(arr.length == 1) return 1;
+        int dupl = 0;
+        for(int i = 0; i < arr.length; i++){
+            for(int j = i + 1; j < arr.length; j++){
+                if(arr[i] == arr[j]){
+                    System.out.println("Duplicated element: " + arr[j]);
+                    return arr[i];
+                }
+            }
+        }
+        return -1;
+   }
+   //or with HashSet
+    public static int getLoopElem2(int[] arr){
+        HashSet<Integer> seen = new HashSet<>();
+        for(int num : arr){
+            if(seen.contains(num)){
+                return num;
+            }
+            seen.add(num);
+        }
+        return -1;
     }
 
 
